@@ -1,5 +1,5 @@
 name: CrossCheck by zFinia
-description: Flags a package-lock.json (or other lockfile) that contradicts your package manager, in the PR that adds it.
+description: Warns when a pull request adds a lockfile that contradicts your package manager.
 author: zFinia
 branding:
   icon: check-circle
