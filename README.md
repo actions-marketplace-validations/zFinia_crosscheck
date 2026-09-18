@@ -16,6 +16,7 @@ By default it checks one thing: **conflicting package-manager configuration** (l
 npx @zfinia/crosscheck                                  # scan this repository
 npx @zfinia/crosscheck --base origin/main               # what did my branch introduce?
 npx @zfinia/crosscheck --base main --head HEAD --format json
+npx @zfinia/crosscheck --format markdown > crosscheck-audit.md   # audit report
 ```
 
 On a healthy pnpm project:
@@ -58,6 +59,10 @@ NEW contradictions introduced by this change: 1
 
 Requires Node.js 18 or later; `--base` needs git.
 
+### Audit report
+
+`--format markdown` writes a self-contained report you can save as `crosscheck-audit.md` or attach to an issue. It has a summary, each proven finding with its evidence and recommended fix, what CrossCheck checked, a privacy statement and the exact command to reproduce it. It works for a full scan and with `--base`/`--head`. Experimental observations appear only with `--experimental`, in their own section labelled *not safe to block*. The report contains no timestamps and no absolute paths, so the same commit always produces the same report.
+
 ## Add it to pull requests
 
 ```yaml
@@ -89,7 +94,7 @@ A check people learn to ignore is worse than no check. CrossCheck only shows a f
 
 By default CrossCheck reports only **proven** rules, which are the only rules that can fail a check ([how this was measured](docs/METHODOLOGY.md)):
 
-- `package-manager/conflicting-config`: lockfiles or `packageManager` for different managers in one package. On three sets of public repositories the rules were never tuned on, 34 of 34 findings were confirmed by hand.
+- `package-manager/conflicting-config`: lockfiles or `packageManager` for different managers in one package. On four sets of public repositories the rules were never tuned on, 47 of 47 findings were confirmed. When the package's own CI, Docker or `vercel.json` install steps show which manager is actually used, the finding cites those steps and says so: for example that every install step uses npm, or that CI tests with pnpm while publishing uses npm.
 - `manifest/unparseable`: a `package.json` that is not valid JSON.
 
 Every other rule is **experimental**. On the same unseen repositories these rules were right less often than the ≥95% bar we require. Pass `--experimental` (Action: `experimental: true`) to see them. They are labelled `[experimental]`, appear as notices on PRs, and never fail a check.
@@ -118,7 +123,7 @@ What it does not do: runtime coordination between agents, merge conflicts, share
 
 ## Versions
 
-`zFinia/crosscheck@v0` always points at the latest reviewed `0.x` release, and is moved only after that release has passed the test suite and a pull-request smoke test on GitHub-hosted runners. For a fixed version, pin `zFinia/crosscheck@v0.1.0` or a full commit SHA. The npm package uses the same version numbers.
+`zFinia/crosscheck@v0` always points at the latest reviewed `0.x` release, and is moved only after that release has passed the test suite and a pull-request smoke test on GitHub-hosted runners. For a fixed version, pin `zFinia/crosscheck@v0.1.1` or a full commit SHA. The npm package uses the same version numbers.
 
 The Action runs with the runner's own Node.js (18 or later), which GitHub-hosted runners provide.
 

@@ -1,6 +1,6 @@
 {
   "name": "@zfinia/crosscheck",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Flags conflicting package-manager configuration (e.g. package-lock.json added to a pnpm repo) in the pull request that introduces it. Local, no account, no network.",
   "type": "module",
   "bin": {
@@ -22,7 +22,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "test": "node --test test/*.test.mjs"
+    "test": "node --test"
   },
   "keywords": [
     "lockfile",

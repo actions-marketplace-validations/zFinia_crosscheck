@@ -2,7 +2,7 @@
 import { extractEvidence } from "./evidence.mjs";
 import { evaluate } from "./rules.mjs";
 
-export const VERSION = "0.1.0";
+export const VERSION = "0.1.1";
 
 export function scanFiles(files) {
   const extracted = extractEvidence(files);

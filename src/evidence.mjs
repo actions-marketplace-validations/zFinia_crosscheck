@@ -296,7 +296,7 @@ export function parseInstall(cmd, { ci = false } = {}) {
   if (manager === "yarn" && sub === null) { /* bare `yarn` / `yarn --frozen-lockfile` installs */ }
   else if (!installVerbs[manager].includes(sub)) return null;
   // Global installs, other directories and named packages are tooling, not this project's decision.
-  if (rest.some((a) => ["-g", "--global", "--prefix", "--cwd", "-C", "--dir", "--location=global", "--no-save", "--no-package-lock", "--package-lock-only"].includes(a) || a.startsWith("--prefix=") || a.startsWith("--dir=") || a.startsWith("--cwd="))) return null;
+  if (rest.some((a) => ["-g", "--global", "--prefix", "--cwd", "-C", "--dir", "--location=global", "--no-save", "--no-package-lock", "--package-lock-only", "--dry-run", "--lockfile-only"].includes(a) || a.startsWith("--prefix=") || a.startsWith("--dir=") || a.startsWith("--cwd="))) return null;
   // Any positional argument means a named package, tarball or path is being
   // installed (or a flag value we cannot interpret): not this project's install.
   if (rest.some((a) => !a.startsWith("-"))) return null;

@@ -76,6 +76,105 @@ export function renderDiff(diff, head, { base, headLabel, experimental }) {
   return lines.join("\n").trimEnd();
 }
 
+// ---------- Markdown audit report ----------
+
+// What a finding means for the team, in plain English. Rule-level, so it never
+// claims more than the evidence in the finding itself.
+const MEANING = {
+  "package-manager/conflicting-config": "Two package managers are configured for the same package. Developers, CI and AI coding tools can each install a different dependency tree depending on which one they pick.",
+  "package-manager/install-command": "A CI or deployment step installs this package's dependencies with a different package manager from the one the package is set up for.",
+  "package-manager/agent-instructions": "Agent instruction files tell AI coding tools to use a different package manager from the one the package is set up for.",
+  "orm/conflicting-config": "Two ORMs are configured for the same package.",
+  "orm/agent-instructions": "Agent instruction files name a different ORM from the one that is configured.",
+  "auth/conflicting-providers": "Two sign-in providers are installed in the same package.",
+  "auth/agent-instructions": "Agent instruction files name a different sign-in provider from the one that is installed.",
+  "database/conflicting-datasource": "The database configuration names more than one database engine.",
+  "database/agent-instructions": "Agent instruction files name a different database from the one that is configured.",
+  "manifest/unparseable": "A package.json file is not valid JSON, so its dependencies could not be checked (package managers cannot read it either).",
+};
+const mdCode = (s) => `\`${String(s).replace(/`/g, "'")}\``;
+const mdText = (s) => String(s).replace(/([|<>])/g, "\\$1");
+
+function mdFinding(f, i, { introducedBy = null } = {}) {
+  const out = [`### ${i + 1}. ${mdText(f.summary)}`, ""];
+  if (MEANING[f.rule]) out.push(MEANING[f.rule], "");
+  out.push(`- **Rule:** ${mdCode(f.rule)}${f.scope ? ` (package ${mdCode(f.scope + "/")})` : ""}`);
+  out.push("- **Evidence:**");
+  for (const e of f.evidence) out.push(`  - ${mdCode(`${e.source}${e.line ? `:${e.line}` : ""}`)} → ${pretty(e.value)} (${e.kind?.startsWith("install") ? mdCode(String(e.detail).replace(/^-?\s*(?:run\s*:\s*|RUN\s+)/, "")) : mdText(e.detail)})`);
+  if (introducedBy?.length) out.push(`- **Introduced by:** ${introducedBy.map(mdCode).join(", ")}`);
+  out.push(`- **Recommended fix:** ${mdText(f.fix)}`, "");
+  return out;
+}
+
+function mdModelTable(model) {
+  const lines = modelLines(model).filter((l) => !l.startsWith("Note: "));
+  const rows = lines.map((l) => { const at = l.indexOf(":"); return [l.slice(0, at).trim(), l.slice(at + 1).trim()]; });
+  return ["| | |", "|---|---|", ...rows.map(([k, v]) => `| ${mdText(k)} | ${mdText(v)} |`), ...(model.notes?.length ? ["", ...model.notes.map((n) => `- Note: ${mdText(n.text)}`)] : [])];
+}
+
+const MD_CHECKED = [
+  "## What CrossCheck checked",
+  "",
+  "CrossCheck compared the setup decisions recorded in this repository's configuration files: lockfiles, the `packageManager` field in each `package.json`, ORM and datasource configuration, install steps in GitHub Actions workflows, Dockerfiles and `vercel.json`, and AI-agent instruction files (`AGENTS.md`, `CLAUDE.md`, `.github/copilot-instructions.md`, …). Each package in a monorepo is checked on its own.",
+  "",
+  "Proven findings come from rules that were right every time on public repositories they were never tuned on. Only proven findings can fail a check. CrossCheck is not a general code reviewer: it does not read application code, install packages or run anything.",
+  "",
+  "## Privacy",
+  "",
+  "This scan ran locally. CrossCheck made no network requests and uploaded no repository contents.",
+  "",
+];
+
+/**
+ * A self-contained audit report, suitable to save as crosscheck-audit.md.
+ * Deterministic: no timestamps and no absolute paths, only the repository
+ * directory name and commit identifiers the caller passes in.
+ */
+export function renderMarkdown({ result, diff = null, head = null, repoName, commit = null, base = null, headSha = null, experimental = false, version }) {
+  const model = (head || result).model;
+  const shownFindings = diff ? diff.introduced : result.findings;
+  const proven = shownFindings.filter((f) => f.tier === "proven");
+  const exp = shownFindings.filter((f) => f.tier === "experimental");
+  const hidden = diff ? diff.hiddenExperimental : result.hiddenExperimental;
+  const pm = modelLines(model).find((l) => l.startsWith("Package manager:"))?.split(":").slice(1).join(":").trim();
+  const md = ["# CrossCheck Repository Audit", ""];
+  md.push(`- **Repository:** ${mdCode(repoName)}`);
+  if (diff) md.push(`- **Compared:** ${mdCode(base.slice(0, 12))} → ${mdCode(headSha === "working-tree" ? "working tree" : headSha.slice(0, 12))}`);
+  else md.push(`- **Scanned:** ${commit ? `working tree at commit ${mdCode(commit.slice(0, 12))}` : "working tree"}`);
+  md.push(`- **CrossCheck:** ${version}`, "");
+
+  md.push("## Summary", "", "| | |", "|---|---|");
+  md.push(`| Scan mode | ${diff ? "Change review (only contradictions this change introduced)" : "Full repository scan"} |`);
+  md.push(`| Packages evaluated | ${model.packages.length} |`);
+  md.push(`| Established package manager | ${mdText(pm ?? "not established")} |`);
+  md.push(`| ${diff ? "New proven contradictions" : "Proven contradictions"} | ${proven.length} |`);
+  md.push(`| Experimental observations | ${experimental ? exp.length : `not requested${hidden ? ` (${hidden} available with --experimental)` : ""}`} |`);
+  if (diff) md.push(`| Pre-existing (not caused by this change) | ${diff.existing.filter((f) => f.tier === "proven" || experimental).length} |`, `| Resolved by this change | ${diff.resolved.filter((f) => f.tier === "proven" || experimental).length} |`);
+  md.push("");
+
+  md.push("## Proven findings", "");
+  if (!proven.length) md.push(diff ? "None. This change introduces no proven contradictions." : "None. CrossCheck found no proven contradictions.", "");
+  proven.forEach((f, i) => {
+    const introducedBy = diff ? [...new Set((f.newEvidence || []).filter((e) => e.source).map((e) => `${e.source}${e.line ? `:${e.line}` : ""}`))] : null;
+    md.push(...mdFinding(f, i, { introducedBy: introducedBy && introducedBy.length < f.evidence.length ? introducedBy : null }));
+  });
+
+  if (experimental) {
+    md.push("## Experimental observations", "", "> **EXPERIMENTAL — NOT SAFE TO BLOCK.** These rules have not yet met CrossCheck's precision bar on unseen repositories. Review each one by hand; they can never fail a check.", "");
+    if (!exp.length) md.push("None.", "");
+    exp.forEach((f, i) => md.push(...mdFinding(f, i)));
+  }
+
+  md.push("## Repository model", "", "What CrossCheck understood about this repository.", "", ...mdModelTable(model), "");
+  md.push(...MD_CHECKED);
+  md.push("## Reproducibility", "");
+  md.push(`- CrossCheck version: ${version}`);
+  if (diff) md.push(`- Base: ${mdCode(base)}`, `- Head: ${mdCode(headSha)}`);
+  else if (commit) md.push(`- Commit: ${mdCode(commit)}`);
+  md.push(`- Command: ${mdCode(`npx @zfinia/crosscheck@${version}${diff ? ` --base ${base.slice(0, 12)}${headSha !== "working-tree" ? ` --head ${headSha.slice(0, 12)}` : ""}` : ""} --format markdown${experimental ? " --experimental" : ""}`)}`);
+  return md.join("\n").trimEnd() + "\n";
+}
+
 // ---------- GitHub Actions ----------
 
 const esc = (s) => String(s).replace(/%/g, "%25").replace(/\r/g, "%0D").replace(/\n/g, "%0A");

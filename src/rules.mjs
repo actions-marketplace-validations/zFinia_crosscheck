@@ -32,11 +32,32 @@ export function evaluate({ scopes, evidence, incomplete, instructionFiles }) {
       const locks = pmConfig.filter((e) => e.kind === "lockfile");
       const field = pmConfig.find((e) => e.kind === "packageManager-field");
       const intended = field ? field.value : null;
-      findings.push(finding("package-manager/conflicting-config", "package.manager", scope, pmValues, pmConfig,
-        `${LABEL["package.manager"]} conflict${where(scope)}: ${pmValues.map(pretty).join(" vs ")}`,
-        intended
-          ? `"packageManager" declares ${pretty(intended)}. Remove ${locks.filter((l) => l.value !== intended).map((l) => l.source).join(", ")} and reinstall with ${intended}, or change "packageManager" if you are deliberately migrating.`
-          : `Keep one lockfile${where(scope)}: delete the one for the manager you do not use and reinstall.`));
+      // Which of the conflicting managers this package's own CI, Docker and
+      // deploy steps actually install with (unconditional, scope-resolved steps
+      // only). It is supporting evidence: it never creates or removes a finding.
+      const installs = by(scope, "package.manager", (e) => (e.kind === "install-command" || e.kind === "install-command-unpinned") && pmValues.includes(e.value));
+      const installers = uniq(installs.map((e) => e.value));
+      const at = (group) => [...new Set(group.map((g) => `${g.source}${g.line ? `:${g.line}` : ""}`))].join(", ");
+      const lockOf = (m) => locks.filter((l) => l.value === m).map((l) => l.source);
+      let fix;
+      if (intended) {
+        fix = `"packageManager" declares ${pretty(intended)}. Remove ${locks.filter((l) => l.value !== intended).map((l) => l.source).join(", ")} and reinstall with ${intended}, or change "packageManager" if you are deliberately migrating.`;
+        const others = installers.filter((m) => m !== intended);
+        if (others.length) fix += ` Also note: ${others.map((m) => `${at(installs.filter((e) => e.value === m))} install${installs.filter((e) => e.value === m).length === 1 ? "s" : ""} with ${pretty(m)}`).join("; ")}.`;
+      } else if (installers.length === 1 && lockOf(installers[0]).length) {
+        const used = installers[0];
+        const stale = locks.filter((l) => l.value !== used).map((l) => l.source);
+        // Stated as evidence plus a conditional fix: teams sometimes keep a second
+        // lockfile on purpose, so which one to delete is their decision.
+        const unused = pmValues.filter((m) => m !== used);
+        fix = `Every install step CrossCheck found for this package uses ${pretty(used)} (${at(installs)}); none uses ${unused.map(pretty).join(" or ")}. If ${pretty(used)} is your package manager, delete ${stale.join(", ")}, keep ${lockOf(used).join(", ")}, and add "packageManager" to package.json so every tool agrees. If you use ${unused.map(pretty).join(" or ")} on purpose, make these install steps use it too.`;
+      } else if (installers.length > 1) {
+        fix = `Install steps for this package disagree: ${installers.map((m) => `${pretty(m)} in ${at(installs.filter((e) => e.value === m))}`).join("; ")}. What you test can differ from what you build or ship. Pick one manager, delete the other lockfile, and make every install step use it.`;
+      } else {
+        fix = `Keep one lockfile${where(scope)}: delete the one for the manager you do not use and reinstall.`;
+      }
+      findings.push(finding("package-manager/conflicting-config", "package.manager", scope, pmValues, [...pmConfig, ...installs],
+        `${LABEL["package.manager"]} conflict${where(scope)}: ${pmValues.map(pretty).join(" vs ")}`, fix));
     }
     const established = pmValues.length === 1 ? pmValues[0] : null;
     if (established) {
@@ -133,7 +154,7 @@ export function evaluate({ scopes, evidence, incomplete, instructionFiles }) {
 
 // Tiers are earned on unseen real repositories, never assumed:
 //   proven       — verified precision on held-out live sets (package-manager
-//                  config conflicts: 34/34 on never-tuned repositories); shown
+//                  config conflicts: 47/47 on never-tuned repositories); shown
 //                  by default and the only tier that can fail a build.
 //   experimental — too few verified emissions or a weaker record; hidden unless
 //                  --experimental, and never able to fail a build.

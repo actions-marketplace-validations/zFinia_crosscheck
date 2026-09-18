@@ -7,14 +7,26 @@ CrossCheck shows a rule by default only if it held up on repositories it was nev
 - **Sample:** public GitHub repositories that contain AI-agent instruction files (`AGENTS.md`, `CLAUDE.md`, `.github/copilot-instructions.md`, …).
 - **Frozen before scanning:** each sample's repository list and commit hashes were fixed before the engine ran, and the engine's file hashes were recorded before each run.
 - **Checked by hand:** every finding was verified against the repository itself. A finding that could not be confirmed counts as wrong.
-- **Tuning vs. holdouts:** one sample was used to tune the rules. Three later samples (600 repositories in total) were never used for tuning.
+- **Tuning vs. holdouts:** one sample was used to tune the rules. Four later samples (947 repositories in total) were never used for tuning. The fourth (347 repositories, September 2026) was frozen before any 0.1.1 change was written.
 
-| Rules | Correct findings on the three unseen samples |
+| Rules | Correct findings on the unseen samples |
 |---|---|
-| Default: conflicting package-manager configuration | **34 of 34** |
-| All rules including experimental (latest two samples) | 23 of 27 (about 85%) |
+| Default: conflicting package-manager configuration | **47 of 47** (four samples) |
+| All rules including experimental (samples 3 and 4 of 0.1.0) | 23 of 27 (about 85%) |
 
 The experimental rules fell short of the 95% bar we set, so they are opt-in and never fail a build.
+
+## Install-step evidence (0.1.1)
+
+From 0.1.1, a package-manager conflict also cites the package's own unconditional install steps (GitHub Actions, Dockerfile, `vercel.json`) when they exist, and its suggested fix says which manager those steps use. This never adds, removes or changes a finding; it only adds evidence. Re-running the four earlier samples and the new one produced exactly the same findings as 0.1.0.
+
+- **Cited install steps are real and belong to that package:** 23 of 23 enriched findings on the unseen samples. Each cited line was read in context, checking its working directory, conditionals and whether it installs this package's dependencies.
+- **Which lockfile to delete** is deliberately *not* asserted. On the unseen samples, the manager the install steps use was also the lockfile the team maintained in 11 of 16 cases. In the other 5, both lockfiles were updated in the same commits or the other lockfile had been re-added recently. That is below our bar, so the fix is conditional ("If npm is your package manager, delete pnpm-lock.yaml …").
+- `npm ci --dry-run` and `pnpm install --lockfile-only` are no longer treated as installs. This was found in the tuning sample.
+
+## CI install-step rule (still experimental)
+
+We tested whether "a CI or deploy install step uses a different manager from the one the package is set up for" (`package-manager/install-command`) could become a default rule. It fires rarely: once in 677 repositories across the earlier samples (a correct finding: `npm ci` in a Bun repository, failing on every push) and never in the new 347. Almost every raw mismatch we found was correctly excluded: global tool installs, named packages, fallbacks, sub-packages with their own lockfile, and manual-only workflows. One correct emission is not evidence of 95% precision, so the rule stays experimental.
 
 ## Historical fixes
 
