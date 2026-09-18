@@ -1,0 +1,57 @@
+name: CrossCheck by zFinia
+description: Flags a package-lock.json (or other lockfile) that contradicts your package manager, in the PR that adds it.
+author: zFinia
+branding:
+  icon: check-circle
+  color: green
+
+inputs:
+  fail-on:
+    description: "none (default, advisory: warnings only) or new (fail when this change introduces a contradiction)"
+    required: false
+    default: none
+  base:
+    description: Commit to compare against. Defaults to the pull request base, or the previous commit on push.
+    required: false
+    default: ""
+  experimental:
+    description: "true to also report experimental rules (ORM, auth, database, CI install steps, agent instructions) as notices; they never fail the check"
+    required: false
+    default: "false"
+  working-directory:
+    description: Repository directory to check (defaults to the checkout root).
+    required: false
+    default: "."
+
+outputs:
+  introduced:
+    description: Number of contradictions introduced by this change.
+    value: ${{ steps.crosscheck.outputs.introduced }}
+  resolved:
+    description: Number of contradictions resolved by this change.
+    value: ${{ steps.crosscheck.outputs.resolved }}
+
+runs:
+  using: composite
+  steps:
+    - id: crosscheck
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
+      env:
+        CC_FAIL_ON: ${{ inputs.fail-on }}
+        CC_EXPERIMENTAL: ${{ inputs.experimental }}
+        CC_BASE: ${{ inputs.base || github.event.pull_request.base.sha || github.event.before }}
+      run: |
+        set -euo pipefail
+        cli="$GITHUB_ACTION_PATH/bin/crosscheck.mjs"
+        extra=""; [ "${CC_EXPERIMENTAL:-false}" = "true" ] && extra="--experimental"
+        if [ -z "${CC_BASE:-}" ] || [ "$CC_BASE" = "0000000000000000000000000000000000000000" ]; then
+          echo "CrossCheck: no base commit for this event; scanning the checked-out tree instead."
+          node "$cli" --format github $extra --fail-on "$( [ "$CC_FAIL_ON" = "none" ] && echo none || echo any )"
+          exit $?
+        fi
+        # actions/checkout fetches a single commit by default; fetch the base too (read-only, from this repository's own origin).
+        if ! git cat-file -e "${CC_BASE}^{commit}" 2>/dev/null; then
+          git fetch --no-tags --quiet --depth=1 origin "$CC_BASE"
+        fi
+        node "$cli" --base "$CC_BASE" --head HEAD --format github $extra --fail-on "$CC_FAIL_ON"

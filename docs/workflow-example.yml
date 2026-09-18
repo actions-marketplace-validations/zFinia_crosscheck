@@ -1,0 +1,9 @@
+name: CrossCheck
+on: pull_request
+
+jobs:
+  crosscheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: zFinia/crosscheck@v0

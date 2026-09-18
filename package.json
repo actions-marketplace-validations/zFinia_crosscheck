@@ -1,0 +1,52 @@
+{
+  "name": "@zfinia/crosscheck",
+  "version": "0.1.0",
+  "description": "Flags conflicting package-manager configuration (e.g. package-lock.json added to a pnpm repo) in the pull request that introduces it. Local, no account, no network.",
+  "type": "module",
+  "bin": {
+    "crosscheck": "bin/crosscheck.mjs"
+  },
+  "exports": {
+    ".": "./src/crosscheck.mjs",
+    "./format": "./src/format.mjs",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "action.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs"
+  },
+  "keywords": [
+    "lockfile",
+    "package-manager",
+    "pnpm",
+    "npm",
+    "yarn",
+    "bun",
+    "monorepo",
+    "ai-agents",
+    "ci",
+    "github-action"
+  ],
+  "homepage": "https://github.com/zFinia/crosscheck#readme",
+  "license": "MIT",
+  "author": "zFinia <support@zfinia.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zFinia/crosscheck.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zFinia/crosscheck/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
