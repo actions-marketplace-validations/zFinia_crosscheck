@@ -1,5 +1,5 @@
 name: CrossCheck by zFinia
-description: Warns when a pull request adds a lockfile that contradicts your package manager.
+description: Enforces repository decision contracts and flags configuration contradictions introduced by a pull request.
 author: zFinia
 branding:
   icon: check-circle
@@ -18,6 +18,10 @@ inputs:
     description: "true to also report experimental rules (ORM, auth, database, CI install steps, agent instructions) as notices; they never fail the check"
     required: false
     default: "false"
+  allow-contract-change:
+    description: "true to approve an intentional repository decision migration; the crosscheck:decision-change PR label also approves it"
+    required: false
+    default: "false"
   working-directory:
     description: Repository directory to check (defaults to the checkout root).
     required: false
@@ -30,21 +34,36 @@ outputs:
   resolved:
     description: Number of contradictions resolved by this change.
     value: ${{ steps.crosscheck.outputs.resolved }}
+  contract-violations:
+    description: Number of introduced explicit-contract violations.
+    value: ${{ steps.crosscheck.outputs.contract-violations }}
+  decision-changes:
+    description: Number of semantic repository decision changes proposed by this change.
+    value: ${{ steps.crosscheck.outputs.decision-changes }}
+  contract-digest:
+    description: SHA-256 digest of the authoritative contract used for evaluation.
+    value: ${{ steps.crosscheck.outputs.contract-digest }}
 
 runs:
   using: composite
   steps:
+    - id: authorize
+      shell: bash
+      run: node "$GITHUB_ACTION_PATH/bin/action-authorize.mjs"
     - id: crosscheck
       shell: bash
       working-directory: ${{ inputs.working-directory }}
       env:
         CC_FAIL_ON: ${{ inputs.fail-on }}
         CC_EXPERIMENTAL: ${{ inputs.experimental }}
+        CC_ALLOW_CONTRACT_CHANGE: ${{ inputs.allow-contract-change == 'true' || contains(github.event.pull_request.labels.*.name, 'crosscheck:decision-change') }}
         CC_BASE: ${{ inputs.base || github.event.pull_request.base.sha || github.event.before }}
+        CROSSCHECK_MANAGED_MONITORING_AUTHORIZED: ${{ steps.authorize.outputs.authorized }}
       run: |
         set -euo pipefail
         cli="$GITHUB_ACTION_PATH/bin/crosscheck.mjs"
         extra=""; [ "${CC_EXPERIMENTAL:-false}" = "true" ] && extra="--experimental"
+        contract_change=""; [ "${CC_ALLOW_CONTRACT_CHANGE:-false}" = "true" ] && contract_change="--allow-contract-change"
         if [ -z "${CC_BASE:-}" ] || [ "$CC_BASE" = "0000000000000000000000000000000000000000" ]; then
           echo "CrossCheck: no base commit for this event; scanning the checked-out tree instead."
           node "$cli" --format github $extra --fail-on "$( [ "$CC_FAIL_ON" = "none" ] && echo none || echo any )"
@@ -54,4 +73,4 @@ runs:
         if ! git cat-file -e "${CC_BASE}^{commit}" 2>/dev/null; then
           git fetch --no-tags --quiet --depth=1 origin "$CC_BASE"
         fi
-        node "$cli" --base "$CC_BASE" --head HEAD --format github $extra --fail-on "$CC_FAIL_ON"
+        node "$cli" --base "$CC_BASE" --head HEAD --format github $extra $contract_change --fail-on "$CC_FAIL_ON"

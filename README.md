@@ -1,12 +1,14 @@
 # CrossCheck by zFinia
 
-Catch a package-manager contradiction in the pull request that introduces it.
+Remember the engineering decisions a repository has made, and stop humans and AI coding agents from silently undoing them.
 
 When people and AI coding agents share a repository, one `npm install` in a pnpm project leaves a `package-lock.json` next to `pnpm-lock.yaml`, and from then on CI, teammates and agents may each install a different dependency tree. CrossCheck flags that on the pull request that adds it, names the file, and says how to fix it. Otherwise it stays silent.
 
-By default it checks one thing: **conflicting package-manager configuration** (lockfiles and `packageManager`) within the same package. It also flags a `package.json` that is not valid JSON. Checks for ORM, database, auth provider, CI install steps and agent-instruction files exist, but they are opt-in and experimental (see below).
+Without a contract, CrossCheck keeps its existing focused behaviour: it checks **conflicting package-manager configuration** (lockfiles and `packageManager`) within the same package and invalid `package.json` files. Checks for ORM, database, auth provider, CI install steps and agent-instruction files remain opt-in and experimental.
 
-- **No account, no OAuth.** It reads files on your machine or in your CI job and makes no network calls; nothing is uploaded. (`npx` downloads the package from npm once; it has no dependencies.)
+With a committed `.crosscheck/contract.json`, CrossCheck also evaluates explicit repository decisions such as package manager, Node major, ORM, database engine and authentication provider. The community CLI previews contract findings locally. Block-level pull-request enforcement is provided by managed CrossCheck monitoring.
+
+- **Private local scans.** The community CLI needs no account or OAuth, reads files on your machine, and makes no scan-time network calls. (`npx` downloads the package from npm once; it has no dependencies.)
 - **Diff-aware.** On a pull request it reports only contradictions *that change introduced*. Existing repository debt never makes an unrelated PR noisy.
 - **Deterministic.** Every finding cites files (and lines) you can check. No AI judgement.
 
@@ -17,6 +19,10 @@ npx @zfinia/crosscheck                                  # scan this repository
 npx @zfinia/crosscheck --base origin/main               # what did my branch introduce?
 npx @zfinia/crosscheck --base main --head HEAD --format json
 npx @zfinia/crosscheck --format markdown > crosscheck-audit.md   # audit report
+npx @zfinia/crosscheck contract init                    # create a safe initial contract
+npx @zfinia/crosscheck contract suggest                 # review optional policy candidates
+npx @zfinia/crosscheck context                          # context for humans and coding agents
+npx @zfinia/crosscheck context --write                  # write .crosscheck/AGENT_CONTEXT.md
 ```
 
 On a healthy pnpm project:
@@ -59,16 +65,69 @@ NEW contradictions introduced by this change: 1
 
 Requires Node.js 18 or later; `--base` needs git.
 
+## Repository Decision Contracts
+
+Initialize explicit repository memory with:
+
+```sh
+npx @zfinia/crosscheck contract init
+```
+
+This writes `.crosscheck/contract.json` using only high-confidence established package-manager and unambiguous Node-major evidence. It does not automatically enforce inferred ORM, database, or auth choices. Review optional candidates with `contract suggest`, then add only decisions your team intends to own.
+
+```json
+{
+  "$schema": "https://www.zfinia.com/schemas/crosscheck-contract-v1.json",
+  "version": 1,
+  "changePolicy": "approval-required",
+  "decisions": [
+    {
+      "key": "package.manager",
+      "scope": ".",
+      "allowed": ["pnpm"],
+      "enforcement": "block",
+      "reason": "This repository is managed with pnpm."
+    },
+    {
+      "key": "runtime.node",
+      "scope": ".",
+      "allowed": ["22"],
+      "enforcement": "block"
+    }
+  ]
+}
+```
+
+Contract v1 uses exact scopes: a decision for `apps/web` does not silently apply to `services/api`. Strong conflicting evidence produces `contract/violation`; weak conflicting evidence produces the always-advisory `contract/possible-violation`; missing strong evidence produces the always-advisory `contract/unverified`. Local `block` findings are previews, while managed monitoring can enforce them on pull requests. `off` decisions produce no finding. Invalid policy fails closed. Formatting and JSON key order do not affect the SHA-256 contract digest. See [the full contract guide](docs/CONTRACT.md) and [JSON schema](docs/crosscheck-contract-v1.schema.json).
+
+### Context for coding agents
+
+`crosscheck context` renders compact repository decisions. `crosscheck context --format json` provides deterministic machine-oriented JSON. `crosscheck context --write` creates `.crosscheck/AGENT_CONTEXT.md`, which explains the decisions and safe change rules without timestamps. The generated Markdown is not authority; `.crosscheck/contract.json` is.
+
+### Deliberate migrations
+
+The base-branch contract is authoritative during a pull request. A pull request cannot authorize its own violation merely by rewriting the contract.
+
+To migrate from pnpm to npm, update the repository configuration and contract together, remove all remaining pnpm state, and obtain maintainer approval with either the `crosscheck:decision-change` pull-request label or Action input `allow-contract-change: true`. Approval permits exactly that proposed decision migration; it does not suppress generic findings or allow a mixed npm/pnpm final state. Initial contract adoption needs no special label, but the new policy must match the repository.
+
 ### Audit report
 
 `--format markdown` writes a self-contained report you can save as `crosscheck-audit.md` or attach to an issue. It has a summary, each proven finding with its evidence and recommended fix, what CrossCheck checked, a privacy statement and the exact command to reproduce it. It works for a full scan and with `--base`/`--head`. Experimental observations appear only with `--experimental`, in their own section labelled *not safe to block*. The report contains no timestamps and no absolute paths, so the same commit always produces the same report.
 
 ## Add it to pull requests
 
+Community local scans, repository decision contracts, reports, and agent context are open and deterministic. Continuous pull-request contract enforcement for protected repositories is provided through CrossCheck monitoring plans. See [plans](https://www.zfinia.com/crosscheck#plans).
+
+The official managed Action requires GitHub OIDC permission:
+
 ```yaml
 # .github/workflows/crosscheck.yml
 name: CrossCheck
 on: pull_request
+
+permissions:
+  contents: read
+  id-token: write
 
 jobs:
   crosscheck:
@@ -78,12 +137,23 @@ jobs:
       - uses: zFinia/crosscheck@v0
 ```
 
-Advisory by default: a new contradiction appears as a warning on the file that introduced it and in the job log, and the check stays green. Contradictions that already exist on the base branch are never reported as new. To fail the check on new contradictions:
+The Action verifies that the repository is protected by an active monitoring entitlement before it runs. Repository files stay in the GitHub runner; authorization sends only GitHub-signed repository identity to zFinia, never repository source or configuration contents. No long-lived CrossCheck customer secret is stored in the repository.
+
+Advisory mode is the default for generic findings. To fail the check on new proven contradictions and authorized block-level contract findings:
 
 ```yaml
       - uses: zFinia/crosscheck@v0
         with:
           fail-on: new
+```
+
+For an intentional repository decision migration under managed monitoring, a maintainer can apply the `crosscheck:decision-change` label. The label approves the migration but does not create a paid entitlement. The Action only observes existing labels; it never writes labels. An explicit workflow-controlled alternative is:
+
+```yaml
+      - uses: zFinia/crosscheck@v0
+        with:
+          fail-on: new
+          allow-contract-change: true
 ```
 
 ## Why it is quiet by default
@@ -106,6 +176,7 @@ In the default output, if a class has only experimental evidence of a conflict, 
 | Class | Contradiction (within one package) | Evidence it trusts |
 |---|---|---|
 | Package manager | lockfiles or `packageManager` for different managers (**proven**); a CI/Docker/Vercel install step using another manager, or agent instructions naming another manager (experimental) | lockfiles, `packageManager`, unconditional install steps for this project |
+| Node runtime | an explicit contract disagrees with an unambiguous established Node major | `.nvmrc`, `.node-version`, `.tool-versions`, `package.json#engines.node`, static `actions/setup-node` configuration |
 | ORM (experimental) | two ORMs configured; agent instructions naming an ORM that is not configured | dependencies, `prisma/schema.prisma`, `drizzle.config.*` |
 | Database (experimental) | Prisma provider, hard-coded Drizzle dialect and example `DATABASE_URL` disagree; a document database and a SQL database both as runtime dependencies | datasource config, runtime dependencies |
 | Auth provider (experimental) | two sign-in providers installed (Auth.js/NextAuth, Clerk, Better Auth, Auth0, Lucia) | dependencies |
@@ -113,17 +184,19 @@ In the default output, if a class has only experimental evidence of a conflict, 
 
 Every directory with a `package.json` is checked separately, so packages in a monorepo may legitimately choose differently.
 
+An explicit contract is a third enforcement category—not “proven” or “experimental.” It is enforceable because the repository owner declared the policy. Generic experimental findings still never fail a build, even with `--experimental`.
+
 What it deliberately does **not** treat as evidence: README prose, lists of alternatives, publishing notes, global/`npx`/`dlx` installs, installs with `--prefix` or a named package, conditional/fallback install scripts, and Drizzle configs that pick a dialect at runtime. Two SQL drivers side by side (for example SQLite for tests next to PostgreSQL) are not flagged.
 
-What it does not do: runtime coordination between agents, merge conflicts, shared ports or databases, or general code review.
+Ambiguous Node expressions such as `>=18`, `lts/*`, dynamic matrices and ranges spanning several majors are deliberately ignored. What CrossCheck does not do: runtime coordination between agents, merge conflicts, shared ports or databases, or general code review.
 
 ## Exit codes
 
-`0` ok (default, advisory) · `1` a proven contradiction was found and `--fail-on new|any` matched · `2` usage or runtime error.
+`0` ok/advisory · `1` a proven contradiction matched locally, or an authorized managed Action matched a block-level contract finding, with `--fail-on new|any` · `2` usage, invalid policy or runtime error.
 
 ## Versions
 
-`zFinia/crosscheck@v0` always points at the latest reviewed `0.x` release, and is moved only after that release has passed the test suite and a pull-request smoke test on GitHub-hosted runners. For a fixed version, pin `zFinia/crosscheck@v0.1.1` or a full commit SHA. The npm package uses the same version numbers.
+`zFinia/crosscheck@v0` always points at the latest reviewed `0.x` release, and is moved only after that release has passed the test suite and a pull-request smoke test on GitHub-hosted runners. For a fixed version, pin `zFinia/crosscheck@v0.2.0` or a full commit SHA. The npm package uses the same version numbers.
 
 The Action runs with the runner's own Node.js (18 or later), which GitHub-hosted runners provide.
 

@@ -59,12 +59,14 @@ export function normalizePath(value) {
 export function isRelevantPath(path) {
   const rel = normalizePath(path);
   if (!rel) return false;
+  if (rel === ".crosscheck/contract.json") return true;
   const parts = rel.split("/");
   if (parts.length > MAX_DEPTH + 1) return false;
   const dirs = parts.slice(0, -1);
   if (dirs.some((d) => SKIP_DIRS.has(d) || (d.startsWith(".") && d !== ".github"))) return false;
   const base = parts[parts.length - 1];
   if (base === "package.json" || LOCKFILES[base]) return true;
+  if ([".nvmrc", ".node-version", ".tool-versions"].includes(base)) return true;
   if (/^drizzle\.config\.(ts|js|mjs|cjs|mts|cts)$/.test(base)) return true;
   if (/^schema\.[\w-]+\.prisma$/.test(base) && dirs[dirs.length - 1] === "prisma") return true; // presence only
   if (base === "schema.prisma" && dirs[dirs.length - 1] === "prisma") return true;
@@ -143,6 +145,26 @@ export function extractEvidence(files) {
         const manager = pkg.packageManager.split("@")[0].trim().toLowerCase();
         if (["npm", "pnpm", "yarn", "bun"].includes(manager)) add({ kind: "packageManager-field", class: "package.manager", value: manager, scope, source: path, detail: `"packageManager": "${pkg.packageManager}"`, strength: "config" });
       }
+      if (typeof pkg.engines?.node === "string") {
+        const major = normalizeNodeMajor(pkg.engines.node);
+        if (major) add({ kind: "runtime-config", class: "runtime.node", value: major, scope, source: path, detail: `"engines.node": "${pkg.engines.node}"`, strength: "config" });
+      }
+      continue;
+    }
+
+    if (base === ".nvmrc" || base === ".node-version") {
+      const raw = (text(path) || "").trim();
+      const major = normalizeNodeMajor(raw);
+      if (major && scopeSet.has(dir)) add({ kind: "runtime-config", class: "runtime.node", value: major, scope: dir, source: path, detail: `${base}: ${raw}`, strength: "config" });
+      continue;
+    }
+
+    if (base === ".tool-versions") {
+      const rows = (text(path) || "").split(/\r?\n/).map((line) => /^\s*nodejs\s+(.+?)\s*(?:#.*)?$/.exec(line)).filter(Boolean);
+      if (rows.length === 1 && rows[0][1].trim().split(/\s+/).length === 1) {
+        const major = normalizeNodeMajor(rows[0][1]);
+        if (major && scopeSet.has(dir)) add({ kind: "runtime-config", class: "runtime.node", value: major, scope: dir, source: path, detail: `nodejs ${rows[0][1].trim()}`, strength: "config" });
+      }
       continue;
     }
 
@@ -201,7 +223,9 @@ export function extractEvidence(files) {
 
     if (/^\.github\/workflows\//.test(path)) {
       if (manualOnly(text(path) || "")) continue; // workflow_dispatch-only: not part of normal CI
-      for (const c of workflowInstalls(text(path) || "", scopeSet)) add({ kind: c.strict ? "install-command" : "install-command-unpinned", class: "package.manager", value: c.manager, scope: c.scope, source: path, line: c.line, detail: c.text, strength: "command" });
+      const workflow = text(path) || "";
+      for (const c of workflowInstalls(workflow, scopeSet)) add({ kind: c.strict ? "install-command" : "install-command-unpinned", class: "package.manager", value: c.manager, scope: c.scope, source: path, line: c.line, detail: c.text, strength: "command" });
+      for (const n of workflowNodeVersions(workflow)) add({ kind: "runtime-config", class: "runtime.node", value: n.major, scope: "", source: path, line: n.line, detail: `actions/setup-node node-version: ${n.raw}`, strength: "config" });
       continue;
     }
     if (base === "Dockerfile") {
@@ -220,6 +244,40 @@ export function extractEvidence(files) {
   }
 
   return { scopes, evidence, incomplete, instructionFiles };
+}
+
+/** Returns a Node major only when the expression admits exactly one major. */
+export function normalizeNodeMajor(value) {
+  const raw = String(value ?? "").trim().replace(/^['"]|['"]$/g, "");
+  if (!raw || /\$\{\{|\blts\b|\bnode\b|\|\||\s+-\s+/i.test(raw)) return null;
+  let match = /^v?(\d+)(?:\.\d+(?:\.\d+)?)?$/.exec(raw);
+  if (match) return String(Number(match[1]));
+  match = /^(\d+)\.x(?:\.x)?$/i.exec(raw);
+  if (match) return String(Number(match[1]));
+  match = /^\^(\d+)\.0\.0$/.exec(raw);
+  if (match) return String(Number(match[1]));
+  match = /^>=\s*(\d+)(?:\.0(?:\.0)?)?\s+<\s*(\d+)(?:\.0(?:\.0)?)?$/.exec(raw);
+  if (match && Number(match[2]) === Number(match[1]) + 1) return String(Number(match[1]));
+  return null;
+}
+
+function workflowNodeVersions(raw) {
+  const lines = raw.split(/\r?\n/);
+  const out = [];
+  for (let i = 0; i < lines.length; i += 1) {
+    if (!/uses:\s*actions\/setup-node@/i.test(lines[i])) continue;
+    const indent = /^\s*/.exec(lines[i])[0].length;
+    for (let j = i + 1; j < Math.min(lines.length, i + 12); j += 1) {
+      const currentIndent = /^\s*/.exec(lines[j])[0].length;
+      if (j > i + 1 && /^\s*-\s+(?:uses|run|name):/.test(lines[j]) && currentIndent <= indent) break;
+      const match = /^\s*node-version\s*:\s*(.+?)\s*(?:#.*)?$/.exec(lines[j]);
+      if (!match) continue;
+      const major = normalizeNodeMajor(match[1]);
+      if (major) out.push({ major, raw: match[1].trim().replace(/^['"]|['"]$/g, ""), line: j + 1 });
+      break;
+    }
+  }
+  return out;
 }
 
 // ---------------- agent instruction declarations ----------------

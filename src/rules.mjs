@@ -7,6 +7,7 @@ const LABEL = {
   "database.orm": "ORM",
   "database.engine": "Database",
   "auth.provider": "Authentication provider",
+  "runtime.node": "Node runtime",
   manifest: "Manifest",
 };
 const PRETTY = {
@@ -197,6 +198,7 @@ function buildModel({ scopes, evidence, instructionFiles }) {
     const declared = decide(ev.filter((e) => e.kind === "datasource").map((e) => e.value));
     const drivers = uniq(ev.filter((e) => e.kind === "runtime-driver").map((e) => e.value));
     const auth = decide(ev.filter((e) => e.class === "auth.provider").map((e) => e.value));
+    const nodeRuntime = decide(ev.filter((e) => e.class === "runtime.node").map((e) => e.value));
     return {
       scope,
       packageManager: pm,
@@ -204,6 +206,7 @@ function buildModel({ scopes, evidence, instructionFiles }) {
       database: declared ?? (drivers.length === 1 ? drivers[0] : drivers.length ? { drivers } : null),
       databaseSource: declared ? "declared" : drivers.length ? "driver" : null,
       auth,
+      ...(nodeRuntime == null ? {} : { nodeRuntime }),
     };
   });
   return { packages, instructionFiles: [...instructionFiles].sort() };

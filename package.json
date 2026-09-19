@@ -1,19 +1,21 @@
 {
   "name": "@zfinia/crosscheck",
-  "version": "0.1.1",
-  "description": "Flags conflicting package-manager configuration (e.g. package-lock.json added to a pnpm repo) in the pull request that introduces it. Local, no account, no network.",
+  "version": "0.2.0",
+  "description": "Repository Decision Contracts and deterministic contradiction detection for humans and AI coding agents. Local, no account, no network.",
   "type": "module",
   "bin": {
     "crosscheck": "bin/crosscheck.mjs"
   },
   "exports": {
     ".": "./src/crosscheck.mjs",
+    "./contract": "./src/contract.mjs",
     "./format": "./src/format.mjs",
     "./package.json": "./package.json"
   },
   "files": [
     "bin/",
     "src/",
+    "docs/",
     "action.yml",
     "README.md",
     "LICENSE"

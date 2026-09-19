@@ -2,7 +2,7 @@
 
 - **Repository:** `<repo>`
 - **Scanned:** working tree at commit `11a509655ef3`
-- **CrossCheck:** 0.1.1
+- **CrossCheck:** 0.2.0
 
 ## Summary
 
@@ -58,6 +58,6 @@ This scan ran locally. CrossCheck made no network requests and uploaded no repos
 
 ## Reproducibility
 
-- CrossCheck version: 0.1.1
+- CrossCheck version: 0.2.0
 - Commit: `11a509655ef3bf515d8589d53bddeb0eff2f8f7f`
-- Command: `npx @zfinia/crosscheck@0.1.1 --format markdown --experimental`
+- Command: `npx @zfinia/crosscheck@0.2.0 --format markdown --experimental`

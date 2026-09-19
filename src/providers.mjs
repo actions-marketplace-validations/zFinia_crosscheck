@@ -17,7 +17,7 @@ export function readWorkingTree(root) {
     for (const entry of entries) {
       const path = rel ? `${rel}/${entry.name}` : entry.name;
       if (entry.isDirectory()) {
-        if (SKIP_DIRS.has(entry.name) || (entry.name.startsWith(".") && entry.name !== ".github")) continue;
+        if (SKIP_DIRS.has(entry.name) || (entry.name.startsWith(".") && entry.name !== ".github" && entry.name !== ".crosscheck")) continue;
         walk(path, depth + 1);
       } else if (entry.isFile() && isRelevantPath(path)) {
         if (isPresenceOnly(path)) { files.set(path, null); continue; }

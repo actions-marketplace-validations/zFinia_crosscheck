@@ -2,7 +2,7 @@
 
 - **Repository:** `<repo>`
 - **Compared:** `730edcf8a5af` → `b45687ea8148`
-- **CrossCheck:** 0.1.1
+- **CrossCheck:** 0.2.0
 
 ## Summary
 
@@ -55,7 +55,7 @@ This scan ran locally. CrossCheck made no network requests and uploaded no repos
 
 ## Reproducibility
 
-- CrossCheck version: 0.1.1
+- CrossCheck version: 0.2.0
 - Base: `730edcf8a5af2519679625f137d587c8661359e3`
 - Head: `b45687ea814823df68466c2f587e7978f9fa5407`
-- Command: `npx @zfinia/crosscheck@0.1.1 --base 730edcf8a5af --head b45687ea8148 --format markdown`
+- Command: `npx @zfinia/crosscheck@0.2.0 --base 730edcf8a5af --head b45687ea8148 --format markdown`

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.zfinia.com/schemas/crosscheck-contract-v1.json",
+  "title": "CrossCheck Repository Decision Contract v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "decisions"],
+  "properties": {
+    "$schema": { "const": "https://www.zfinia.com/schemas/crosscheck-contract-v1.json" },
+    "version": { "const": 1 },
+    "changePolicy": { "const": "approval-required", "default": "approval-required" },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["key", "allowed"],
+        "properties": {
+          "key": { "enum": ["package.manager", "runtime.node", "database.orm", "database.engine", "auth.provider"] },
+          "scope": { "type": "string", "default": "." },
+          "allowed": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+          "enforcement": { "enum": ["block", "warn", "off"], "default": "warn" },
+          "reason": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}
