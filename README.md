@@ -178,6 +178,24 @@ For an intentional repository decision migration under managed monitoring, a mai
           allow-contract-change: true
 ```
 
+## How common is this, actually?
+
+We scanned a stratified random sample of **5,371** active public JavaScript and
+TypeScript repositories, each frozen at a named commit. **3.65%** carry
+package-manager configuration that contradicts itself (95% CI 3.18-4.18%).
+
+The frozen frame, the exact search queries, the seeded sample, the scanner, every
+finding with a permalink to each cited line, and an integrity checker that
+recomputes the headline from the raw scan are all in
+[`benchmark/lockfile-drift-census-2026-09`](benchmark/lockfile-drift-census-2026-09).
+
+```sh
+npm run census:verify
+```
+
+It also reports a null result: repositories shipping an `AGENTS.md` or `CLAUDE.md`
+did **not** contradict themselves significantly more often (p = 0.13).
+
 ## Why it is quiet by default
 
 A check people learn to ignore is worse than no check. CrossCheck only shows a finding by default when the rule's cited configuration evidence was verified on held-out repositories. Evidence verification does not establish maintainer intent or prove that every emitted state needs remediation. CrossCheck reports only what a pull request *introduced*, never debt that was already there, and it does not fail the build unless you ask it to.

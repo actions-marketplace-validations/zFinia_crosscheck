@@ -1,0 +1,24 @@
+provider equivalence, 2026-09-21T01:01:35.704Z
+
+PASS  expressjs/express  sha=9a34acf0 files=6/6 identicalInput=true identicalFindings=true
+PASS  sveltejs/svelte  sha=636eaaaa files=10/10 identicalInput=true identicalFindings=true
+PASS  vitejs/vite  sha=e9078f86 files=270/270 identicalInput=true identicalFindings=true
+PASS  honojs/hono  sha=52febbcc files=17/17 identicalInput=true identicalFindings=true
+PASS  remix-run/react-router  sha=58c47cd0 files=55/55 identicalInput=true identicalFindings=true
+PASS  t3-oss/create-t3-app  sha=4709861f files=13/13 identicalInput=true identicalFindings=true
+PASS  pmndrs/zustand  sha=b57db4f8 files=11/11 identicalInput=true identicalFindings=true
+PASS  withastro/astro  sha=db2eaf17 files=63/63 identicalInput=true identicalFindings=true
+PASS  TanStack/query  sha=47f27a48 files=48/48 identicalInput=true identicalFindings=true
+PASS  shadcn-ui/ui  sha=a87a63b2 files=18/18 identicalInput=true identicalFindings=true
+PASS  Crawlith/crawlith  sha=95771de3 files=16/16 identicalInput=true identicalFindings=true
+PASS  LCNINE/almondyoung-server  sha=ee7e024d files=81/81 identicalInput=true identicalFindings=true
+PASS  OpenMovieDB/telegram-bot  sha=3d426b18 files=16/16 identicalInput=true identicalFindings=true
+PASS  mfuentesg/capo  sha=308810be files=11/11 identicalInput=true identicalFindings=true
+PASS  forklaunch/forklaunch  sha=38125ab7 files=67/67 identicalInput=true identicalFindings=true
+PASS  The-Boring-Education/TBE-Web  sha=85925511 files=59/59 identicalInput=true identicalFindings=true
+PASS  ministryofjustice/prison-visits-2  sha=2480fb42 files=11/11 identicalInput=true identicalFindings=true
+PASS  tdeekens/flopflip  sha=9f4cd3d8 files=28/28 identicalInput=true identicalFindings=true
+SKIP  urbit/urbit.org  (full clone impossible on this host: path invalid on NTFS)
+PASS  vercel/next.js  sha=57eb2b34 files=329/329 identicalInput=true identicalFindings=true
+
+EQUIVALENCE: 19 identical, 0 not identical

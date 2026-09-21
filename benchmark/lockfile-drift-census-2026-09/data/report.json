@@ -1,0 +1,525 @@
+{
+  "generated_at": "2026-09-21T05:04:07.081Z",
+  "engine_version": "0.2.0",
+  "frame_coverage": {
+    "reported_population": 79715,
+    "retrieved": 71425,
+    "pct": 89.6,
+    "capped_strata": 16,
+    "capped_detail": [
+      {
+        "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:50..149 created:<2016-01-01",
+        "retrieved": 1000,
+        "total_count": 1098
+      },
+      {
+        "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:20..49 created:<2016-01-01",
+        "retrieved": 1000,
+        "total_count": 1044
+      },
+      {
+        "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:20..49 created:2016-01-01..2017-12-31",
+        "retrieved": 1000,
+        "total_count": 1086
+      },
+      {
+        "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:20..49 created:2026-01-01..2026-03-31",
+        "retrieved": 1000,
+        "total_count": 1153
+      },
+      {
+        "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:20..49 created:2026-04-01..2026-06-30",
+        "retrieved": 1000,
+        "total_count": 1614
+      },
+      {
+        "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:20..49 created:>=2026-07-01",
+        "retrieved": 1000,
+        "total_count": 1206
+      },
+      {
+        "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:50..149 created:2025-07-01..2025-12-31",
+        "retrieved": 1000,
+        "total_count": 1161
+      },
+      {
+        "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:50..149 created:2026-01-01..2026-03-31",
+        "retrieved": 1000,
+        "total_count": 1710
+      },
+      {
+        "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:50..149 created:2026-04-01..2026-06-30",
+        "retrieved": 1000,
+        "total_count": 1619
+      },
+      {
+        "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:50..149 created:>=2026-07-01",
+        "retrieved": 1000,
+        "total_count": 1034
+      },
+      {
+        "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:20..49 created:2020-01-01..2020-12-31",
+        "retrieved": 1000,
+        "total_count": 1004
+      },
+      {
+        "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:20..49 created:2025-01-01..2025-06-30",
+        "retrieved": 1000,
+        "total_count": 1401
+      },
+      {
+        "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:20..49 created:2025-07-01..2025-12-31",
+        "retrieved": 1000,
+        "total_count": 1957
+      },
+      {
+        "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:20..49 created:2026-01-01..2026-03-31",
+        "retrieved": 1000,
+        "total_count": 2772
+      },
+      {
+        "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:20..49 created:2026-04-01..2026-06-30",
+        "retrieved": 1000,
+        "total_count": 2824
+      },
+      {
+        "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:20..49 created:>=2026-07-01",
+        "retrieved": 1000,
+        "total_count": 1607
+      }
+    ]
+  },
+  "coverage": {
+    "sample_size": 6014,
+    "scanned": 6014,
+    "ok": 6004,
+    "failed": 10,
+    "with_package_json": 5371,
+    "failure_reasons": [
+      [
+        "git cat-file failed: fatal: could not fe",
+        9
+      ],
+      [
+        "git clone failed: fatal: unable to acces",
+        1
+      ]
+    ]
+  },
+  "headline": {
+    "contradictory_package_manager_config": {
+      "k": 196,
+      "n": 5371,
+      "pct": 3.65,
+      "ci95": [
+        3.18,
+        4.18
+      ]
+    },
+    "two_or_more_lockfile_managers_anywhere": {
+      "k": 291,
+      "n": 5371,
+      "pct": 5.42,
+      "ci95": [
+        4.84,
+        6.06
+      ]
+    },
+    "declares_packageManager_field": {
+      "k": 1224,
+      "n": 5371,
+      "pct": 22.79,
+      "ci95": [
+        21.69,
+        23.93
+      ]
+    },
+    "package_manager_established": {
+      "k": 4798,
+      "n": 5371,
+      "pct": 89.33,
+      "ci95": [
+        88.48,
+        90.13
+      ]
+    },
+    "invalid_package_json": {
+      "k": 0,
+      "n": 5371,
+      "pct": 0,
+      "ci95": [
+        0,
+        0.07
+      ]
+    },
+    "has_agent_instruction_file": {
+      "k": 1265,
+      "n": 5371,
+      "pct": 23.55,
+      "ci95": [
+        22.44,
+        24.71
+      ]
+    }
+  },
+  "by_star_band": [
+    {
+      "key": "20-49",
+      "k": 69,
+      "n": 1928,
+      "pct": 3.58,
+      "ci95": [
+        2.84,
+        4.5
+      ]
+    },
+    {
+      "key": "50-149",
+      "k": 54,
+      "n": 1529,
+      "pct": 3.53,
+      "ci95": [
+        2.72,
+        4.58
+      ]
+    },
+    {
+      "key": "150-499",
+      "k": 41,
+      "n": 1002,
+      "pct": 4.09,
+      "ci95": [
+        3.03,
+        5.5
+      ]
+    },
+    {
+      "key": "500-1499",
+      "k": 11,
+      "n": 481,
+      "pct": 2.29,
+      "ci95": [
+        1.28,
+        4.05
+      ]
+    },
+    {
+      "key": "1500-4999",
+      "k": 12,
+      "n": 264,
+      "pct": 4.55,
+      "ci95": [
+        2.62,
+        7.78
+      ]
+    },
+    {
+      "key": "5000+",
+      "k": 9,
+      "n": 167,
+      "pct": 5.39,
+      "ci95": [
+        2.86,
+        9.92
+      ]
+    }
+  ],
+  "by_language": [
+    {
+      "key": "JavaScript",
+      "k": 54,
+      "n": 1956,
+      "pct": 2.76,
+      "ci95": [
+        2.12,
+        3.58
+      ]
+    },
+    {
+      "key": "TypeScript",
+      "k": 142,
+      "n": 3415,
+      "pct": 4.16,
+      "ci95": [
+        3.54,
+        4.88
+      ]
+    }
+  ],
+  "by_created_year": [
+    {
+      "key": "before 2015",
+      "k": 4,
+      "n": 263,
+      "pct": 1.52,
+      "ci95": [
+        0.59,
+        3.84
+      ]
+    },
+    {
+      "key": "2015",
+      "k": 1,
+      "n": 155,
+      "pct": 0.65,
+      "ci95": [
+        0.11,
+        3.56
+      ]
+    },
+    {
+      "key": "2016",
+      "k": 4,
+      "n": 192,
+      "pct": 2.08,
+      "ci95": [
+        0.81,
+        5.23
+      ]
+    },
+    {
+      "key": "2017",
+      "k": 9,
+      "n": 267,
+      "pct": 3.37,
+      "ci95": [
+        1.78,
+        6.28
+      ]
+    },
+    {
+      "key": "2018",
+      "k": 5,
+      "n": 291,
+      "pct": 1.72,
+      "ci95": [
+        0.74,
+        3.96
+      ]
+    },
+    {
+      "key": "2019",
+      "k": 10,
+      "n": 302,
+      "pct": 3.31,
+      "ci95": [
+        1.81,
+        5.99
+      ]
+    },
+    {
+      "key": "2020",
+      "k": 13,
+      "n": 404,
+      "pct": 3.22,
+      "ci95": [
+        1.89,
+        5.43
+      ]
+    },
+    {
+      "key": "2021",
+      "k": 12,
+      "n": 380,
+      "pct": 3.16,
+      "ci95": [
+        1.82,
+        5.44
+      ]
+    },
+    {
+      "key": "2022",
+      "k": 16,
+      "n": 412,
+      "pct": 3.88,
+      "ci95": [
+        2.4,
+        6.21
+      ]
+    },
+    {
+      "key": "2023",
+      "k": 18,
+      "n": 444,
+      "pct": 4.05,
+      "ci95": [
+        2.58,
+        6.32
+      ]
+    },
+    {
+      "key": "2024",
+      "k": 22,
+      "n": 480,
+      "pct": 4.58,
+      "ci95": [
+        3.05,
+        6.84
+      ]
+    },
+    {
+      "key": "2025",
+      "k": 45,
+      "n": 658,
+      "pct": 6.84,
+      "ci95": [
+        5.15,
+        9.03
+      ]
+    },
+    {
+      "key": "2026",
+      "k": 37,
+      "n": 1123,
+      "pct": 3.29,
+      "ci95": [
+        2.4,
+        4.51
+      ]
+    }
+  ],
+  "by_agent_instructions": [
+    {
+      "key": "has agent instruction file",
+      "k": 55,
+      "n": 1265,
+      "pct": 4.35,
+      "ci95": [
+        3.36,
+        5.62
+      ]
+    },
+    {
+      "key": "no agent instruction file",
+      "k": 141,
+      "n": 4106,
+      "pct": 3.43,
+      "ci95": [
+        2.92,
+        4.04
+      ]
+    }
+  ],
+  "by_packageManager_field": [
+    {
+      "key": "declares \"packageManager\"",
+      "k": 57,
+      "n": 1224,
+      "pct": 4.66,
+      "ci95": [
+        3.61,
+        5.99
+      ]
+    },
+    {
+      "key": "does not declare it",
+      "k": 139,
+      "n": 4147,
+      "pct": 3.35,
+      "ci95": [
+        2.85,
+        3.94
+      ]
+    }
+  ],
+  "contradiction_shape": {
+    "total": 196,
+    "two_lockfile_managers": 182,
+    "single_lockfile_vs_packageManager_field": 14,
+    "also_counted_in_two_lockfile_row": 182
+  },
+  "cohort_tests": {
+    "agent_instructions": {
+      "z": 1.516,
+      "p_value": 0.1296,
+      "significant_at_05": false,
+      "difference_pp": 0.91
+    },
+    "packageManager_field": {
+      "z": 2.14,
+      "p_value": 0.0324,
+      "significant_at_05": true,
+      "difference_pp": 1.31
+    },
+    "language": {
+      "z": 2.628,
+      "p_value": 0.0086,
+      "significant_at_05": true,
+      "difference_pp": 1.4
+    }
+  },
+  "conflict_pairs": [
+    [
+      "npm + pnpm",
+      78
+    ],
+    [
+      "npm + yarn",
+      71
+    ],
+    [
+      "bun + npm",
+      46
+    ],
+    [
+      "bun + yarn",
+      8
+    ],
+    [
+      "pnpm + yarn",
+      7
+    ],
+    [
+      "bun + pnpm",
+      7
+    ],
+    [
+      "npm + pnpm + yarn",
+      2
+    ],
+    [
+      "bun + npm + pnpm",
+      2
+    ],
+    [
+      "bun + npm + pnpm + yarn",
+      1
+    ],
+    [
+      "bun + npm + yarn",
+      1
+    ]
+  ],
+  "monorepo": {
+    "note": "A finding is raised inside one package scope, so a monorepo is not penalised for two packages choosing differently.",
+    "findings_in_root_scope": 147,
+    "findings_in_sub_scope": 76
+  },
+  "install_step_evidence": {
+    "conflicted": 196,
+    "with_cited_install_steps": 87,
+    "pct": 44.39
+  },
+  "experimental_only_rules": [
+    [
+      "package-manager/install-command",
+      16
+    ],
+    [
+      "database/conflicting-datasource",
+      4
+    ],
+    [
+      "auth/conflicting-providers",
+      3
+    ],
+    [
+      "package-manager/agent-instructions",
+      1
+    ],
+    [
+      "database/agent-instructions",
+      1
+    ]
+  ]
+}

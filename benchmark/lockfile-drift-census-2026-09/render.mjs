@@ -1,0 +1,246 @@
+// Generates README.md from data/report.json. Every published number therefore
+// comes from the raw scan and cannot drift from it.
+import { readFileSync, writeFileSync } from "node:fs";
+
+const r = JSON.parse(readFileSync("data/report.json", "utf8"));
+const alloc = JSON.parse(readFileSync("data/sample-allocation.json", "utf8"));
+const strata = JSON.parse(readFileSync("data/frame-strata.json", "utf8"));
+const eq = readFileSync("raw/provider-equivalence.txt", "utf8");
+const eqPass = (eq.match(/^PASS/gm) || []).length;
+const eqSkip = (eq.match(/^SKIP/gm) || []).length;
+const eqFail = (eq.match(/^(FAIL|ERROR)/gm) || []).length;
+
+const n = (x) => x.toLocaleString("en-US");
+const p2 = (x) => x.toFixed(2);
+const ci = (o) => p2(o.ci95[0]) + "–" + p2(o.ci95[1]) + "%";
+const line = (label, o) => "| " + label + " | " + p2(o.pct) + "% | " + n(o.k) + " / " + n(o.n) + " | " + ci(o) + " |";
+const tbl = (rows, label) => [
+  "| " + label + " | Rate | Repositories | 95% CI |",
+  "|---|---|---|---|",
+  ...rows.map((x) => line(x.key, x)),
+].join("\n");
+
+const h = r.headline;
+const completeStrata = strata.strata.filter((s) => s.complete).length;
+const partialStrata = strata.strata.length - completeStrata;
+const pm = h.contradictory_package_manager_config;
+
+const out = [];
+const w = (s) => out.push(s);
+
+w("# The lockfile drift census");
+w("");
+w("**How many active public JavaScript and TypeScript repositories carry");
+w("package-manager configuration that contradicts itself?**");
+w("");
+w("Across a stratified random sample of **" + n(r.coverage.with_package_json) + "** active public");
+w("repositories that contain a `package.json`, each frozen at a named commit:");
+w("");
+w("> ## " + p2(pm.pct) + "% contradict themselves");
+w(">");
+w("> " + pm.k + " of " + n(pm.n) + " repositories (95% CI " + ci(pm) + ")");
+w("");
+w("A *contradiction* means one package declares or implies two different package");
+w("managers at once — for example a `package-lock.json` sitting next to a");
+w("`pnpm-lock.yaml`, or a lockfile that disagrees with the `\"packageManager\"`");
+w("field. From then on CI, a teammate and an AI coding agent can each install a");
+w("different dependency tree.");
+w("");
+w("Every finding cites a file and a line at a frozen commit SHA, so you can check");
+w("any one of them without running anything: see [`data/findings.jsonl`](data/findings.jsonl).");
+w("");
+w("---");
+w("");
+w("## Headline numbers");
+w("");
+w("| Measure | Rate | Repositories | 95% CI |");
+w("|---|---|---|---|");
+w(line("Contradictory package-manager configuration", pm));
+w(line("Two or more lockfile managers anywhere in the repo", h.two_or_more_lockfile_managers_anywhere));
+w(line("Declares `\"packageManager\"` in `package.json`", h.declares_packageManager_field));
+w(line("Has a package manager established at all (lockfile or declaration)", h.package_manager_established));
+w(line("Ships an AI-agent instruction file", h.has_agent_instruction_file));
+w(line("Has an unparseable `package.json`", h.invalid_package_json));
+w("");
+w("The first two rows are not nested, and neither contains the other. Two lockfiles");
+w("in *different* packages of a monorepo are a deliberate choice, not a");
+w("contradiction. And a contradiction does not need two lockfiles at all: a single");
+w("lockfile that disagrees with the `\"packageManager\"` field is one.");
+w("");
+w("Of the " + r.contradiction_shape.total + " contradictions, " +
+  r.contradiction_shape.two_lockfile_managers + " have two lockfile managers inside one");
+w("package and " + r.contradiction_shape.single_lockfile_vs_packageManager_field +
+  " come from one lockfile disagreeing with the declared manager.");
+w("");
+w("## Which managers collide");
+w("");
+w("| Pair | Findings |");
+w("|---|---|");
+for (const [k, v] of r.conflict_pairs) w("| " + k + " | " + v + " |");
+w("");
+w("## By popularity");
+w("");
+w(tbl(r.by_star_band, "Stars"));
+w("");
+w("## By language");
+w("");
+w(tbl(r.by_language, "GitHub language"));
+w("");
+const lg = r.cohort_tests.language;
+w("TypeScript repositories contradict themselves " + lg.difference_pp + " percentage points more often than");
+w("JavaScript ones. That difference **is** significant (z = " + lg.z + ", p = " + lg.p_value + "), though the");
+w("census cannot say why; TypeScript repositories skew newer and larger.");
+w("");
+w("## By repository age");
+w("");
+w(tbl(r.by_created_year, "Created"));
+w("");
+w("## Does declaring `\"packageManager\"` help?");
+w("");
+w(tbl(r.by_packageManager_field, "Manifest"));
+w("");
+const pf = r.cohort_tests.packageManager_field;
+w("Declaring the field goes with a **higher** contradiction rate, not a lower one");
+w("(" + pf.difference_pp + " percentage points, z = " + pf.z + ", p = " + pf.p_value + ").");
+w("");
+w("Do not read that as \"declaring it makes things worse\". Declaring the field also");
+w("makes a contradiction **detectable**: a lockfile can disagree with a declaration");
+w("that exists, and cannot disagree with one that does not. Of the " + r.contradiction_shape.total + " contradictions,");
+w(r.contradiction_shape.single_lockfile_vs_packageManager_field + " are visible only because the repository declared a manager. The two groups");
+w("are not measuring the same thing, so this is evidence about detectability, not");
+w("about hygiene.");
+w("");
+w("## Repositories that ship AI-agent instructions");
+w("");
+w(tbl(r.by_agent_instructions, "Cohort"));
+w("");
+const ai = r.cohort_tests.agent_instructions;
+w("**This difference is not statistically significant.** A two-proportion z-test");
+w("gives z = " + ai.z + ", p = " + ai.p_value + " — the gap of " + ai.difference_pp + " percentage points is");
+w("within what sampling noise produces at this sample size. On this evidence,");
+w("repositories that ship an `AGENTS.md` or `CLAUDE.md` **do not** contradict");
+w("themselves measurably more often than repositories that do not.");
+w("");
+w("That is worth stating plainly, because it is the opposite of what a vendor of a");
+w("tool for this problem would prefer to find. The comparison is also observational:");
+w("the two groups differ in age, size and activity, none of which is controlled for.");
+w("");
+w("## Where the contradictions sit");
+w("");
+w("| Location | Findings |");
+w("|---|---|");
+w("| Repository root package | " + r.monorepo.findings_in_root_scope + " |");
+w("| A sub-package inside the repository | " + r.monorepo.findings_in_sub_scope + " |");
+w("");
+w("## Does the repository's own CI disagree with its lockfiles?");
+w("");
+w("Of the " + r.install_step_evidence.conflicted + " contradicting repositories, **" +
+  r.install_step_evidence.with_cited_install_steps + " (" + p2(r.install_step_evidence.pct) +
+  "%)** have an unconditional install step in their own GitHub Actions workflow,");
+w("Dockerfile or `vercel.json` that names one of the colliding managers. For those,");
+w("a fix can cite the repository's own CI instead of guessing.");
+w("");
+w("The census deliberately does **not** claim these builds are broken today. Two");
+w("lockfiles can coexist for a long time without failing anything. What it shows is");
+w("how often a repository's configuration no longer has a single answer to the");
+w("question “which package manager is this?”.");
+w("");
+w("---");
+w("");
+w("## How this differs from the precision benchmark");
+w("");
+w("`benchmark/ai-agent-repositories-2026-09` answers a different question, and the");
+w("two should not be confused:");
+w("");
+w("| | Precision benchmark | This census |");
+w("|---|---|---|");
+w("| Question | When CrossCheck reports something, is it right? | How common is the problem? |");
+w("| Sample | Targeted: repositories with AI-agent instruction files | Stratified random sample of active public JS/TS repositories |");
+w("| Verification | Every finding manually confirmed | Automated; every finding published with a permalink for checking |");
+w("| Claim | 47 of 47 correct on unseen holdouts | A prevalence rate with a confidence interval |");
+w("");
+w("A precision result cannot tell you how often the problem occurs, and a");
+w("prevalence rate cannot tell you whether the tool is right. They are");
+w("complementary.");
+w("");
+w("---");
+w("");
+w("## Coverage");
+w("");
+w("| | |");
+w("|---|---|");
+w("| Frame | " + n(alloc.frame_size) + " repositories |");
+w("| Frame coverage of the queried population | " + n(r.frame_coverage.retrieved) + " of " +
+  n(r.frame_coverage.reported_population) + " (" + p2(r.frame_coverage.pct) + "%) |");
+w("| Strata | " + strata.strata.length + " (" + completeStrata + " enumerated completely, " +
+  partialStrata + " over the Search API's 1000-result cap) |");
+w("| Sampled | " + n(alloc.sample_size) + " |");
+w("| Scanned | " + n(r.coverage.scanned) + " |");
+w("| Scanned successfully | " + n(r.coverage.ok) + " |");
+w("| Failed to clone or read | " + n(r.coverage.failed) + " |");
+w("| Contained a `package.json` (the denominator) | " + n(r.coverage.with_package_json) + " |");
+w("| CrossCheck engine | " + r.engine_version + " |");
+w("| Provider equivalence | " + eqPass + " identical, " + eqFail + " not identical, " +
+  eqSkip + " not comparable on this host |");
+w("");
+if (r.coverage.failure_reasons.length) {
+  w("Why some repositories could not be scanned:");
+  w("");
+  for (const [k, v] of r.coverage.failure_reasons) w("- `" + k + "…` — " + v);
+  w("");
+}
+w("## Experimental rules (not in the headline)");
+w("");
+w("CrossCheck's experimental tier did not meet its own precision bar, so it never");
+w("fails a build and is excluded from every number above. For completeness, what it");
+w("fired on across the same sample:");
+w("");
+if (r.experimental_only_rules.length) {
+  for (const [k, v] of r.experimental_only_rules) w("- `" + k + "` — " + v);
+} else {
+  w("_Nothing._");
+}
+w("");
+w("---");
+w("");
+w("## Reproduce it");
+w("");
+w("Everything needed is here: the frozen frame, the exact search queries, the");
+w("seeded sample, the scanner and the analysis.");
+w("");
+w("```sh");
+w("SEED=" + alloc.seed + " TARGET=" + alloc.target + " node sample.mjs");
+w("node collect.mjs");
+w("node analyze.mjs");
+w("```");
+w("");
+w("[`METHODOLOGY.md`](METHODOLOGY.md) explains the sampling design, the provider");
+w("equivalence test, and the limits of what this measures.");
+w("");
+w("## Check a single finding");
+w("");
+w("[`data/findings.jsonl`](data/findings.jsonl) has one line per finding with the");
+w("repository, the frozen commit SHA and a permalink to every cited line. No");
+w("tooling required.");
+w("");
+w("## Run it on your own repository");
+w("");
+w("```sh");
+w("npx @zfinia/crosscheck");
+w("```");
+w("");
+w("Or on pull requests, with nothing to sign up for and no permissions to grant:");
+w("");
+w("```yaml");
+w("- uses: actions/checkout@v5");
+w("- uses: zFinia/crosscheck@v0");
+w("```");
+w("");
+w("---");
+w("");
+w("Generated " + r.generated_at + " by `render.mjs` from `data/report.json`.");
+w("Data and text CC BY 4.0; code MIT.");
+w("");
+
+writeFileSync("README.md", out.join("\n"));
+console.log("README.md written (" + out.length + " lines)");
