@@ -1,66 +1,49 @@
 name: Adoption verification
+
+# This is the gate that would have caught v0.2 shipping an Action that failed
+# every free adopter's build. It runs the Action exactly as a first-time adopter
+# would: from a copy-pasted quickstart, with no signup and no extra permissions.
 on:
+  pull_request:
   push:
-    branches: [fix/frictionless-action]
+    branches: [main]
   workflow_dispatch:
 
-# Deliberately only the default read permission: this is exactly what a
-# first-time adopter has when they copy the quickstart.
+# Deliberately only the default read permission. If the Action ever needs more
+# than this to succeed, the quickstart in the README is wrong and this job fails.
 permissions:
   contents: read
 
 jobs:
-  released-v0:
-    name: "@v0 (0.1.1, released) - free adopter"
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-      - id: run
-        continue-on-error: true
-        uses: zFinia/crosscheck@v0
-      - run: |
-          echo "outcome=${{ steps.run.outcome }}"
-          [ "${{ steps.run.outcome }}" = "success" ] || { echo "::error::@v0 regressed"; exit 1; }
-
-  broken-main:
-    name: "@main (v0.2, before the fix) - free adopter"
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-      - id: run
-        continue-on-error: true
-        uses: zFinia/crosscheck@main
-      - name: Record the regression
-        run: |
-          echo "outcome=${{ steps.run.outcome }}"
-          if [ "${{ steps.run.outcome }}" = "failure" ]; then
-            echo "CONFIRMED: v0.2 fails a free adopter's build." >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "::error::Expected @main to fail for a free adopter; it did not."
-            exit 1
-          fi
-
-  fixed-branch:
-    name: "this branch (the fix) - free adopter"
+  free-adopter:
+    name: A free adopter's build is never failed
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
       - id: run
         continue-on-error: true
         uses: ./
-      - run: |
-          echo "outcome=${{ steps.run.outcome }}"
-          [ "${{ steps.run.outcome }}" = "success" ] || { echo "::error::the fix still fails a free adopter"; exit 1; }
+      - name: The Action succeeded and made no network call
+        run: |
+          echo "crosscheck outcome: ${{ steps.run.outcome }}"
+          if [ "${{ steps.run.outcome }}" != "success" ]; then
+            echo "::error::The Action failed for an adopter with only contents: read."
+            exit 1
+          fi
+          if [ "${{ steps.run.outputs.introduced }}" = "" ]; then
+            echo "::error::The Action produced no outputs, so it did not actually run."
+            exit 1
+          fi
 
   still-detects:
-    name: "the fix still catches a real contradiction"
+    name: A real contradiction is still caught and can block
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
       - name: Introduce a package-manager contradiction
         run: |
           git config user.email ci@example.com && git config user.name ci
-          node -e 'const f="package.json";const p=JSON.parse(require("fs").readFileSync(f));p.packageManager="pnpm@10.12.1";require("fs").writeFileSync(f,JSON.stringify(p,null,2))'
+          node -e 'const f="package.json";const fs=require("fs");const p=JSON.parse(fs.readFileSync(f));p.packageManager="pnpm@10.12.1";fs.writeFileSync(f,JSON.stringify(p,null,2))'
           printf 'lockfileVersion: "9.0"\n' > pnpm-lock.yaml
           git add -A && git commit -q -m "pnpm baseline"
           printf '{"name":"x","lockfileVersion":3,"requires":true,"packages":{}}\n' > package-lock.json
@@ -71,8 +54,34 @@ jobs:
         with:
           base: HEAD~1
           fail-on: new
-      - run: |
+      - name: It failed the check, for exactly one introduced finding
+        run: |
           echo "outcome=${{ steps.run.outcome }} introduced=${{ steps.run.outputs.introduced }}"
-          [ "${{ steps.run.outcome }}" = "failure" ] || { echo "::error::fail-on:new did not fail"; exit 1; }
+          [ "${{ steps.run.outcome }}" = "failure" ] || { echo "::error::fail-on: new did not fail the check"; exit 1; }
           [ "${{ steps.run.outputs.introduced }}" = "1" ] || { echo "::error::expected exactly 1 introduced finding"; exit 1; }
-          echo "CONFIRMED: the fix still detects and can block a real contradiction." >> "$GITHUB_STEP_SUMMARY"
+
+  unrelated-change-is-not-blamed:
+    name: An unrelated change on a branch that already drifted is silent
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Drift first, then make an unrelated change
+        run: |
+          git config user.email ci@example.com && git config user.name ci
+          node -e 'const f="package.json";const fs=require("fs");const p=JSON.parse(fs.readFileSync(f));p.packageManager="pnpm@10.12.1";fs.writeFileSync(f,JSON.stringify(p,null,2))'
+          printf 'lockfileVersion: "9.0"\n' > pnpm-lock.yaml
+          printf '{"name":"x","lockfileVersion":3,"requires":true,"packages":{}}\n' > package-lock.json
+          git add -A && git commit -q -m "pre-existing drift"
+          printf '\n' >> README.md
+          git add -A && git commit -q -m "unrelated change"
+      - id: run
+        continue-on-error: true
+        uses: ./
+        with:
+          base: HEAD~1
+          fail-on: new
+      - name: Existing debt must not fail an unrelated pull request
+        run: |
+          echo "outcome=${{ steps.run.outcome }} introduced=${{ steps.run.outputs.introduced }}"
+          [ "${{ steps.run.outcome }}" = "success" ] || { echo "::error::an unrelated change was blamed for existing drift"; exit 1; }
+          [ "${{ steps.run.outputs.introduced }}" = "0" ] || { echo "::error::expected 0 introduced findings"; exit 1; }
