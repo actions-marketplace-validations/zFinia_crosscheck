@@ -107,7 +107,7 @@ const report = {
     two_or_more_lockfile_managers_anywhere: rate(js.filter(r => lockManagers(r).size > 1).length, js.length),
     declares_packageManager_field: rate(js.filter(declaresPM).length, js.length),
     package_manager_established: rate(js.filter(managerEstablished).length, js.length),
-    invalid_package_json: rate(js.filter(r => r.findings_default.some(f => f.rule === "manifest/invalid-json")).length, js.length),
+    unparseable_package_json: rate(js.filter(r => r.findings_default.some(f => f.rule === "manifest/unparseable")).length, js.length),
     has_agent_instruction_file: rate(js.filter(hasInstr).length, js.length),
   },
   by_star_band: group(js, r => band(r.stars), hasPM, BAND_ORDER),
