@@ -11,16 +11,16 @@
 | Scan mode | Full repository scan |
 | Packages evaluated | 1 |
 | Established package manager | Bun |
-| Proven contradictions | 0 |
+| Default findings | 0 |
 | Experimental observations | 1 |
 
-## Proven findings
+## Default findings
 
-None. CrossCheck found no proven contradictions.
+None. CrossCheck found no default findings.
 
 ## Experimental observations
 
-> **EXPERIMENTAL — NOT SAFE TO BLOCK.** These rules have not yet met CrossCheck's precision bar on unseen repositories. Review each one by hand; they can never fail a check.
+> **EXPERIMENTAL — NOT SAFE TO BLOCK.** These rules have not yet met CrossCheck's validation bar on unseen repositories. Review each one by hand; they can never fail a check.
 
 ### 1. Agent instructions say npm, but the repository uses Bun
 
@@ -50,7 +50,7 @@ What CrossCheck understood about this repository.
 
 CrossCheck compared the setup decisions recorded in this repository's configuration files: lockfiles, the `packageManager` field in each `package.json`, ORM and datasource configuration, install steps in GitHub Actions workflows, Dockerfiles and `vercel.json`, and AI-agent instruction files (`AGENTS.md`, `CLAUDE.md`, `.github/copilot-instructions.md`, …). Each package in a monorepo is checked on its own.
 
-Proven findings come from rules that were right every time on public repositories they were never tuned on. Only proven findings can fail a check. CrossCheck is not a general code reviewer: it does not read application code, install packages or run anything.
+Default findings come from rules whose cited configuration evidence was verified on held-out public repositories. That verification does not establish maintainer intent or that every emitted state requires remediation. Only default findings can fail a check. CrossCheck is not a general code reviewer: it does not read application code, install packages or run anything.
 
 ## Privacy
 

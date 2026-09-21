@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "title": "CrossCheck public-repository benchmark — September 2026",
   "engineVersion": "0.1.1",
   "sample": {
@@ -26,13 +26,26 @@
     "experimentalFindings": 6
   },
   "review": {
-    "policy": "Every emitted holdout finding was inspected in repository context at its frozen commit. Ambiguous or unconfirmed findings count as wrong.",
-    "holdoutProvenFindingsReviewed": 47,
-    "confirmed": 47,
-    "unconfirmed": 0
+    "policy": "Evidence-presence review only. Every emitted holdout finding was inspected in repository context at its frozen commit; this does not establish maintainer intent or required remediation.",
+    "holdoutFindingsEvidenceReviewed": 47,
+    "evidenceConfirmed": 47,
+    "evidenceMissing": 0,
+    "intentReviewed": 2,
+    "deliberateMultiManagerCounterexamples": 2,
+    "actionabilityEstablishedForRemainingFindings": false
+  },
+  "correction": {
+    "date": "2026-09-21",
+    "retracted": "The original 47/47 contradiction/actionability precision interpretation.",
+    "preserved": "Frozen sample manifests and raw CrossCheck 0.1.1 engine outputs.",
+    "counterexamples": [
+      "code-yeongyu/senpi@1690fdb284dacca7ddea901db02d97ea0771eecf",
+      "MattFlower/tempest@a53ed0e94d3bb215aa2902c09d44662ddfc405b7"
+    ]
   },
   "limits": [
-    "This measures precision of emitted findings, not recall of every contradiction.",
+    "This verifies cited configuration evidence, not maintainer intent, actionability, or error status.",
+    "This does not measure precision or recall of repository misconfiguration.",
     "The sample is targeted and is not a census of GitHub.",
     "Manual confirmation is published as a review record; independent readers can inspect each cited public repository and commit."
   ],
@@ -42,7 +55,7 @@
     "results/holdout-v4.json": "49b68ec89a3e309fc40dcff870ccde860f06ac6276e72dfb9cc660dfc0a174b1",
     "results/holdout-v5.json": "2e29b0456981317ccfb5ff28407cd81986b7544106f15a4148da243f2ed944a7",
     "results/tuning-v1.json": "d96ecfc05e79254d399e84805cccaf078769ac4b000b38e482ac29ae201cb23a",
-    "reviews/holdout-proven.json": "d1ab755d71fde43a6221af2f696aece65cb4960c9694fdc2d0a5c6a7ad4bb48c",
+    "reviews/holdout-proven.json": "d994c9652c8ce49b16e71a6804ae2ce4bd8f2f63705533e94c1d6bf73ac513d6",
     "samples/holdout-v2.json": "4926c1665291d4c7f4acc1cd7280a7a62e106929935201b82fec8360ebc43a33",
     "samples/holdout-v3.json": "da9622750c8a9c782f8b9a2d58606618ce04f7ef2f98cebb16972edcf00ab9c7",
     "samples/holdout-v4.json": "f625e0abc9766a1ec12b425f0182c4cbc85c4e54f3022cade975475a9bca731c",

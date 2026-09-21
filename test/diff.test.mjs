@@ -14,6 +14,9 @@ test("a PR that adds package-lock.json to a pnpm repo introduces one package-man
   assert.equal(r.introduced[0].rule, "package-manager/conflicting-config");
   assert.deepEqual(r.introduced[0].values, ["npm", "pnpm"]);
   assert.deepEqual(r.introduced[0].newEvidence.map((e) => e.source), ["package-lock.json"]);
+  assert.equal(r.introduced[0].summary, "Multiple package-manager configurations detected: npm and pnpm");
+  assert.match(r.introduced[0].fix, /"packageManager" declares pnpm/);
+  assert.match(r.introduced[0].fix, /If pnpm is authoritative and the other state was introduced unintentionally, remove package-lock\.json/);
   assert.equal(r.existing.length, 0);
 });
 
@@ -26,7 +29,7 @@ test("an unrelated PR on an already-conflicted repo is not blamed for the old co
   assert.equal(r.existing.length, 1);
   assert.equal(r.resolved.length, 0);
   const text = cli(dir, "--base", base, "--head", "HEAD").out;
-  assert.match(text, /New contradictions: none/);
+  assert.match(text, /New findings: none/);
   assert.match(text, /Pre-existing \(not caused by this change/);
 });
 
@@ -123,6 +126,31 @@ test("--fail-on new exits 1 only when something new is introduced; default is ad
   assert.equal(cli(dir, "--base", base, "--head", "HEAD", "--fail-on", "new").code, 1);
   commit(dir, { "package-lock.json": null });
   assert.equal(cli(dir, "--base", base, "--head", "HEAD", "--fail-on", "new").code, 0);
+});
+
+test("deliberate multi-manager state is advisory by default and strict only with fail-on new", () => {
+  const dir = repo({ "package.json": { name: "compatibility-fixture", private: true } });
+  const base = git(dir, "rev-parse", "HEAD").trim();
+  commit(dir, {
+    "package.json": {
+      name: "compatibility-fixture",
+      private: true,
+      scripts: { "build:npm": "npm ci", "build:bun": "bun install", "verify:pms": "node verify.mjs" },
+    },
+    "package-lock.json": "{}\n",
+    "bun.lock": "# deliberate Bun compatibility state\n",
+    ".github/workflows/npm.yml": "on: push\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - run: npm ci\n",
+    ".github/workflows/bun.yml": "on: push\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - run: bun install --frozen-lockfile\n",
+  }, "add deliberate npm and Bun compatibility coverage");
+
+  const advisory = cli(dir, "--base", base, "--head", "HEAD");
+  assert.equal(advisory.code, 0);
+  assert.match(advisory.out, /Multiple package-manager configurations detected: Bun and npm/);
+  assert.match(advisory.out, /may be deliberate compatibility coverage/);
+
+  const strict = cli(dir, "--base", base, "--head", "HEAD", "--fail-on", "new");
+  assert.equal(strict.code, 1);
+  assert.match(strict.out, /Multiple package-manager configurations detected: Bun and npm/);
 });
 
 test("usage errors exit 2 with a clear message", () => {

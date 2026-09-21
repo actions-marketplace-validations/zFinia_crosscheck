@@ -16,20 +16,24 @@ const HELP = `crosscheck ${VERSION} — repository decision contracts and consis
 Usage
   crosscheck [dir]                     scan the working tree
   crosscheck --base <ref> [--head <ref>]
-                                       report only contradictions a change introduced
+                                       report only findings a change introduced
   crosscheck contract init [dir]       create a safe initial decision contract
   crosscheck contract suggest [dir]    show optional policy candidates
   crosscheck context [dir]             show agent-readable repository decisions
 Options
   --format text|json|github|markdown   output format (default: text)
-  --fail-on none|new|any               fail on proven findings (and authorized managed contract blocks)
+  --fail-on none|new|any               strict opt-in: fail on default findings, including deliberate
+                                       multi-manager state (and authorized managed contract blocks)
   --experimental                       show experimental findings; they never fail
   --allow-contract-change              approve proposed contract migrations (diff mode only)
   --write                              write .crosscheck/AGENT_CONTEXT.md (context only)
   --force                              replace an existing contract (contract init only)
   -h, --help, -v, --version
 
-Exit codes: 0 ok/advisory · 1 proven finding (or authorized managed contract block) matched · 2 usage or runtime error
+Default findings are evidence-based, not intent-aware. Use an explicit CrossCheck contract
+to record repository intent; leave --fail-on at none if deliberate multi-manager state must stay advisory.
+
+Exit codes: 0 ok/advisory · 1 default finding (or authorized managed contract block) matched under --fail-on · 2 usage or runtime error
 Runs locally and deterministically. Nothing is uploaded.`;
 
 function parseArgs(argv) {

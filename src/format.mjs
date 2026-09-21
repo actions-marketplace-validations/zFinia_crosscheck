@@ -2,12 +2,15 @@
 import { pretty } from "./rules.mjs";
 import { CONTRACT_PATH, decisionLabel } from "./contract.mjs";
 
-// `proven` = a conflict in this class is reported by a proven rule. Otherwise the
+// `proven` = a multi-valued state in this class is reported by a default rule. Otherwise the
 // model must not say CONFLICT while the findings list (default mode) says none.
-const decisionText = (d, proven = true) => {
+const decisionText = (d, proven = true, cls = null) => {
   if (d == null) return "not established";
   if (typeof d === "string") return pretty(d);
-  if (d.conflict) return proven ? `CONFLICT (${d.conflict.map(pretty).join(" vs ")})` : `not established (both ${d.conflict.map(pretty).join(" and ")} present)`;
+  if (d.conflict) {
+    if (cls === "package.manager") return `multiple configurations (${d.conflict.map(pretty).join(" and ")})`;
+    return proven ? `CONFLICT (${d.conflict.map(pretty).join(" vs ")})` : `not established (both ${d.conflict.map(pretty).join(" and ")} present)`;
+  }
   if (d.drivers) return `drivers only (${d.drivers.map(pretty).join(", ")}) — not established`;
   return "not established";
 };
@@ -21,8 +24,8 @@ export function modelLines(model, { experimental = false } = {}) {
   lines.push(`Packages evaluated: ${pkgs.length}${nested.length ? ` (root + ${nested.length} nested)` : ""}`);
   const pmNested = nested.filter((p) => p.packageManager != null);
   lines.push(`Package manager:    ${root?.packageManager != null || !pmNested.length
-    ? decisionText(root?.packageManager)
-    : `${pmNested.map((p) => `${decisionText(p.packageManager)} (${p.scope})`).join("; ")}; root not established`}`);
+    ? decisionText(root?.packageManager, true, "package.manager")
+    : `${pmNested.map((p) => `${decisionText(p.packageManager, true, "package.manager")} (${p.scope})`).join("; ")}; root not established`}`);
   const nodePackages = pkgs.filter((p) => p.nodeRuntime != null);
   if (nodePackages.length) {
     const rootNode = root?.nodeRuntime;
@@ -80,7 +83,7 @@ export function renderDiff(diff, head, { base, headLabel, experimental, contract
   }
   lines.push(...modelLines(head.model, { experimental }), "");
   if (diff.introduced.length) {
-    lines.push(`NEW contradictions introduced by this change: ${diff.introduced.length}`, "");
+    lines.push(`NEW findings introduced by this change: ${diff.introduced.length}`, "");
     diff.introduced.forEach((f, i) => {
       lines.push(`${i + 1}. ${findingLines(f).join("\n   ")}`);
       const added = f.newEvidence?.filter((e) => e.source) || [];
@@ -88,7 +91,7 @@ export function renderDiff(diff, head, { base, headLabel, experimental, contract
       lines.push("");
     });
   } else {
-    lines.push("New contradictions: none");
+    lines.push("New findings: none");
   }
   if (diff.resolved.length) lines.push(`Resolved by this change: ${diff.resolved.map((f) => f.summary).join("; ")}`);
   if (diff.existing.length) lines.push(`Pre-existing (not caused by this change, not reported as new): ${diff.existing.length} — run \`crosscheck\` to list them.`);
@@ -100,7 +103,7 @@ export function renderDiff(diff, head, { base, headLabel, experimental, contract
 // What a finding means for the team, in plain English. Rule-level, so it never
 // claims more than the evidence in the finding itself.
 const MEANING = {
-  "package-manager/conflicting-config": "Two package managers are configured for the same package. Developers, CI and AI coding tools can each install a different dependency tree depending on which one they pick.",
+  "package-manager/conflicting-config": "Multiple package-manager configuration signals exist in the same package. This may be accidental drift or deliberate compatibility and dependency-update coverage; CrossCheck cannot infer maintainer intent from coexistence alone.",
   "package-manager/install-command": "A CI or deployment step installs this package's dependencies with a different package manager from the one the package is set up for.",
   "package-manager/agent-instructions": "Agent instruction files tell AI coding tools to use a different package manager from the one the package is set up for.",
   "orm/conflicting-config": "Two ORMs are configured for the same package.",
@@ -140,7 +143,7 @@ const MD_CHECKED = [
   "",
   "CrossCheck compared the setup decisions recorded in this repository's configuration files: lockfiles, the `packageManager` field in each `package.json`, ORM and datasource configuration, install steps in GitHub Actions workflows, Dockerfiles and `vercel.json`, and AI-agent instruction files (`AGENTS.md`, `CLAUDE.md`, `.github/copilot-instructions.md`, …). Each package in a monorepo is checked on its own.",
   "",
-  "Proven findings come from rules that were right every time on public repositories they were never tuned on. Only proven findings can fail a check. CrossCheck is not a general code reviewer: it does not read application code, install packages or run anything.",
+  "Default findings come from rules whose cited configuration evidence was verified on held-out public repositories. That verification does not establish maintainer intent or that every emitted state requires remediation. Only default findings can fail a check. CrossCheck is not a general code reviewer: it does not read application code, install packages or run anything.",
   "",
   "## Privacy",
   "",
@@ -168,17 +171,17 @@ export function renderMarkdown({ result, diff = null, head = null, repoName, com
   md.push(`- **CrossCheck:** ${version}`, "");
 
   md.push("## Summary", "", "| | |", "|---|---|");
-  md.push(`| Scan mode | ${diff ? "Change review (only contradictions this change introduced)" : "Full repository scan"} |`);
+  md.push(`| Scan mode | ${diff ? "Change review (only findings this change introduced)" : "Full repository scan"} |`);
   md.push(`| Packages evaluated | ${model.packages.length} |`);
   md.push(`| Established package manager | ${mdText(pm ?? "not established")} |`);
-  md.push(`| ${diff ? "New proven contradictions" : "Proven contradictions"} | ${proven.length} |`);
+  md.push(`| ${diff ? "New default findings" : "Default findings"} | ${proven.length} |`);
   if ((head || result).contract || contracted.length || diff?.contractChanges?.length) md.push(`| Contract findings | ${contracted.length} |`);
   md.push(`| Experimental observations | ${experimental ? exp.length : `not requested${hidden ? ` (${hidden} available with --experimental)` : ""}`} |`);
   if (diff) md.push(`| Pre-existing (not caused by this change) | ${diff.existing.filter((f) => f.tier === "proven" || experimental).length} |`, `| Resolved by this change | ${diff.resolved.filter((f) => f.tier === "proven" || experimental).length} |`);
   md.push("");
 
-  md.push("## Proven findings", "");
-  if (!proven.length) md.push(diff ? "None. This change introduces no proven contradictions." : "None. CrossCheck found no proven contradictions.", "");
+  md.push("## Default findings", "");
+  if (!proven.length) md.push(diff ? "None. This change introduces no default findings." : "None. CrossCheck found no default findings.", "");
   proven.forEach((f, i) => {
     const introducedBy = diff ? [...new Set((f.newEvidence || []).filter((e) => e.source).map((e) => `${e.source}${e.line ? `:${e.line}` : ""}`))] : null;
     md.push(...mdFinding(f, i, { introducedBy: introducedBy && introducedBy.length < f.evidence.length ? introducedBy : null }));
@@ -206,7 +209,7 @@ export function renderMarkdown({ result, diff = null, head = null, repoName, com
   }
 
   if (experimental) {
-    md.push("## Experimental observations", "", "> **EXPERIMENTAL — NOT SAFE TO BLOCK.** These rules have not yet met CrossCheck's precision bar on unseen repositories. Review each one by hand; they can never fail a check.", "");
+    md.push("## Experimental observations", "", "> **EXPERIMENTAL — NOT SAFE TO BLOCK.** These rules have not yet met CrossCheck's validation bar on unseen repositories. Review each one by hand; they can never fail a check.", "");
     if (!exp.length) md.push("None.", "");
     exp.forEach((f, i) => md.push(...mdFinding(f, i)));
   }
@@ -226,7 +229,7 @@ export function renderMarkdown({ result, diff = null, head = null, repoName, com
 const esc = (s) => String(s).replace(/%/g, "%25").replace(/\r/g, "%0D").replace(/\n/g, "%0A");
 const escProp = (s) => esc(s).replace(/:/g, "%3A").replace(/,/g, "%2C");
 
-/** Workflow commands: one annotation per NEW contradiction, on the file that introduced it. */
+/** Workflow commands: one annotation per NEW finding, on the file that introduced it. */
 export function githubAnnotations(diff, { level = "warning", contractEnforcementAuthorized = false } = {}) {
   const out = [];
   for (const f of diff.introduced) {
@@ -251,7 +254,7 @@ export function githubSummary(diff, head, { base, headSha, advisory, experimenta
     md.push("");
   }
   if (diff.introduced.length) {
-    md.push(`### CrossCheck: ${diff.introduced.length} new repository contradiction${diff.introduced.length === 1 ? "" : "s"}`, "");
+    md.push(`### CrossCheck: ${diff.introduced.length} new repository finding${diff.introduced.length === 1 ? "" : "s"}`, "");
     for (const f of diff.introduced) {
       md.push(`**${f.summary}**`, "");
       for (const e of f.evidence) {
@@ -262,10 +265,10 @@ export function githubSummary(diff, head, { base, headSha, advisory, experimenta
     }
     if (advisory) md.push("_Advisory mode: this check reports but does not fail the build. Set `fail-on: new` to enforce._");
   } else {
-    md.push("### CrossCheck: no new repository contradictions", "");
+    md.push("### CrossCheck: no new repository findings", "");
   }
   if (diff.resolved.length) md.push("", `Resolved by this PR: ${diff.resolved.map((f) => f.summary).join("; ")}`);
-  if (diff.existing.length) md.push("", `${diff.existing.length} pre-existing contradiction${diff.existing.length === 1 ? "" : "s"} not caused by this PR (not reported as new).`);
+  if (diff.existing.length) md.push("", `${diff.existing.length} pre-existing finding${diff.existing.length === 1 ? "" : "s"} not caused by this PR (not reported as new).`);
   md.push("", "<details><summary>Repository model</summary>", "", "```", ...modelLines(head.model, { experimental }), "```", "", `Compared \`${base.slice(0, 12)}\` → \`${headSha.slice(0, 12)}\`. Scanning stays in this workflow; the managed Action sends only GitHub-signed repository identity for entitlement authorization.`, "</details>");
   return md.join("\n");
 }

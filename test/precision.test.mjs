@@ -1,4 +1,4 @@
-// Every false positive observed in the live-precision set is pinned here as a
+// Every false positive observed in the historical live-precision set is pinned here as a
 // regression, next to the true positives that must keep firing.
 import test from "node:test";
 import assert from "node:assert/strict";

@@ -2,10 +2,11 @@
 // produces, and this module reads only files a provider hands it, so the same
 // logic runs over a working tree, a git commit, or an in-memory fixture.
 //
-// Precision policy (why each source is or is not trusted):
+// Evidence policy (why each source is or is not cited):
 // - Lockfiles, the packageManager field, package.json dependencies, the Prisma
 //   datasource provider and a single hard-coded Drizzle dialect are
-//   configuration: they are the repository's decision, not a description of it.
+//   configuration signals. Their coexistence does not by itself establish
+//   maintainer intent or that one signal should be removed.
 // - README prose is never evidence. READMEs routinely list alternatives for
 //   *users* ("install with npm, yarn or pnpm"), feature text ("auto-detects
 //   npm, pnpm, yarn, bun") and publishing notes ("npm trusted publishing").

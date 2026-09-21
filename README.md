@@ -47,19 +47,19 @@ After an `npm install` adds `package-lock.json` (`crosscheck --base HEAD~1 --hea
 CrossCheck: 5735ae00f80b → 6ec0b990bda4
 
 Packages evaluated: 1
-Package manager:    CONFLICT (npm vs pnpm)
+Package manager:    multiple configurations (npm and pnpm)
 ORM:                Drizzle
 Database:           PostgreSQL (from driver)
 Authentication:     Clerk
 Agent instructions: CLAUDE.md
 
-NEW contradictions introduced by this change: 1
+NEW findings introduced by this change: 1
 
-1. Package manager conflict: npm vs pnpm
+1. Multiple package-manager configurations detected: npm and pnpm
      - package-lock.json → npm (lockfile present)
      - package.json → pnpm ("packageManager": "pnpm@10.12.1")
      - pnpm-lock.yaml → pnpm (lockfile present)
-     Fix: "packageManager" declares pnpm. Remove package-lock.json and reinstall with pnpm, or change "packageManager" if you are deliberately migrating.
+     Fix: "packageManager" declares pnpm; other package-manager state exists in package-lock.json. Confirm maintainer intent before changing it. If pnpm is authoritative and the other state was introduced unintentionally, remove package-lock.json and reinstall with pnpm. If the extra state supports dependency-update or compatibility tooling, keep it and document that purpose.
    Introduced by: package-lock.json
 ```
 
@@ -112,7 +112,7 @@ To migrate from pnpm to npm, update the repository configuration and contract to
 
 ### Audit report
 
-`--format markdown` writes a self-contained report you can save as `crosscheck-audit.md` or attach to an issue. It has a summary, each proven finding with its evidence and recommended fix, what CrossCheck checked, a privacy statement and the exact command to reproduce it. It works for a full scan and with `--base`/`--head`. Experimental observations appear only with `--experimental`, in their own section labelled *not safe to block*. The report contains no timestamps and no absolute paths, so the same commit always produces the same report.
+`--format markdown` writes a self-contained report you can save as `crosscheck-audit.md` or attach to an issue. It has a summary, each default finding with its evidence and conditional next step, what CrossCheck checked, a privacy statement and the exact command to reproduce it. It works for a full scan and with `--base`/`--head`. Experimental observations appear only with `--experimental`, in their own section labelled *not safe to block*. The report contains no timestamps and no absolute paths, so the same commit always produces the same report.
 
 ## Add it to pull requests
 
@@ -132,7 +132,7 @@ jobs:
 
 That is the whole setup. On this path the Action makes **no network calls of its own**: it reads the repository already checked out on your runner and writes a warning to the pull request when a change introduces a package-manager contradiction. Nothing leaves the runner.
 
-By default it only warns. To fail the check when a change *introduces* a proven contradiction:
+By default it only warns. `fail-on: new` and `fail-on: any` are strict opt-in policies: they block matching default findings based on configuration evidence, including deliberate multi-manager compatibility state. CrossCheck does not infer intent before applying this operator-selected policy. To fail the check when a change *introduces* a default finding:
 
 ```yaml
       - uses: zFinia/crosscheck@v0
@@ -140,7 +140,7 @@ By default it only warns. To fail the check when a change *introduces* a proven 
           fail-on: new
 ```
 
-Existing contradictions never fail an unrelated pull request — only what the change introduces. See [exit codes](#exit-codes).
+With `fail-on: new`, existing findings never fail an unrelated pull request—only what the change introduces. `fail-on: any` can also block pre-existing findings. If enforcement must reflect repository intent instead of treating all multi-manager configuration state strictly, record that intent in an explicit CrossCheck contract and use contract enforcement; leave generic `fail-on` disabled for deliberately supported multi-manager changes. See [exit codes](#exit-codes).
 
 ### Repository decision contracts (preview)
 
@@ -180,15 +180,15 @@ For an intentional repository decision migration under managed monitoring, a mai
 
 ## Why it is quiet by default
 
-A check people learn to ignore is worse than no check. CrossCheck only shows a finding by default if that rule was right every time on repositories it was never tuned on. It reports only what a pull request *introduced*, never debt that was already there, and it does not fail the build unless you ask it to.
+A check people learn to ignore is worse than no check. CrossCheck only shows a finding by default when the rule's cited configuration evidence was verified on held-out repositories. Evidence verification does not establish maintainer intent or prove that every emitted state needs remediation. CrossCheck reports only what a pull request *introduced*, never debt that was already there, and it does not fail the build unless you ask it to.
 
-The [public September 2026 benchmark](benchmark/ai-agent-repositories-2026-09/README.md) includes every frozen repository and commit, raw machine-readable results, manual verdict records, file hashes, and an integrity checker. It separates the 80-repository tuning set from 947 untouched holdouts; the default rule produced 47 confirmed findings on those holdouts.
+The [public September 2026 benchmark](benchmark/ai-agent-repositories-2026-09/README.md) includes every frozen repository and commit, raw machine-readable results, evidence-review records, file hashes, and an integrity checker. It separates the 80-repository tuning set from 947 untouched holdouts; all 47 emitted default-rule findings had their cited configuration evidence verified. That result does not establish maintainer intent or actionability, and the original 47/47 precision interpretation has been retracted.
 
 ## Proven and experimental rules
 
 By default CrossCheck reports only **proven** rules, which are the only rules that can fail a check ([how this was measured](docs/METHODOLOGY.md)):
 
-- `package-manager/conflicting-config`: lockfiles or `packageManager` for different managers in one package. On four sets of public repositories the rules were never tuned on, 47 of 47 findings were confirmed. When the package's own CI, Docker or `vercel.json` install steps show which manager is actually used, the finding cites those steps and says so: for example that every install step uses npm, or that CI tests with pnpm while publishing uses npm.
+- `package-manager/conflicting-config`: lockfiles or `packageManager` state for different managers in one package. On four held-out public-repository sets, all 47 emitted findings cited configuration evidence that was present at the frozen commit. CrossCheck does not infer whether coexistence is accidental or deliberate. When CI, Docker or `vercel.json` uses one or several managers, the finding cites those steps and makes any remediation conditional on maintainer intent.
 - `manifest/unparseable`: a `package.json` that is not valid JSON.
 
 Every other rule is **experimental**. On the same unseen repositories these rules were right less often than the ≥95% bar we require. Pass `--experimental` (Action: `experimental: true`) to see them. They are labelled `[experimental]`, appear as notices on PRs, and never fail a check.
@@ -216,7 +216,7 @@ Ambiguous Node expressions such as `>=18`, `lts/*`, dynamic matrices and ranges 
 
 ## Exit codes
 
-`0` ok/advisory · `1` a proven contradiction matched locally, or an authorized managed Action matched a block-level contract finding, with `--fail-on new|any` · `2` usage, invalid policy or runtime error.
+`0` ok/advisory · `1` a default finding matched locally, or an authorized managed Action matched a block-level contract finding, with `--fail-on new|any` · `2` usage, invalid policy or runtime error. `--fail-on new|any` is strict and evidence-based: it can block deliberate multi-manager state. Intent-aware enforcement requires an explicit CrossCheck contract; do not opt into generic `fail-on` for deliberate multi-manager changes that should remain advisory.
 
 ## Versions
 

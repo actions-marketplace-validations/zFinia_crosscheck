@@ -1,15 +1,23 @@
 # CrossCheck public-repository benchmark — September 2026
 
-This directory is the public evidence behind CrossCheck's default package-manager contradiction rule. It contains the frozen public-repository sample, exact commit for every repository, raw CrossCheck 0.1.1 output, file hashes, and a deterministic integrity checker.
+This directory preserves the public evidence for CrossCheck's default package-manager configuration-state rule. It contains the frozen public-repository sample, exact commit for every repository, raw CrossCheck 0.1.1 output, evidence-review records, file hashes, and a deterministic integrity checker.
+
+> **Correction — 21 September 2026:** The original publication described 47/47 emitted holdout findings as correct contradictions and a precision result. That interpretation is retracted. Manual review established that the cited configuration evidence existed at each frozen commit; it did not establish maintainer intent or that every multi-manager state required remediation. The raw 0.1.1 outputs remain unchanged for reproducibility.
 
 ## Result
 
 - 1,027 public repositories were frozen before evaluation; 80 were used for tuning and 947 were untouched holdouts.
 - 1,024 repositories were scanned successfully, covering 5,904 package scopes. Three frozen entries could not be scanned and remain recorded as skipped rather than silently removed.
-- The default `package-manager/conflicting-config` rule produced 47 findings on the four holdout sets. All 47 were manually checked against the named repository and frozen commit and classified as confirmed. An unconfirmed or ambiguous finding would count as wrong.
+- The default `package-manager/conflicting-config` rule produced 47 findings on the four holdout sets. All 47 were manually checked against the named repository and frozen commit; their cited configuration evidence was present.
+- Evidence presence is not an intent or actionability verdict. The review does not establish how many of the 47 represent accidental drift or require remediation.
 - Six experimental findings were also emitted across all five sets. They are present in the raw files but excluded from the default-rule result.
 
-This is a precision result for findings CrossCheck emitted, not a claim that CrossCheck detects every repository problem. The sample is also not a census of GitHub: it intentionally targets active, non-fork JavaScript/TypeScript repositories with AI-agent instruction files and size limits described in each frozen sample.
+Two frozen findings prove why that distinction matters:
+
+- `code-yeongyu/senpi@1690fdb284dacca7ddea901db02d97ea0771eecf` deliberately exercises npm, Bun and pnpm through its package scripts, verification and release paths. CrossCheck 0.1.1 reported Bun and npm state, but coexistence was compatibility coverage rather than a confirmed error.
+- `MattFlower/tempest@a53ed0e94d3bb215aa2902c09d44662ddfc405b7` is the merge commit of PR #21, which intentionally synchronized `bun.lock` with `package-lock.json`; Bun serves runtime/install while the npm lock supports Dependabot.
+
+The sample is targeted, not a census of GitHub. It also cannot measure recall, maintainer intent, or actionability from configuration coexistence alone.
 
 ## Verify the published evidence
 
@@ -41,8 +49,8 @@ Snapshot fetching uses the GitHub CLI for immutable tree objects and `raw.github
 
 - `samples/`: selection method, freeze time, repository name, and exact commit for every sampled repository.
 - `results/`: raw CrossCheck 0.1.1 output for every frozen entry. Runtime milliseconds are observational and are not used in any claim.
-- `reviews/holdout-proven.json`: one conservative manual verdict for each proven holdout finding, keyed to the raw result and frozen commit.
-- `install-evidence-verification.json`: raw evidence used to evaluate whether cited CI, Docker, and Vercel install steps belonged to the affected package.
+- `reviews/holdout-proven.json`: one evidence-presence review for each default holdout finding, keyed to the raw result and frozen commit. It explicitly separates cited evidence from maintainer intent and actionability.
+- `install-evidence-verification.json`: preserved raw 0.1.1 evidence used to evaluate whether cited CI, Docker, and Vercel install steps belonged to the affected package. Its historical `fix` strings are engine output, not current remediation advice.
 - `summary.json`: claim-sized totals and SHA-256 hashes for every sample/result file.
 - `verify.mjs`: dependency-free integrity and aggregation check.
 - `fetch-snapshots.mjs` and `replay.mjs`: dependency-free replay tools pinned to the public `v0.1.1` engine.

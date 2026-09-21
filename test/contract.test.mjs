@@ -227,7 +227,7 @@ test("initial valid contract adoption needs no migration approval but must match
   assert.equal(bad.diff.introduced.some((item) => item.rule === "contract/violation"), true);
 });
 
-test("strong and weak contract evidence preserve the precision boundary", () => {
+test("strong and weak contract evidence preserve the evidence boundary", () => {
   const pmPolicy = contract([decision("package.manager", "pnpm")]);
   const weakPm = scanFiles(files({ ...pnpm, ".github/workflows/ci.yml": "steps:\n  - run: npm install\n", ".crosscheck/contract.json": pmPolicy }));
   assert.equal(weakPm.findings.some((item) => item.rule === "contract/possible-violation"), true);

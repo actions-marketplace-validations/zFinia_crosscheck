@@ -84,21 +84,40 @@ for (const [name, role] of sets) {
 const reviewPath = join(root, "reviews", "holdout-proven.json");
 const review = readJson(reviewPath);
 const reviewedKeys = new Set();
+let deliberateCounterexamples = 0;
 for (const finding of review.findings) {
-  assert.equal(finding.verdict, "confirmed", `unexpected review verdict for ${finding.repository}`);
+  assert.equal(finding.evidenceConfirmed, true, `cited evidence was not confirmed for ${finding.repository}`);
+  assert.match(finding.evidenceReview, /evidence presence only/iu, `review scope is ambiguous for ${finding.repository}`);
+  assert(!Object.hasOwn(finding, "verdict"), `legacy verdict field remains for ${finding.repository}`);
+  assert(!Object.hasOwn(finding, "standard"), `legacy standard field remains for ${finding.repository}`);
+  assert(["not-established", "deliberate-multi-manager"].includes(finding.intentReview?.status), `invalid intent review for ${finding.repository}`);
+  if (finding.intentReview.status === "deliberate-multi-manager") {
+    deliberateCounterexamples += 1;
+    assert.equal(finding.intentReview.actionability, "generic-remediation-not-supported");
+    assert(finding.intentReview.basis.length >= 2, `counterexample basis is incomplete for ${finding.repository}`);
+  } else {
+    assert.equal(finding.intentReview.actionability, "not-established");
+  }
   const key = `${finding.set}\0${finding.repository}\0${finding.commit}\0${finding.findingId}`;
   assert(holdoutProvenKeys.has(key), `review does not match a raw holdout finding: ${finding.repository}`);
   assert(!reviewedKeys.has(key), `duplicate review: ${finding.repository}`);
   reviewedKeys.add(key);
 }
 assert.deepEqual(reviewedKeys, holdoutProvenKeys, "review file does not cover every proven holdout finding");
+assert.equal(deliberateCounterexamples, 2, "expected the two documented deliberate multi-manager counterexamples");
 files["reviews/holdout-proven.json"] = sha256(reviewPath);
 
 const expectedSummary = readJson(join(root, "summary.json"));
 assert.deepEqual(totals, expectedSummary.totals, "summary totals do not match raw evidence");
-assert.equal(expectedSummary.review.holdoutProvenFindingsReviewed, totals.holdoutProvenFindings);
-assert.equal(expectedSummary.review.confirmed, 47);
-assert.equal(expectedSummary.review.unconfirmed, 0);
+assert.equal(expectedSummary.schemaVersion, 2);
+assert.equal(expectedSummary.review.holdoutFindingsEvidenceReviewed, totals.holdoutProvenFindings);
+assert.equal(expectedSummary.review.evidenceConfirmed, 47);
+assert.equal(expectedSummary.review.evidenceMissing, 0);
+assert.equal(expectedSummary.review.intentReviewed, 2);
+assert.equal(expectedSummary.review.deliberateMultiManagerCounterexamples, deliberateCounterexamples);
+assert.equal(expectedSummary.review.actionabilityEstablishedForRemainingFindings, false);
+assert.equal(expectedSummary.correction.date, "2026-09-21");
+assert.match(expectedSummary.correction.retracted, /47\/47.*precision/iu);
 assert.deepEqual(files, expectedSummary.sha256, "raw evidence hashes do not match summary");
 
 console.log(JSON.stringify({ ok: true, ...expectedSummary }, null, 2));

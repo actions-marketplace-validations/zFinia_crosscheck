@@ -10,15 +10,15 @@
 |---|---|
 | Scan mode | Full repository scan |
 | Packages evaluated | 1 |
-| Established package manager | CONFLICT (npm vs pnpm) |
-| Proven contradictions | 1 |
+| Established package manager | multiple configurations (npm and pnpm) |
+| Default findings | 1 |
 | Experimental observations | not requested |
 
-## Proven findings
+## Default findings
 
-### 1. Package manager conflict: npm vs pnpm
+### 1. Multiple package-manager configurations detected: npm and pnpm
 
-Two package managers are configured for the same package. Developers, CI and AI coding tools can each install a different dependency tree depending on which one they pick.
+Multiple package-manager configuration signals exist in the same package. This may be accidental drift or deliberate compatibility and dependency-update coverage; CrossCheck cannot infer maintainer intent from coexistence alone.
 
 - **Rule:** `package-manager/conflicting-config`
 - **Evidence:**
@@ -26,7 +26,7 @@ Two package managers are configured for the same package. Developers, CI and AI 
   - `pnpm-lock.yaml` → pnpm (lockfile present)
   - `.github/workflows/ci.yml:6` → pnpm (`pnpm i`)
   - `.github/workflows/publish.yml:6` → npm (`npm ci`)
-- **Recommended fix:** Install steps for this package disagree: npm in .github/workflows/publish.yml:6; pnpm in .github/workflows/ci.yml:6. What you test can differ from what you build or ship. Pick one manager, delete the other lockfile, and make every install step use it.
+- **Recommended fix:** Install steps use multiple package managers: npm in .github/workflows/publish.yml:6; pnpm in .github/workflows/ci.yml:6. This may be deliberate compatibility coverage. Confirm maintainer intent before changing lockfiles or install steps; if the coverage is unintended, align them with the manager the repository chooses.
 
 ## Repository model
 
@@ -35,7 +35,7 @@ What CrossCheck understood about this repository.
 | | |
 |---|---|
 | Packages evaluated | 1 |
-| Package manager | CONFLICT (npm vs pnpm) |
+| Package manager | multiple configurations (npm and pnpm) |
 | ORM | none detected |
 | Database | not established |
 | Authentication | none detected |
@@ -45,7 +45,7 @@ What CrossCheck understood about this repository.
 
 CrossCheck compared the setup decisions recorded in this repository's configuration files: lockfiles, the `packageManager` field in each `package.json`, ORM and datasource configuration, install steps in GitHub Actions workflows, Dockerfiles and `vercel.json`, and AI-agent instruction files (`AGENTS.md`, `CLAUDE.md`, `.github/copilot-instructions.md`, …). Each package in a monorepo is checked on its own.
 
-Proven findings come from rules that were right every time on public repositories they were never tuned on. Only proven findings can fail a check. CrossCheck is not a general code reviewer: it does not read application code, install packages or run anything.
+Default findings come from rules whose cited configuration evidence was verified on held-out public repositories. That verification does not establish maintainer intent or that every emitted state requires remediation. Only default findings can fail a check. CrossCheck is not a general code reviewer: it does not read application code, install packages or run anything.
 
 ## Privacy
 
