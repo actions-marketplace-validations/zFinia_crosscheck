@@ -1,20 +1,28 @@
 # The lockfile drift census
 
-**How many active public JavaScript and TypeScript repositories carry
-package-manager configuration that contradicts itself?**
+**How many active public JavaScript and TypeScript repositories carry more than
+one package manager configured inside a single package?**
 
 Across a stratified random sample of **5,371** active public
 repositories that contain a `package.json`, each frozen at a named commit:
 
-> ## 3.65% contradict themselves
+> ## 3.65% carry multiple package-manager configurations
 >
 > 196 of 5,371 repositories (95% CI 3.18–4.18%)
 
-A *contradiction* means one package declares or implies two different package
-managers at once — for example a `package-lock.json` sitting next to a
-`pnpm-lock.yaml`, or a lockfile that disagrees with the `"packageManager"`
-field. From then on CI, a teammate and an AI coding agent can each install a
-different dependency tree.
+That means one package has two managers configured at once — for example a
+`package-lock.json` beside a `pnpm-lock.yaml`, or a lockfile naming a different
+manager from the `"packageManager"` field.
+
+**Coexistence is not an error.** Following the correction recorded in
+`benchmark/ai-agent-repositories-2026-09`, this census does not claim these are
+mistakes, drift, or that anything should be removed. An extra lockfile can be
+deliberate: Dependabot coverage, compatibility testing, or a migration in
+progress. CrossCheck cites configuration evidence; it cannot read maintainer
+intent, and neither can this census. What the number measures is how often a
+repository has more than one answer to "which package manager is this?" —
+a state in which CI, a teammate and a coding agent can each resolve it
+differently.
 
 Every finding cites a file and a line at a frozen commit SHA, so you can check
 any one of them without running anything: see [`data/findings.jsonl`](data/findings.jsonl).
@@ -25,24 +33,25 @@ any one of them without running anything: see [`data/findings.jsonl`](data/findi
 
 | Measure | Rate | Repositories | 95% CI |
 |---|---|---|---|
-| Contradictory package-manager configuration | 3.65% | 196 / 5,371 | 3.18–4.18% |
+| Multiple package-manager configurations in one package | 3.65% | 196 / 5,371 | 3.18–4.18% |
 | Two or more lockfile managers anywhere in the repo | 5.42% | 291 / 5,371 | 4.84–6.06% |
 | Declares `"packageManager"` in `package.json` | 22.79% | 1,224 / 5,371 | 21.69–23.93% |
 | Has a package manager established at all (lockfile or declaration) | 89.33% | 4,798 / 5,371 | 88.48–90.13% |
 | Ships an AI-agent instruction file | 23.55% | 1,265 / 5,371 | 22.44–24.71% |
-| Has an unparseable `package.json` | 0.00% | 0 / 5,371 | 0.00–0.07% |
+| Has an unparseable `package.json` | 0.09% | 5 / 5,371 | 0.04–0.22% |
 
 The first two rows are not nested, and neither contains the other. Two lockfiles
-in *different* packages of a monorepo are a deliberate choice, not a
-contradiction. And a contradiction does not need two lockfiles at all: a single
-lockfile that disagrees with the `"packageManager"` field is one.
+in *different* packages of a monorepo are not counted: a finding is only ever
+raised inside one package. And the state does not need two lockfiles at all —
+a single lockfile naming a different manager from the `"packageManager"` field
+is enough.
 
-Of the 196 contradictions, 182 have two lockfile managers inside one
-package and 14 come from one lockfile disagreeing with the declared manager.
+Of the 196 findings, 182 have two lockfile managers inside one
+package and 14 come from one lockfile naming a different manager from the declared one.
 
-## Which managers collide
+## Which managers appear together
 
-| Pair | Findings |
+| Managers present together | Findings |
 |---|---|
 | npm + pnpm | 78 |
 | npm + yarn | 71 |
@@ -73,8 +82,8 @@ package and 14 come from one lockfile disagreeing with the declared manager.
 | JavaScript | 2.76% | 54 / 1,956 | 2.12–3.58% |
 | TypeScript | 4.16% | 142 / 3,415 | 3.54–4.88% |
 
-TypeScript repositories contradict themselves 1.4 percentage points more often than
-JavaScript ones. That difference **is** significant (z = 2.628, p = 0.0086), though the
+TypeScript repositories carry multiple configurations 1.4 percentage points more often
+than JavaScript ones. That difference **is** significant (z = 2.628, p = 0.0086), though the
 census cannot say why; TypeScript repositories skew newer and larger.
 
 ## By repository age
@@ -102,12 +111,12 @@ census cannot say why; TypeScript repositories skew newer and larger.
 | declares "packageManager" | 4.66% | 57 / 1,224 | 3.61–5.99% |
 | does not declare it | 3.35% | 139 / 4,147 | 2.85–3.94% |
 
-Declaring the field goes with a **higher** contradiction rate, not a lower one
+Declaring the field goes with a **higher** rate, not a lower one
 (1.31 percentage points, z = 2.14, p = 0.0324).
 
 Do not read that as "declaring it makes things worse". Declaring the field also
-makes a contradiction **detectable**: a lockfile can disagree with a declaration
-that exists, and cannot disagree with one that does not. Of the 196 contradictions,
+makes the state **detectable**: a lockfile can name a different manager from a
+declaration that exists, and cannot differ from one that does not. Of the 196 findings,
 14 are visible only because the repository declared a manager. The two groups
 are not measuring the same thing, so this is evidence about detectability, not
 about hygiene.
@@ -122,29 +131,29 @@ about hygiene.
 **This difference is not statistically significant.** A two-proportion z-test
 gives z = 1.516, p = 0.1296 — the gap of 0.91 percentage points is
 within what sampling noise produces at this sample size. On this evidence,
-repositories that ship an `AGENTS.md` or `CLAUDE.md` **do not** contradict
-themselves measurably more often than repositories that do not.
+repositories that ship an `AGENTS.md` or `CLAUDE.md` **do not** carry multiple
+package-manager configurations measurably more often than those that do not.
 
 That is worth stating plainly, because it is the opposite of what a vendor of a
 tool for this problem would prefer to find. The comparison is also observational:
 the two groups differ in age, size and activity, none of which is controlled for.
 
-## Where the contradictions sit
+## Where the findings sit
 
 | Location | Findings |
 |---|---|
 | Repository root package | 147 |
 | A sub-package inside the repository | 76 |
 
-## Does the repository's own CI disagree with its lockfiles?
+## Does the repository's own CI name one of the managers?
 
-Of the 196 contradicting repositories, **87 (44.39%)** have an unconditional install step in their own GitHub Actions workflow,
+Of the 196 repositories with multiple configurations, **87 (44.39%)** have an unconditional install step in their own GitHub Actions workflow,
 Dockerfile or `vercel.json` that names one of the colliding managers. For those,
 a fix can cite the repository's own CI instead of guessing.
 
-The census deliberately does **not** claim these builds are broken today. Two
-lockfiles can coexist for a long time without failing anything. What it shows is
-how often a repository's configuration no longer has a single answer to the
+The census deliberately does **not** claim these builds are broken, or that the
+extra state is unwanted. Lockfiles can coexist deliberately and indefinitely.
+What it shows is how often a repository's configuration has more than one
 question “which package manager is this?”.
 
 ---
@@ -236,5 +245,5 @@ Or on pull requests, with nothing to sign up for and no permissions to grant:
 
 ---
 
-Generated 2026-09-21T05:04:07.081Z by `render.mjs` from `data/report.json`.
+Generated 2026-09-21T05:31:20.820Z by `render.mjs` from `data/report.json`.
 Data and text CC BY 4.0; code MIT.

@@ -123,6 +123,19 @@ check(declares <= established, "declaring the field cannot be more common than h
 check(js.every((r) => Array.isArray(r.package_manager_fields)),
   "every scan record carries raw packageManager-field evidence");
 
+// Every rule the analysis names must actually exist in the engine. Reporting
+// 0 for a rule id that was never emitted is indistinguishable from a real zero,
+// which is how "manifest/invalid-json" (never a real rule) published a false 0.
+const { PROVEN_RULES } = await import("../../src/rules.mjs");
+const REFERENCED = ["package-manager/conflicting-config", "manifest/unparseable"];
+for (const rule of REFERENCED) {
+  check(PROVEN_RULES.has(rule), `the analysis references a real engine rule: ${rule}`);
+}
+const emitted = new Set(js.flatMap((r) => r.findings_default.map((f) => f.rule)));
+for (const rule of emitted) {
+  check(REFERENCED.includes(rule), `every emitted rule is accounted for by the analysis: ${rule}`);
+}
+
 // The headline must use proven-tier rules only.
 check(findings.every((f) => f.rule !== undefined), "every finding names its rule");
 const tiers = new Set(js.flatMap((r) => r.findings_default.map((f) => f.tier)));

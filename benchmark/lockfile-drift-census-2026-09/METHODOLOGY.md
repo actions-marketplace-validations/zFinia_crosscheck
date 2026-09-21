@@ -3,7 +3,7 @@
 This is a **prevalence census**, not a precision study. It asks one question:
 
 > Across active public JavaScript and TypeScript repositories, how many carry
-> package-manager configuration that contradicts itself?
+> more than one package manager configured inside a single package?
 
 Every number in `README.md` is generated from `raw/scan.jsonl` by `analyze.mjs`.
 Nothing is typed in by hand.
@@ -72,7 +72,7 @@ findings.
 
 `raw/provider-equivalence.txt` is that run: **19 repositories identical, 0 not
 identical**, across single-package repositories, large monorepos (`vercel/next.js`,
-329 relevant files), and repositories that do contain contradictions. One
+329 relevant files), and repositories that do carry multiple configurations. One
 repository could not be compared on this host because its tree contains a path
 NTFS rejects; it is reported as `SKIP`, not as a pass.
 
@@ -90,7 +90,7 @@ measure the host rather than the provider.
   GitHub labels "JavaScript" that has no manifest is excluded from rate
   calculations rather than counted as healthy.
 - **Findings are scoped to one package.** A monorepo where two packages
-  legitimately chose different managers is not a finding. Only a contradiction
+  legitimately chose different managers is not a finding. Only multiple managers
   *inside a single package* counts.
 - **Failures are reported, not dropped.** Repositories that could not be cloned
   or read appear in `raw/scan.jsonl` with `ok: false` and are counted in
@@ -114,7 +114,7 @@ invariants that make the published claims mean what they say:
 - `raw/scan.jsonl` holds no duplicate repository;
 - every finding cites a commit that matches its scan record, and every cited
   permalink is pinned to that commit;
-- the two contradiction shapes partition the headline exactly;
+- the two finding shapes partition the headline exactly;
 - coverage is monotonic (denominator ≤ read ≤ scanned ≤ sampled);
 - no experimental-tier finding leaked into the default set;
 - a stratum is only marked incomplete when it genuinely exceeded the 1000-result
@@ -125,10 +125,16 @@ from this directory.
 
 ## 5. What this does not measure
 
+- **Maintainer intent.** This is the limit the sibling benchmark was corrected
+  for on 21 September 2026, and it applies here too. Configuration evidence can
+  be verified; the reason for it cannot. An extra lockfile may be accidental, or
+  it may be deliberate compatibility or dependency-update coverage. The census
+  counts a state, and must not be read as counting mistakes or as saying that
+  anything should be removed.
 - It is a **snapshot**, not a diff. On a pull request CrossCheck reports only
   what a change *introduces*; a census cannot distinguish new from long-standing
-  contradictions.
-- A contradiction is **not automatically a broken build**. Two lockfiles can sit
+  findings.
+- A finding is **not automatically a problem**. Two lockfiles can sit
   in a repository for a long time without failing CI. The census reports
   configuration state, and reports install-step evidence separately where the
   repository's own CI cites a manager.

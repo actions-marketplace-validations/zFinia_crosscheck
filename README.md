@@ -181,8 +181,12 @@ For an intentional repository decision migration under managed monitoring, a mai
 ## How common is this, actually?
 
 We scanned a stratified random sample of **5,371** active public JavaScript and
-TypeScript repositories, each frozen at a named commit. **3.65%** carry
-package-manager configuration that contradicts itself (95% CI 3.18-4.18%).
+TypeScript repositories, each frozen at a named commit. **3.65%** have more than
+one package manager configured inside a single package (95% CI 3.18-4.18%).
+
+Coexistence is not by itself an error: an extra lockfile may be deliberate
+compatibility or dependency-update coverage. The census counts a state; it does
+not claim a mistake.
 
 The frozen frame, the exact search queries, the seeded sample, the scanner, every
 finding with a permalink to each cited line, and an integrity checker that
@@ -194,7 +198,8 @@ npm run census:verify
 ```
 
 It also reports a null result: repositories shipping an `AGENTS.md` or `CLAUDE.md`
-did **not** contradict themselves significantly more often (p = 0.13).
+did **not** carry multiple package-manager configurations significantly more often
+(p = 0.13).
 
 ## Why it is quiet by default
 
