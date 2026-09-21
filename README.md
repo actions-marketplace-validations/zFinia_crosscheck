@@ -116,15 +116,41 @@ To migrate from pnpm to npm, update the repository configuration and contract to
 
 ## Add it to pull requests
 
-Community local scans, repository decision contracts, reports, and agent context are open and deterministic. Continuous pull-request contract enforcement for protected repositories is provided through CrossCheck monitoring plans. See [plans](https://www.zfinia.com/crosscheck#plans).
-
-The official managed Action requires GitHub OIDC permission:
+Copy this into `.github/workflows/crosscheck.yml`. There is nothing to sign up for, no token to create, and no permission to grant:
 
 ```yaml
-# .github/workflows/crosscheck.yml
 name: CrossCheck
 on: pull_request
 
+jobs:
+  crosscheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: zFinia/crosscheck@v0
+```
+
+That is the whole setup. On this path the Action makes **no network calls of its own**: it reads the repository already checked out on your runner and writes a warning to the pull request when a change introduces a package-manager contradiction. Nothing leaves the runner.
+
+By default it only warns. To fail the check when a change *introduces* a proven contradiction:
+
+```yaml
+      - uses: zFinia/crosscheck@v0
+        with:
+          fail-on: new
+```
+
+Existing contradictions never fail an unrelated pull request — only what the change introduces. See [exit codes](#exit-codes).
+
+### Repository decision contracts (preview)
+
+If you commit a `.crosscheck/contract.json`, the Action also previews contract findings. They are reported as notices and never fail the build.
+
+### Managed monitoring (optional, paid)
+
+Block-level contract enforcement for protected repositories is provided through CrossCheck monitoring plans. See [plans](https://www.zfinia.com/crosscheck#plans). It is opt-in and needs GitHub OIDC:
+
+```yaml
 permissions:
   contents: read
   id-token: write
@@ -135,23 +161,19 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - uses: zFinia/crosscheck@v0
-```
-
-The Action verifies that the repository is protected by an active monitoring entitlement before it runs. Repository files stay in the GitHub runner; authorization sends only GitHub-signed repository identity to zFinia, never repository source or configuration contents. No long-lived CrossCheck customer secret is stored in the repository.
-
-Advisory mode is the default for generic findings. To fail the check on new proven contradictions and authorized block-level contract findings:
-
-```yaml
-      - uses: zFinia/crosscheck@v0
         with:
+          managed-monitoring: true
           fail-on: new
 ```
+
+Authorization sends only GitHub-signed repository identity to zFinia, never repository source or configuration contents. No long-lived CrossCheck secret is stored in the repository. If the repository is not on a plan, the Action says so in a notice and keeps running in preview mode — it never fails your build for that reason.
 
 For an intentional repository decision migration under managed monitoring, a maintainer can apply the `crosscheck:decision-change` label. The label approves the migration but does not create a paid entitlement. The Action only observes existing labels; it never writes labels. An explicit workflow-controlled alternative is:
 
 ```yaml
       - uses: zFinia/crosscheck@v0
         with:
+          managed-monitoring: true
           fail-on: new
           allow-contract-change: true
 ```

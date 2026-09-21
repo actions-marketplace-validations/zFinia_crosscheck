@@ -1,5 +1,5 @@
 name: CrossCheck by zFinia
-description: Enforces repository decision contracts and flags configuration contradictions introduced by a pull request.
+description: Warns when a pull request adds a lockfile that contradicts your package manager.
 author: zFinia
 branding:
   icon: check-circle
@@ -20,6 +20,10 @@ inputs:
     default: "false"
   allow-contract-change:
     description: "true to approve an intentional repository decision migration; the crosscheck:decision-change PR label also approves it"
+    required: false
+    default: "false"
+  managed-monitoring:
+    description: "true to authorize managed CrossCheck monitoring for this repository (needs id-token: write). Default false: the Action makes no network calls of its own."
     required: false
     default: "false"
   working-directory:
@@ -48,6 +52,7 @@ runs:
   using: composite
   steps:
     - id: authorize
+      if: inputs.managed-monitoring == 'true'
       shell: bash
       run: node "$GITHUB_ACTION_PATH/bin/action-authorize.mjs"
     - id: crosscheck

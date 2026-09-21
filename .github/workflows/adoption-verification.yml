@@ -1,0 +1,78 @@
+name: Adoption verification
+on:
+  push:
+    branches: [fix/frictionless-action]
+  workflow_dispatch:
+
+# Deliberately only the default read permission: this is exactly what a
+# first-time adopter has when they copy the quickstart.
+permissions:
+  contents: read
+
+jobs:
+  released-v0:
+    name: "@v0 (0.1.1, released) - free adopter"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - id: run
+        continue-on-error: true
+        uses: zFinia/crosscheck@v0
+      - run: |
+          echo "outcome=${{ steps.run.outcome }}"
+          [ "${{ steps.run.outcome }}" = "success" ] || { echo "::error::@v0 regressed"; exit 1; }
+
+  broken-main:
+    name: "@main (v0.2, before the fix) - free adopter"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - id: run
+        continue-on-error: true
+        uses: zFinia/crosscheck@main
+      - name: Record the regression
+        run: |
+          echo "outcome=${{ steps.run.outcome }}"
+          if [ "${{ steps.run.outcome }}" = "failure" ]; then
+            echo "CONFIRMED: v0.2 fails a free adopter's build." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "::error::Expected @main to fail for a free adopter; it did not."
+            exit 1
+          fi
+
+  fixed-branch:
+    name: "this branch (the fix) - free adopter"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - id: run
+        continue-on-error: true
+        uses: ./
+      - run: |
+          echo "outcome=${{ steps.run.outcome }}"
+          [ "${{ steps.run.outcome }}" = "success" ] || { echo "::error::the fix still fails a free adopter"; exit 1; }
+
+  still-detects:
+    name: "the fix still catches a real contradiction"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Introduce a package-manager contradiction
+        run: |
+          git config user.email ci@example.com && git config user.name ci
+          node -e 'const f="package.json";const p=JSON.parse(require("fs").readFileSync(f));p.packageManager="pnpm@10.12.1";require("fs").writeFileSync(f,JSON.stringify(p,null,2))'
+          printf 'lockfileVersion: "9.0"\n' > pnpm-lock.yaml
+          git add -A && git commit -q -m "pnpm baseline"
+          printf '{"name":"x","lockfileVersion":3,"requires":true,"packages":{}}\n' > package-lock.json
+          git add -A && git commit -q -m "an agent ran npm install"
+      - id: run
+        continue-on-error: true
+        uses: ./
+        with:
+          base: HEAD~1
+          fail-on: new
+      - run: |
+          echo "outcome=${{ steps.run.outcome }} introduced=${{ steps.run.outputs.introduced }}"
+          [ "${{ steps.run.outcome }}" = "failure" ] || { echo "::error::fail-on:new did not fail"; exit 1; }
+          [ "${{ steps.run.outputs.introduced }}" = "1" ] || { echo "::error::expected exactly 1 introduced finding"; exit 1; }
+          echo "CONFIRMED: the fix still detects and can block a real contradiction." >> "$GITHUB_STEP_SUMMARY"

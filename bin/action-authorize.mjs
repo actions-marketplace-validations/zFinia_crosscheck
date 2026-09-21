@@ -41,14 +41,20 @@ export function writeSafeOutputs(result, outputPath) {
   appendFileSync(outputPath, `authorized=true\nplan=${result.plan}\nrepository=${result.repository}\n`);
 }
 
+const NL = String.fromCharCode(10);
+
 async function main() {
+  const out = process.env.GITHUB_OUTPUT;
   try {
     const result = await authorizeAction();
-    writeSafeOutputs(result, process.env.GITHUB_OUTPUT);
-    console.log(`CrossCheck managed monitoring authorized${result.repository ? ` for ${result.repository}` : ""}.`);
+    writeSafeOutputs(result, out);
+    console.log("CrossCheck managed monitoring authorized" + (result.repository ? " for " + result.repository : "") + ".");
   } catch (error) {
-    console.error(`CrossCheck: ${error.message}`);
-    process.exitCode = 1;
+    // Not being a managed customer is an expected state, not an error. CrossCheck
+    // stays in preview mode and the workflow keeps running; only contract
+    // ENFORCEMENT is withheld. This step must never fail an adopter's build.
+    if (out) appendFileSync(out, ["authorized=false", "plan=", "repository=", ""].join(NL));
+    console.log("::notice title=CrossCheck::Contract findings are preview-only. " + String(error.message).split(NL)[0]);
   }
 }
 

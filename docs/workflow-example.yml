@@ -1,10 +1,7 @@
 name: CrossCheck
 on: pull_request
 
-permissions:
-  contents: read
-  id-token: write
-
+# The default path needs no permissions block and makes no network calls.
 jobs:
   crosscheck:
     runs-on: ubuntu-latest
@@ -12,6 +9,6 @@ jobs:
       - uses: actions/checkout@v5
       - uses: zFinia/crosscheck@v0
         with:
-          fail-on: new
-          # A maintainer may instead apply the crosscheck:decision-change PR label.
-          allow-contract-change: false
+          # Warn only (default). Use "new" to fail the check on contradictions
+          # this pull request introduces.
+          fail-on: none
