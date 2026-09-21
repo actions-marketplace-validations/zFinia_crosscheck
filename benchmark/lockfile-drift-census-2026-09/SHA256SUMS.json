@@ -1,0 +1,58 @@
+{
+  "generated_at": "2026-09-21T05:06:08.355Z",
+  "files": [
+    {
+      "file": "README.md",
+      "sha256": "a007a881f6d267cd43abdd08f90fbffd639fcbcda1dd640528b0c596a9337008",
+      "bytes": 8878
+    },
+    {
+      "file": "METHODOLOGY.md",
+      "sha256": "ddea78070730b59515e186572b957bff73ed6f5d032d8d083de9385363610c5a",
+      "bytes": 7511
+    },
+    {
+      "file": "data/report.json",
+      "sha256": "8c99cb052c955bd00c6153d41e34fcca9330ea6bbbe62c8e3e0ed138ca5444ed",
+      "bytes": 10204
+    },
+    {
+      "file": "data/findings.jsonl",
+      "sha256": "dfcba0be6cb0e6ff1da2ffabcbe3a948a68128d65719e48c4a6bd4bb6db12b78",
+      "bytes": 214476
+    },
+    {
+      "file": "data/sample-allocation.json",
+      "sha256": "eaef6113aa301b2068aee00f7c0d5dc17cb395185e2c3fdc4074b2f9d7bd5bb2",
+      "bytes": 32115
+    },
+    {
+      "file": "data/frame-strata.json",
+      "sha256": "e2881ab8e7e702140edd86e7094a789392ed7fd254e94883961be3ca059c4e19",
+      "bytes": 41239
+    },
+    {
+      "file": "raw/provider-equivalence.txt",
+      "sha256": "96b6d2d14ecc5a02ab1dd23c637c446cdf3096bd4bcd17c505cb8041aa64d637",
+      "bytes": 1964
+    },
+    {
+      "file": "data/frame.jsonl.gz",
+      "sha256": "2f3e5f43099e1a999d11301b761373befeaae7c61c635054f777f20718fbd6d4",
+      "bytes": 2852940,
+      "note": "gzip of data/frame.jsonl (24926052 bytes, sha256 2d61779e8a6d36d5a51c13df3d950ddd81c036253ea9c84dc08c51ba19aa70bf)"
+    },
+    {
+      "file": "data/sample.jsonl.gz",
+      "sha256": "62f71c8f464f47205a7976360b167fd51f1f7b2dcb6a21e29e58ac6650c04d8d",
+      "bytes": 256560,
+      "note": "gzip of data/sample.jsonl (2244354 bytes, sha256 0426a86591d7cb53103778461ba38433b501db1d40f14947a40f0430e04734f2)"
+    },
+    {
+      "file": "raw/scan.jsonl.gz",
+      "sha256": "3f4dd6958575092ed553b6244251975a8974d8d6a7e21c270196995e6046cf93",
+      "bytes": 1016877,
+      "note": "gzip of raw/scan.jsonl (10002637 bytes, sha256 b4a05678bd2280a98efc6f3d16585dc10b62ad0d3d358c145af63377a814503b)"
+    }
+  ]
+}

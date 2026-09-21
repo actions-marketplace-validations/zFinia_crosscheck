@@ -1,0 +1,3 @@
+# Published evidence is digest-verified (SHA256SUMS.json). Git must not rewrite
+# line endings in it, or the digests and the gzip streams break on checkout.
+* -text

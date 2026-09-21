@@ -25,7 +25,8 @@
   },
   "scripts": {
     "test": "node --test",
-    "benchmark:verify": "node benchmark/ai-agent-repositories-2026-09/verify.mjs"
+    "benchmark:verify": "node benchmark/ai-agent-repositories-2026-09/verify.mjs",
+    "census:verify": "node benchmark/lockfile-drift-census-2026-09/verify.mjs"
   },
   "keywords": [
     "lockfile",

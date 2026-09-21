@@ -1,0 +1,1168 @@
+{
+  "frozen_at": "2026-09-21T00:21:15.817Z",
+  "pushed_since": "2026-03-21",
+  "max_per_stratum": 1000,
+  "strata": [
+    {
+      "lang": "JavaScript",
+      "band": "stars:>=5000",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:>=5000",
+      "total_count": 739,
+      "retrieved": 739,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:1500..4999",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:1500..4999 created:<2019-01-01",
+      "total_count": 673,
+      "retrieved": 673,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:1500..4999",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:1500..4999 created:2019-01-01..2020-12-31",
+      "total_count": 157,
+      "retrieved": 157,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:1500..4999",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:1500..4999 created:2021-01-01..2021-12-31",
+      "total_count": 51,
+      "retrieved": 51,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:1500..4999",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:1500..4999 created:2022-01-01..2022-12-31",
+      "total_count": 48,
+      "retrieved": 48,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:1500..4999",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:1500..4999 created:2023-01-01..2023-12-31",
+      "total_count": 41,
+      "retrieved": 41,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:1500..4999",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:1500..4999 created:2024-01-01..2024-06-30",
+      "total_count": 16,
+      "retrieved": 16,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:1500..4999",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:1500..4999 created:2024-07-01..2024-12-31",
+      "total_count": 18,
+      "retrieved": 18,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:1500..4999",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:1500..4999 created:2025-01-01..2025-06-30",
+      "total_count": 34,
+      "retrieved": 34,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:1500..4999",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:1500..4999 created:2025-07-01..2025-12-31",
+      "total_count": 41,
+      "retrieved": 41,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:1500..4999",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:1500..4999 created:>=2026-01-01",
+      "total_count": 91,
+      "retrieved": 91,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:500..1499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:500..1499 created:<2016-01-01",
+      "total_count": 574,
+      "retrieved": 574,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:500..1499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:500..1499 created:2016-01-01..2017-12-31",
+      "total_count": 407,
+      "retrieved": 407,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:500..1499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:500..1499 created:2018-01-01..2018-12-31",
+      "total_count": 176,
+      "retrieved": 176,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:500..1499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:500..1499 created:2019-01-01..2020-12-31",
+      "total_count": 283,
+      "retrieved": 283,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:500..1499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:500..1499 created:2021-01-01..2021-12-31",
+      "total_count": 109,
+      "retrieved": 109,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:500..1499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:500..1499 created:2022-01-01..2022-12-31",
+      "total_count": 112,
+      "retrieved": 112,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:500..1499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:500..1499 created:2023-01-01..2023-12-31",
+      "total_count": 97,
+      "retrieved": 97,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:500..1499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:500..1499 created:2024-01-01..2024-06-30",
+      "total_count": 56,
+      "retrieved": 56,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:500..1499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:500..1499 created:2024-07-01..2024-12-31",
+      "total_count": 53,
+      "retrieved": 53,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:500..1499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:500..1499 created:2025-01-01..2025-06-30",
+      "total_count": 56,
+      "retrieved": 56,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:500..1499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:500..1499 created:2025-07-01..2025-12-31",
+      "total_count": 79,
+      "retrieved": 79,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:500..1499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:500..1499 created:>=2026-01-01",
+      "total_count": 284,
+      "retrieved": 284,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:150..499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:150..499 created:<2016-01-01",
+      "total_count": 882,
+      "retrieved": 882,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:150..499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:150..499 created:2016-01-01..2017-12-31",
+      "total_count": 728,
+      "retrieved": 728,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:150..499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:150..499 created:2018-01-01..2018-12-31",
+      "total_count": 338,
+      "retrieved": 338,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:150..499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:150..499 created:2019-01-01..2020-12-31",
+      "total_count": 788,
+      "retrieved": 788,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:150..499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:150..499 created:2021-01-01..2021-12-31",
+      "total_count": 322,
+      "retrieved": 322,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:150..499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:150..499 created:2022-01-01..2022-12-31",
+      "total_count": 259,
+      "retrieved": 259,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:150..499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:150..499 created:2023-01-01..2023-12-31",
+      "total_count": 270,
+      "retrieved": 270,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:150..499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:150..499 created:2024-01-01..2024-06-30",
+      "total_count": 128,
+      "retrieved": 128,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:150..499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:150..499 created:2024-07-01..2024-12-31",
+      "total_count": 133,
+      "retrieved": 133,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:150..499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:150..499 created:2025-01-01..2025-06-30",
+      "total_count": 190,
+      "retrieved": 190,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:150..499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:150..499 created:2025-07-01..2025-12-31",
+      "total_count": 229,
+      "retrieved": 229,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:150..499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:150..499 created:>=2026-01-01",
+      "total_count": 858,
+      "retrieved": 858,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:50..149",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:50..149 created:<2016-01-01",
+      "total_count": 1098,
+      "retrieved": 1000,
+      "complete": false
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:50..149",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:50..149 created:2016-01-01..2017-12-31",
+      "total_count": 976,
+      "retrieved": 976,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:50..149",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:50..149 created:2018-01-01..2018-12-31",
+      "total_count": 560,
+      "retrieved": 560,
+      "complete": true,
+      "recovered": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:50..149",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:50..149 created:2019-01-01..2019-12-31",
+      "total_count": 0,
+      "retrieved": 0,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:50..149",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:50..149 created:2020-01-01..2020-12-31",
+      "total_count": 678,
+      "retrieved": 678,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:50..149",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:50..149 created:2021-01-01..2021-12-31",
+      "total_count": 553,
+      "retrieved": 553,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:50..149",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:50..149 created:2022-01-01..2022-12-31",
+      "total_count": 481,
+      "retrieved": 481,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:50..149",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:50..149 created:2023-01-01..2023-12-31",
+      "total_count": 502,
+      "retrieved": 502,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:50..149",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:50..149 created:2024-01-01..2024-06-30",
+      "total_count": 264,
+      "retrieved": 264,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:50..149",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:50..149 created:2024-07-01..2024-12-31",
+      "total_count": 279,
+      "retrieved": 279,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:50..149",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:50..149 created:2025-01-01..2025-06-30",
+      "total_count": 370,
+      "retrieved": 370,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:50..149",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:50..149 created:2025-07-01..2025-12-31",
+      "total_count": 498,
+      "retrieved": 498,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:50..149",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:50..149 created:2026-01-01..2026-03-31",
+      "total_count": 675,
+      "retrieved": 675,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:50..149",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:50..149 created:2026-04-01..2026-06-30",
+      "total_count": 780,
+      "retrieved": 780,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:50..149",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:50..149 created:>=2026-07-01",
+      "total_count": 702,
+      "retrieved": 702,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:20..49 created:<2016-01-01",
+      "total_count": 1044,
+      "retrieved": 1000,
+      "complete": false
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:20..49 created:2016-01-01..2017-12-31",
+      "total_count": 1086,
+      "retrieved": 1000,
+      "complete": false
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:20..49 created:2018-01-01..2018-12-31",
+      "total_count": 738,
+      "retrieved": 738,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:20..49 created:2019-01-01..2019-12-31",
+      "total_count": 782,
+      "retrieved": 782,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:20..49 created:2020-01-01..2020-12-31",
+      "total_count": 906,
+      "retrieved": 906,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:20..49 created:2021-01-01..2021-12-31",
+      "total_count": 835,
+      "retrieved": 835,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:20..49 created:2022-01-01..2022-12-31",
+      "total_count": 784,
+      "retrieved": 784,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:20..49 created:2023-01-01..2023-12-31",
+      "total_count": 834,
+      "retrieved": 834,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:20..49 created:2024-01-01..2024-06-30",
+      "total_count": 401,
+      "retrieved": 401,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:20..49 created:2024-07-01..2024-12-31",
+      "total_count": 449,
+      "retrieved": 449,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:20..49 created:2025-01-01..2025-06-30",
+      "total_count": 636,
+      "retrieved": 636,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:20..49 created:2025-07-01..2025-12-31",
+      "total_count": 940,
+      "retrieved": 940,
+      "complete": true
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:20..49 created:2026-01-01..2026-03-31",
+      "total_count": 1153,
+      "retrieved": 1000,
+      "complete": false
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:20..49 created:2026-04-01..2026-06-30",
+      "total_count": 1614,
+      "retrieved": 1000,
+      "complete": false
+    },
+    {
+      "lang": "JavaScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:JavaScript stars:20..49 created:>=2026-07-01",
+      "total_count": 1206,
+      "retrieved": 1000,
+      "complete": false
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:>=5000",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:>=5000 created:<2019-01-01",
+      "total_count": 476,
+      "retrieved": 476,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:>=5000",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:>=5000 created:2019-01-01..2020-12-31",
+      "total_count": 187,
+      "retrieved": 187,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:>=5000",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:>=5000 created:2021-01-01..2021-12-31",
+      "total_count": 92,
+      "retrieved": 92,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:>=5000",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:>=5000 created:2022-01-01..2022-12-31",
+      "total_count": 83,
+      "retrieved": 83,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:>=5000",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:>=5000 created:2023-01-01..2023-12-31",
+      "total_count": 99,
+      "retrieved": 99,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:>=5000",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:>=5000 created:2024-01-01..2024-06-30",
+      "total_count": 56,
+      "retrieved": 56,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:>=5000",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:>=5000 created:2024-07-01..2024-12-31",
+      "total_count": 58,
+      "retrieved": 58,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:>=5000",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:>=5000 created:2025-01-01..2025-06-30",
+      "total_count": 73,
+      "retrieved": 73,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:>=5000",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:>=5000 created:2025-07-01..2025-12-31",
+      "total_count": 67,
+      "retrieved": 67,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:>=5000",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:>=5000 created:>=2026-01-01",
+      "total_count": 155,
+      "retrieved": 155,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:1500..4999",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:1500..4999 created:<2019-01-01",
+      "total_count": 541,
+      "retrieved": 541,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:1500..4999",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:1500..4999 created:2019-01-01..2020-12-31",
+      "total_count": 322,
+      "retrieved": 322,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:1500..4999",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:1500..4999 created:2021-01-01..2021-12-31",
+      "total_count": 127,
+      "retrieved": 127,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:1500..4999",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:1500..4999 created:2022-01-01..2022-12-31",
+      "total_count": 142,
+      "retrieved": 142,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:1500..4999",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:1500..4999 created:2023-01-01..2023-12-31",
+      "total_count": 167,
+      "retrieved": 167,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:1500..4999",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:1500..4999 created:2024-01-01..2024-06-30",
+      "total_count": 75,
+      "retrieved": 75,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:1500..4999",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:1500..4999 created:2024-07-01..2024-12-31",
+      "total_count": 85,
+      "retrieved": 85,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:1500..4999",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:1500..4999 created:2025-01-01..2025-06-30",
+      "total_count": 133,
+      "retrieved": 133,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:1500..4999",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:1500..4999 created:2025-07-01..2025-12-31",
+      "total_count": 131,
+      "retrieved": 131,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:1500..4999",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:1500..4999 created:>=2026-01-01",
+      "total_count": 329,
+      "retrieved": 329,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:500..1499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:500..1499 created:<2019-01-01",
+      "total_count": 819,
+      "retrieved": 819,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:500..1499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:500..1499 created:2019-01-01..2020-12-31",
+      "total_count": 585,
+      "retrieved": 585,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:500..1499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:500..1499 created:2021-01-01..2021-12-31",
+      "total_count": 299,
+      "retrieved": 299,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:500..1499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:500..1499 created:2022-01-01..2022-12-31",
+      "total_count": 309,
+      "retrieved": 309,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:500..1499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:500..1499 created:2023-01-01..2023-12-31",
+      "total_count": 302,
+      "retrieved": 302,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:500..1499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:500..1499 created:2024-01-01..2024-06-30",
+      "total_count": 149,
+      "retrieved": 149,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:500..1499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:500..1499 created:2024-07-01..2024-12-31",
+      "total_count": 172,
+      "retrieved": 172,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:500..1499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:500..1499 created:2025-01-01..2025-06-30",
+      "total_count": 248,
+      "retrieved": 248,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:500..1499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:500..1499 created:2025-07-01..2025-12-31",
+      "total_count": 251,
+      "retrieved": 251,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:500..1499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:500..1499 created:>=2026-01-01",
+      "total_count": 682,
+      "retrieved": 682,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:150..499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:150..499 created:<2016-01-01",
+      "total_count": 303,
+      "retrieved": 303,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:150..499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:150..499 created:2016-01-01..2017-12-31",
+      "total_count": 502,
+      "retrieved": 502,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:150..499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:150..499 created:2018-01-01..2018-12-31",
+      "total_count": 413,
+      "retrieved": 413,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:150..499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:150..499 created:2019-01-01..2019-12-31",
+      "total_count": 474,
+      "retrieved": 474,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:150..499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:150..499 created:2020-01-01..2020-12-31",
+      "total_count": 599,
+      "retrieved": 599,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:150..499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:150..499 created:2021-01-01..2021-12-31",
+      "total_count": 585,
+      "retrieved": 585,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:150..499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:150..499 created:2022-01-01..2022-12-31",
+      "total_count": 644,
+      "retrieved": 644,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:150..499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:150..499 created:2023-01-01..2023-12-31",
+      "total_count": 743,
+      "retrieved": 743,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:150..499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:150..499 created:2024-01-01..2024-06-30",
+      "total_count": 352,
+      "retrieved": 352,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:150..499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:150..499 created:2024-07-01..2024-12-31",
+      "total_count": 362,
+      "retrieved": 362,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:150..499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:150..499 created:2025-01-01..2025-06-30",
+      "total_count": 486,
+      "retrieved": 486,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:150..499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:150..499 created:2025-07-01..2025-12-31",
+      "total_count": 632,
+      "retrieved": 632,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:150..499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:150..499 created:2026-01-01..2026-03-31",
+      "total_count": 842,
+      "retrieved": 842,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:150..499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:150..499 created:2026-04-01..2026-06-30",
+      "total_count": 665,
+      "retrieved": 665,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:150..499",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:150..499 created:>=2026-07-01",
+      "total_count": 425,
+      "retrieved": 425,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:50..149",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:50..149 created:<2016-01-01",
+      "total_count": 261,
+      "retrieved": 261,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:50..149",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:50..149 created:2016-01-01..2017-12-31",
+      "total_count": 577,
+      "retrieved": 577,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:50..149",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:50..149 created:2018-01-01..2018-12-31",
+      "total_count": 480,
+      "retrieved": 480,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:50..149",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:50..149 created:2019-01-01..2019-12-31",
+      "total_count": 671,
+      "retrieved": 671,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:50..149",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:50..149 created:2020-01-01..2020-12-31",
+      "total_count": 888,
+      "retrieved": 888,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:50..149",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:50..149 created:2021-01-01..2021-12-31",
+      "total_count": 923,
+      "retrieved": 923,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:50..149",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:50..149 created:2022-01-01..2022-06-30",
+      "total_count": 515,
+      "retrieved": 515,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:50..149",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:50..149 created:2022-07-01..2022-12-31",
+      "total_count": 527,
+      "retrieved": 527,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:50..149",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:50..149 created:2023-01-01..2023-06-30",
+      "total_count": 587,
+      "retrieved": 587,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:50..149",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:50..149 created:2023-07-01..2023-12-31",
+      "total_count": 576,
+      "retrieved": 576,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:50..149",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:50..149 created:2024-01-01..2024-06-30",
+      "total_count": 614,
+      "retrieved": 614,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:50..149",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:50..149 created:2024-07-01..2024-12-31",
+      "total_count": 623,
+      "retrieved": 623,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:50..149",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:50..149 created:2025-01-01..2025-06-30",
+      "total_count": 929,
+      "retrieved": 929,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:50..149",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:50..149 created:2025-07-01..2025-12-31",
+      "total_count": 1161,
+      "retrieved": 1000,
+      "complete": false
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:50..149",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:50..149 created:2026-01-01..2026-03-31",
+      "total_count": 1710,
+      "retrieved": 1000,
+      "complete": false
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:50..149",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:50..149 created:2026-04-01..2026-06-30",
+      "total_count": 1619,
+      "retrieved": 1000,
+      "complete": false
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:50..149",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:50..149 created:>=2026-07-01",
+      "total_count": 1034,
+      "retrieved": 1000,
+      "complete": false
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:20..49 created:<2016-01-01",
+      "total_count": 243,
+      "retrieved": 243,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:20..49 created:2016-01-01..2017-12-31",
+      "total_count": 536,
+      "retrieved": 536,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:20..49 created:2018-01-01..2018-12-31",
+      "total_count": 508,
+      "retrieved": 508,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:20..49 created:2019-01-01..2019-12-31",
+      "total_count": 676,
+      "retrieved": 676,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:20..49 created:2020-01-01..2020-12-31",
+      "total_count": 1004,
+      "retrieved": 1000,
+      "complete": false
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:20..49 created:2021-01-01..2021-06-30",
+      "total_count": 579,
+      "retrieved": 579,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:20..49 created:2021-07-01..2021-12-31",
+      "total_count": 556,
+      "retrieved": 556,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:20..49 created:2022-01-01..2022-06-30",
+      "total_count": 675,
+      "retrieved": 675,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:20..49 created:2022-07-01..2022-12-31",
+      "total_count": 741,
+      "retrieved": 741,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:20..49 created:2023-01-01..2023-06-30",
+      "total_count": 840,
+      "retrieved": 840,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:20..49 created:2023-07-01..2023-12-31",
+      "total_count": 848,
+      "retrieved": 848,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:20..49 created:2024-01-01..2024-06-30",
+      "total_count": 883,
+      "retrieved": 883,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:20..49 created:2024-07-01..2024-12-31",
+      "total_count": 985,
+      "retrieved": 985,
+      "complete": true
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:20..49 created:2025-01-01..2025-06-30",
+      "total_count": 1401,
+      "retrieved": 1000,
+      "complete": false
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:20..49 created:2025-07-01..2025-12-31",
+      "total_count": 1957,
+      "retrieved": 1000,
+      "complete": false
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:20..49 created:2026-01-01..2026-03-31",
+      "total_count": 2772,
+      "retrieved": 1000,
+      "complete": false
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:20..49 created:2026-04-01..2026-06-30",
+      "total_count": 2824,
+      "retrieved": 1000,
+      "complete": false
+    },
+    {
+      "lang": "TypeScript",
+      "band": "stars:20..49",
+      "query": "pushed:>=2026-03-21 archived:false fork:false is:public language:TypeScript stars:20..49 created:>=2026-07-01",
+      "total_count": 1607,
+      "retrieved": 1000,
+      "complete": false
+    }
+  ]
+}
