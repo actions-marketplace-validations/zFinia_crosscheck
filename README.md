@@ -160,6 +160,8 @@ For an intentional repository decision migration under managed monitoring, a mai
 
 A check people learn to ignore is worse than no check. CrossCheck only shows a finding by default if that rule was right every time on repositories it was never tuned on. It reports only what a pull request *introduced*, never debt that was already there, and it does not fail the build unless you ask it to.
 
+The [public September 2026 benchmark](benchmark/ai-agent-repositories-2026-09/README.md) includes every frozen repository and commit, raw machine-readable results, manual verdict records, file hashes, and an integrity checker. It separates the 80-repository tuning set from 947 untouched holdouts; the default rule produced 47 confirmed findings on those holdouts.
+
 ## Proven and experimental rules
 
 By default CrossCheck reports only **proven** rules, which are the only rules that can fail a check ([how this was measured](docs/METHODOLOGY.md)):

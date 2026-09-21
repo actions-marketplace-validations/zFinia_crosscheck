@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "title": "CrossCheck public-repository benchmark — September 2026",
+  "engineVersion": "0.1.1",
+  "sample": {
+    "population": "Active, non-fork public JavaScript/TypeScript GitHub repositories with AI-agent instruction files, subject to the explicit query, date and size criteria recorded in each sample file.",
+    "tuningSets": [
+      "tuning-v1"
+    ],
+    "holdoutSets": [
+      "holdout-v2",
+      "holdout-v3",
+      "holdout-v4",
+      "holdout-v5"
+    ]
+  },
+  "totals": {
+    "repositories": 1027,
+    "holdoutRepositories": 947,
+    "scannedRepositories": 1024,
+    "skippedRepositories": 3,
+    "packagesEvaluated": 5904,
+    "repositoriesWithFindings": 48,
+    "provenFindings": 49,
+    "holdoutProvenFindings": 47,
+    "experimentalFindings": 6
+  },
+  "review": {
+    "policy": "Every emitted holdout finding was inspected in repository context at its frozen commit. Ambiguous or unconfirmed findings count as wrong.",
+    "holdoutProvenFindingsReviewed": 47,
+    "confirmed": 47,
+    "unconfirmed": 0
+  },
+  "limits": [
+    "This measures precision of emitted findings, not recall of every contradiction.",
+    "The sample is targeted and is not a census of GitHub.",
+    "Manual confirmation is published as a review record; independent readers can inspect each cited public repository and commit."
+  ],
+  "sha256": {
+    "results/holdout-v2.json": "3306f9411de8359a86ed7594ebd5f1aa0a63a83a53d9156ef4c3b70e65fa5eb2",
+    "results/holdout-v3.json": "a9085617b39bea44c6e697939650654a8dfe343bd65ba2697106ad97170f049e",
+    "results/holdout-v4.json": "49b68ec89a3e309fc40dcff870ccde860f06ac6276e72dfb9cc660dfc0a174b1",
+    "results/holdout-v5.json": "2e29b0456981317ccfb5ff28407cd81986b7544106f15a4148da243f2ed944a7",
+    "results/tuning-v1.json": "d96ecfc05e79254d399e84805cccaf078769ac4b000b38e482ac29ae201cb23a",
+    "reviews/holdout-proven.json": "d1ab755d71fde43a6221af2f696aece65cb4960c9694fdc2d0a5c6a7ad4bb48c",
+    "samples/holdout-v2.json": "4926c1665291d4c7f4acc1cd7280a7a62e106929935201b82fec8360ebc43a33",
+    "samples/holdout-v3.json": "da9622750c8a9c782f8b9a2d58606618ce04f7ef2f98cebb16972edcf00ab9c7",
+    "samples/holdout-v4.json": "f625e0abc9766a1ec12b425f0182c4cbc85c4e54f3022cade975475a9bca731c",
+    "samples/holdout-v5.json": "d0234e794033b65aa2a325c3ba10558437defd3cb0637de33963d2cdc0d34215",
+    "samples/tuning-v1.json": "f476c1861385d9006d4b94b506074d0a476724c93be01acb235402dbd2dcf246"
+  }
+}

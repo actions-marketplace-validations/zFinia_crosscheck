@@ -18,5 +18,6 @@ jobs:
           node-version: 22
       - run: npm install --ignore-scripts
       - run: npm test
+      - run: npm run benchmark:verify
       - run: git diff --check
       - run: npm pack --dry-run

@@ -16,6 +16,8 @@ CrossCheck shows a rule by default only if it held up on repositories it was nev
 
 The experimental rules fell short of the 95% bar we set, so they are opt-in and never fail a build.
 
+The complete frozen manifests, raw 0.1.1 outputs, per-finding review records, SHA-256 hashes, and dependency-free verifier are published in the [September 2026 public-repository benchmark](../benchmark/ai-agent-repositories-2026-09/README.md). The artifact records all 1,027 sampled repositories, including the 80-repository tuning set, the 947-repository holdout, and three skipped scans. Run `npm run benchmark:verify` to recompute the published totals from the raw files.
+
 ## Install-step evidence (0.1.1)
 
 From 0.1.1, a package-manager conflict also cites the package's own unconditional install steps (GitHub Actions, Dockerfile, `vercel.json`) when they exist, and its suggested fix says which manager those steps use. This never adds, removes or changes a finding; it only adds evidence. Re-running the four earlier samples and the new one produced exactly the same findings as 0.1.0.

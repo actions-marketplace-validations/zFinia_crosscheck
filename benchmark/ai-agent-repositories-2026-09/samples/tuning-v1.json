@@ -1,0 +1,943 @@
+{
+ "name": "live-precision-v1",
+ "frozenAt": "2026-09-18",
+ "method": "80 random active (pushed>=2026-08-18) non-fork JS/TS public repos with AGENTS.md/CLAUDE.md/.cursorrules at root; seeded shuf 42; scanned at recorded commit with production crosscheck-scan.mjs sha256 999eac42. Labels assigned by manual evidence review BEFORE rule changes. PLAUSIBLE is recorded as UNPROVEN and counts as incorrect if emitted.",
+ "repos": [
+  {
+   "repo": "TryGhost/Deploy",
+   "commit": "384408ba80822056a6c6ffe27a0552d34b60d09f",
+   "error": null,
+   "baselineFindings": [
+    {
+     "class": "package.manager",
+     "scope": "",
+     "values": [
+      "pnpm",
+      "yarn"
+     ],
+     "evidence": [
+      "package.json[config]",
+      "pnpm-lock.yaml[config]",
+      "README.md[documentation]",
+      "README.md[documentation]",
+      ".github/workflows/ci.yml:22[config]",
+      ".github/workflows/ci.yml:39[config]",
+      ".github/workflows/ci.yml:57[config]",
+      ".github/workflows/publish.yml:54[config]"
+     ]
+    }
+   ],
+   "baselineIncomplete": [],
+   "groundTruth": "FALSE",
+   "groundTruthNote": "FALSE - README lists alternative commands users may run (yarn/npm/pnpm)"
+  },
+  {
+   "repo": "Traviseric/arxmint",
+   "commit": "57ff097ca08ddb0310b4f9068b28ccc28787959a",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "GoJam11/LLMRelayService",
+   "commit": "831b3e66106e3e3dd620d528be11143ff2a5ba47",
+   "error": null,
+   "baselineFindings": [
+    {
+     "class": "database.engine",
+     "scope": "",
+     "values": [
+      "postgresql",
+      "sqlite"
+     ],
+     "evidence": [
+      "package.json[config]",
+      "drizzle.config.ts[config]",
+      ".env.example[config]",
+      "README.md[documentation]"
+     ]
+    }
+   ],
+   "baselineIncomplete": [],
+   "groundTruth": "FALSE",
+   "groundTruthNote": "FALSE/BY-DESIGN - README documents supporting both SQLite and PostgreSQL"
+  },
+  {
+   "repo": "YunYouJun/valaxy",
+   "commit": "ab3bba6d0c772a2e179490cb7a555dafb6a234ee",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "VasilisPlavos/Cookie-AutoDeleteV3",
+   "commit": "dd5293853a988972cedae325fc76714a2a3bef44",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "HaoweiWang2013/xiabao-ai",
+   "commit": "442602ad72a096de195df867959fdf321dc657de",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "alan-turing-institute/tea-techniques",
+   "commit": "2f0755e31853f5f148eed44f14450ea8824ba6aa",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "aamdmn/payload-agent",
+   "commit": "1c1da4ed7ee24b397ae7ba96e317d0983f02f50a",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "IchsanJunaedi/Sapa-Tazkia",
+   "commit": "46eef28e0e93eda15fece5f30b3907394c715a3d",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "anchildress1/supascribe-notes-mcp",
+   "commit": "d8e33f738373f51e4f16b233abd45b1a1b18ab9c",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "alelapi/material-ui-player",
+   "commit": "dad517fc97fd7fba75732795524189f517c3b6a3",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "JohnMunsch/PaperQuik.com",
+   "commit": "37e63be298a7805e2a093fc6b19d273c323043da",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "arturogarrido/claudinho",
+   "commit": "c22b9322ce7a030e7ff5fefe4e6a7c1a72350c8f",
+   "error": null,
+   "baselineFindings": [
+    {
+     "class": "package.manager",
+     "scope": "",
+     "values": [
+      "pnpm",
+      "npm"
+     ],
+     "evidence": [
+      "package.json[config]",
+      "pnpm-lock.yaml[config]",
+      "AGENTS.md[documentation]",
+      ".github/workflows/ci.yml:40[config]",
+      ".github/workflows/ci.yml:72[config]",
+      ".github/workflows/ci.yml:114[config]",
+      ".github/workflows/ci.yml:141[config]",
+      ".github/workflows/ci.yml:164[config]",
+      ".github/workflows/publish.yml:44[config]"
+     ]
+    }
+   ],
+   "baselineIncomplete": [],
+   "groundTruth": "FALSE",
+   "groundTruthNote": "FALSE - 'npm trusted publishing' read as package-manager choice"
+  },
+  {
+   "repo": "arnobt78/Multi-AI-Model-Chatbot--React-FullStack",
+   "commit": "db250dd9800b9146ac0450dc0613a3f410ec77b1",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "KORAYTEACHER/fintech-advisor",
+   "commit": "82ae9d5cb8904f99c1660a5ada510b71d5aa7736",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [
+    "package.json"
+   ],
+   "groundTruth": "FALSE_INCOMPLETE_BOM",
+   "groundTruthNote": "package.json begins with UTF-8 BOM; npm accepts it; reporting it unreadable is a false finding"
+  },
+  {
+   "repo": "atamano/openingscanner",
+   "commit": "6ae13fced9a00e578766f8154aadfdd7fe4e2993",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "astro-notion/notion-astro-loader",
+   "commit": "adb1bec83eee8cbe65b232ac60b8c5d23e4826db",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "Lftobs/dequel",
+   "commit": "1c001d61877145edd5b7f2c0cae4161c2cfb4713",
+   "error": null,
+   "baselineFindings": [
+    {
+     "class": "database.engine",
+     "scope": "",
+     "values": [
+      "postgresql",
+      "sqlite"
+     ],
+     "evidence": [
+      ".env.example[config]",
+      "AGENTS.md[documentation]",
+      "AGENTS.md[documentation]",
+      "README.md[documentation]"
+     ]
+    }
+   ],
+   "baselineIncomplete": [],
+   "groundTruth": "UNPROVEN",
+   "groundTruthNote": "PLAUSIBLE - AGENTS.md says PostgreSQL via Drizzle, README documents SQLite DATABASE_PATH"
+  },
+  {
+   "repo": "avalynx/avalynx-datatable",
+   "commit": "0a53ca734fc12dd8762a35b219c1543b049359e5",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "autoguru-au/overdrive",
+   "commit": "1320069818ed3d092e6687d3ead6ecff932229aa",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "MH-Rizvi/RoutAura",
+   "commit": "af80ee215d965e3b55308f37cde0dee479666927",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "bearBoy80/opsflare",
+   "commit": "c331f52c4f75293eb0422e64df1a13bc07fa2382",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "balancer/balancer-ops-frontend",
+   "commit": "5d14c86eae18aa50243b2143b58088698c653064",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "NAWAS-SHERIF-S/learning_path_finder",
+   "commit": "a7ca1885536c699243d6b607a09ae759cf61d162",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "blockful/anticapture",
+   "commit": "325de8e15fc0e941aec2b6761529762b2e202a5d",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "benesvoj/hazenasvinov-nextjs",
+   "commit": "a5229af4bfae0282636dec38ebe626656d634c0f",
+   "error": "clone",
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "NonceGeek/dim-sum-app",
+   "commit": "ef75f75dc3cf6cc6055bc2a32848e9d4b52c1c39",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "caoccao/BetterMediaInfo",
+   "commit": "91474afeee7dd836fc0a913f4ac06ba17e0f0d5a",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "camptocamp/geospatial-sdk",
+   "commit": "86a77a3873daee1859eddc040f2d48964cbcbe9b",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "OriginProtocol/origin-squid-notifications",
+   "commit": "bc38a0919fa83a792e2a6b95e3fdded2eeeb505f",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "ciscoheat/sveltekit-superforms",
+   "commit": "a1e0dbb96cde1c62f0b528b1323076359e913c2d",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "christopher-buss/bedrock",
+   "commit": "0b00a735bf04342bbd0fb3e90599cc36ff03b0cb",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "RefractMC/Refract_MC",
+   "commit": "fa2410aff501a4f3d92043665d88ccc2c2f66585",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "crafter-station/peru.ai-hackathon.co",
+   "commit": "cc8899fdb8a0e30e0b691fc24b45d3d1592775c1",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "colecrouter/rarest-achievement",
+   "commit": "5c27822ff049c04d094f6fa1ff846d13c255d14c",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "SXV357/Voxara",
+   "commit": "c30801ed80ee69fdad018e8359ec582920e9bca4",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "cvsz/zsp-aitool",
+   "commit": "e2c61e80cfe5161dc9b761408ac5c55b74ee4ffe",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "ctrl-alt-d/EsferaPowerToys",
+   "commit": "eac8208c637ee670ddc5371dcf6a1033239135f5",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "TeenBiscuits/Pasame-Examenes",
+   "commit": "5934700f97b1ec5f540b47779dc3ae2108b35e41",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "davidyen1124/third-time-charm",
+   "commit": "dad87967cf25ab2b2b168a9666b0f17006286daa",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "daveotero/NAM-BOT",
+   "commit": "c0bd57d80b9033d51b57624d73459ece0477e73a",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "AdguardTeam/AdGuardVPNExtension",
+   "commit": "3e04819bf8302d934026d6fa9dfbe33e8bc97d4d",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "demetere/pi-hive",
+   "commit": "3a5048f4425bc7a067b7674bc991790440684220",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "decentraland/events",
+   "commit": "626498e8b56b2c91fe3be7b93ee52bac7c8fe295",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "BlueWhalexh/pet-desk-moodBytoken",
+   "commit": "5c4b6ce98cdf20ee8b54ded77c1c9eeec682bee5",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "digitalgroundgame/pragmatic-papers",
+   "commit": "8a875729ef9455852d9b1953e77d55cb94347fcd",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "digital-go-jp/design-system-example-components-react",
+   "commit": "68b452e16d40ffaebcb195a7289696f88890cc3e",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "CosmicBytez/bc-docker-manager",
+   "commit": "bd760c0f21403efbb772e3ce0fac21d57f28ad18",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "educlopez/smoothui",
+   "commit": "1d61c51eedfac615c26ac1d06d394552d0653ad0",
+   "error": null,
+   "baselineFindings": [
+    {
+     "class": "package.manager",
+     "scope": "",
+     "values": [
+      "pnpm",
+      "bun",
+      "npm"
+     ],
+     "evidence": [
+      "package.json[config]",
+      "pnpm-lock.yaml[config]",
+      "CLAUDE.md[documentation]",
+      "README.md[documentation]",
+      ".github/workflows/dependency-audit.yml:37[config]",
+      ".github/workflows/release-please.yml:111[config]",
+      ".github/workflows/release-please.yml:147[config]",
+      ".github/workflows/test.yml:69[config]",
+      ".github/workflows/test.yml:97[config]",
+      ".github/workflows/test.yml:127[config]",
+      ".github/workflows/test.yml:173[config]",
+      ".github/workflows/test.yml:216[config]",
+      ".github/workflows/test.yml:232[config]"
+     ]
+    }
+   ],
+   "baselineIncomplete": [],
+   "groundTruth": "FALSE",
+   "groundTruthNote": "FALSE - README feature text 'auto-detects npm, pnpm, yarn, bun'; npm install --prefix tarball smoke test"
+  },
+  {
+   "repo": "driches/vor",
+   "commit": "5e35a6edf07443934672a56ce08def3fdf2d8cca",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "ErkoKaar/FinanceTracker",
+   "commit": "4b83ff70519c482422d3b80ae9d875d0df61f6a8",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "ether/ep_webrtc",
+   "commit": "6e6d58e90b247121baec492f5a1bd35a30de3c95",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "ether/ep_email_notifications",
+   "commit": "8d8d93b5cca1ab6641ae6b72db37afccba068624",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "GooeyAI/gooey-web-widget",
+   "commit": "7235a8a30ce35fb0f9aa75dcd386c6e8123cc3c3",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "exa-labs/exa-js",
+   "commit": "3fdc603300ad64e766dd2298897a62889d3a5d3a",
+   "error": null,
+   "baselineFindings": [
+    {
+     "class": "package.manager",
+     "scope": "",
+     "values": [
+      "npm",
+      "pnpm"
+     ],
+     "evidence": [
+      "package-lock.json[config]",
+      "pnpm-lock.yaml[config]",
+      ".github/workflows/ci.yml:47[config]",
+      ".github/workflows/publish.yml:48[config]",
+      ".github/workflows/run-examples.yml:26[config]",
+      ".github/workflows/run-examples.yml:39[config]",
+      ".github/workflows/run-examples.yml:67[config]"
+     ]
+    }
+   ],
+   "baselineIncomplete": [],
+   "groundTruth": "TRUE",
+   "groundTruthNote": "TRUE - package-lock.json and pnpm-lock.yaml both at root; CI mixes pnpm i and npm ci"
+  },
+  {
+   "repo": "eweser/eweser-db",
+   "commit": "1917cf94d62b556cfe7d737e65b2a8b6ff73ed75",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "IHaBiS02/SideNote",
+   "commit": "a2aa17e610c58ce387a8fa6606e2d3858f96faa0",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "figranium/figranium",
+   "commit": "7672151e51111fc358fc958e2e1196bd3ac3599d",
+   "error": null,
+   "baselineFindings": [
+    {
+     "class": "package.manager",
+     "scope": "",
+     "values": [
+      "npm",
+      "pnpm"
+     ],
+     "evidence": [
+      "package-lock.json[config]",
+      "pnpm-lock.yaml[config]",
+      "Dockerfile:12[config]",
+      "Dockerfile:47[config]",
+      "dockerfile:12[config]",
+      "dockerfile:47[config]",
+      ".github/workflows/publish-embed-assets.yml:26[config]",
+      ".github/workflows/refresh-maps-screenshot.yml:25[config]",
+      ".github/workflows/update-fiptcha-lock.yml:24[config]",
+      ".github/workflows/update-fiptcha-lock.yml:26[config]",
+      ".github/workflows/v1-qualification.yml:60[config]"
+     ]
+    }
+   ],
+   "baselineIncomplete": [],
+   "groundTruth": "TRUE",
+   "groundTruthNote": "TRUE - stray pnpm-lock.yaml beside package-lock.json; every install path uses npm"
+  },
+  {
+   "repo": "figozhu/Sub-Merger-CFWorker",
+   "commit": "b8c676772a6fb4ebc168755dd202093405e6ff07",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "IlyaGrshin/wallet_animations",
+   "commit": "e542ce6200a30f57a323ac590ac628e82e703800",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "foldaway/mrtdown-site",
+   "commit": "994d81bd6acbb6192d860a3306664d2b1cdc10fb",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "floor/mtrl",
+   "commit": "58424beac46bcb7cb0aabd445fee8e988bf36e35",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "JungHoonGhae/opencode-kilo-auth",
+   "commit": "3ccf61326f0f909b19fe51cceef31339acf932f7",
+   "error": null,
+   "baselineFindings": [
+    {
+     "class": "package.manager",
+     "scope": "",
+     "values": [
+      "bun",
+      "npm"
+     ],
+     "evidence": [
+      "bun.lock[config]",
+      ".github/workflows/ci.yml:24[config]",
+      ".github/workflows/release.yml:72[config]"
+     ]
+    }
+   ],
+   "baselineIncomplete": [],
+   "groundTruth": "TRUE",
+   "groundTruthNote": "TRUE - bun.lock committed, CI runs npm install"
+  },
+  {
+   "repo": "getqarote/Qarote",
+   "commit": "1764d3d58ba7fd363800c380d66e1b0e4a2cdea4",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "gengjiawen/js-engines-playground",
+   "commit": "d05735a24c436346841868e11caf656762f48bf9",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "KunMoe/kun-domain-monitor",
+   "commit": "c41a3cdc6f6cfbd96bbdcfb98ec70c08da9d1686",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "guibor/supernote-shape-snap",
+   "commit": "345feb032eb7f271d5b5c01db9559fa438a16f24",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "grikomsn/opencode-copilot-chat",
+   "commit": "faf1e7794885de4b9df06db872b54578f699cd0d",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "Luizcc87/zapo-manager-suite",
+   "commit": "d1216406dd22af2afb73d0d9f89b0e83a6b8070d",
+   "error": null,
+   "baselineFindings": [
+    {
+     "class": "database.engine",
+     "scope": "backend",
+     "values": [
+      "postgresql",
+      "sqlite"
+     ],
+     "evidence": [
+      "backend/package.json[config]",
+      "backend/package.json[config]",
+      "backend/prisma/schema.prisma[config]",
+      "backend/.env.example[config]"
+     ]
+    }
+   ],
+   "baselineIncomplete": [],
+   "groundTruth": "UNPROVEN",
+   "groundTruthNote": "PLAUSIBLE - backend has pg + better-sqlite3 with Prisma provider postgresql"
+  },
+  {
+   "repo": "hotosm/ui",
+   "commit": "6bf2fecd57c96632d46682cc3137906ce0eb8964",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "hjinco/mdto",
+   "commit": "7a0e1c90c42008b5efbfbf97d4233241ae6717e5",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "Michael0520/modern-monorepo-template",
+   "commit": "847f435d4eea5df0fa0b12e992610c212c224828",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "iflamed/hono-react-ssr-shadcn-ui",
+   "commit": "52181f53e1bed54750ee1da086c9603722c6b1d3",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "huthvincent/yt-bilingual-app",
+   "commit": "dfe0320be8bfa9f2085a26c1bcee2b68cfcb66e9",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "Navibyte-Innovations-Pvt-Ltd/expo-icon-generator",
+   "commit": "6a4c0a7612caaaf30fd55ed4938e352065c6375f",
+   "error": null,
+   "baselineFindings": [
+    {
+     "class": "package.manager",
+     "scope": "",
+     "values": [
+      "bun",
+      "pnpm",
+      "npm",
+      "yarn"
+     ],
+     "evidence": [
+      "bun.lock[config]",
+      "README.md[documentation]",
+      "README.md[documentation]",
+      "README.md[documentation]",
+      "README.md[documentation]",
+      ".github/workflows/ci.yml:19[config]",
+      ".github/workflows/ci.yml:38[config]",
+      ".github/workflows/release.yml:32[config]"
+     ]
+    }
+   ],
+   "baselineIncomplete": [],
+   "groundTruth": "FALSE",
+   "groundTruthNote": "FALSE - README consumer install alternatives"
+  },
+  {
+   "repo": "itsyogesh/relaycode",
+   "commit": "20b6f8206eed6494d0543136e2f0d920ad5f0eda",
+   "error": null,
+   "baselineFindings": [
+    {
+     "class": "package.manager",
+     "scope": "",
+     "values": [
+      "yarn",
+      "npm"
+     ],
+     "evidence": [
+      "yarn.lock[config]",
+      "AGENTS.md[documentation]",
+      "CLAUDE.md[documentation]",
+      "README.md[documentation]",
+      "Dockerfile:14[config]",
+      "Dockerfile:15[config]",
+      "Dockerfile:33[config]",
+      "dockerfile:14[config]",
+      "dockerfile:15[config]",
+      "dockerfile:33[config]",
+      ".github/workflows/ci.yml:18[config]",
+      ".github/workflows/ci.yml:19[config]",
+      ".github/workflows/ci.yml:20[config]",
+      ".github/workflows/ci.yml:30[config]",
+      ".github/workflows/ci.yml:31[config]",
+      ".github/workflows/ci.yml:32[config]",
+      ".github/workflows/ci.yml:48[config]",
+      ".github/workflows/ci.yml:49[config]",
+      ".github/workflows/ci.yml:50[config]"
+     ]
+    }
+   ],
+   "baselineIncomplete": [],
+   "groundTruth": "FALSE",
+   "groundTruthNote": "FALSE - Dockerfile conditional fallback 'elif [ -f package-lock.json ]; then npm ci'"
+  },
+  {
+   "repo": "innei-template/nextjs-boilerplate",
+   "commit": "ca6ad50362992227ef69879674a6801fcb56db5e",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "Norton-Studios/momentum",
+   "commit": "70014a737a8b3ad3dfe96d3c728703aa9a3ff40d",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "jantimon/web-performance-debugger",
+   "commit": "c6549b330e85937052b7254ebe1e0dd3ceddf32a",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  },
+  {
+   "repo": "jackytea/tanstack-starter",
+   "commit": "58f55a299f88a2e88e6e53e6e186ab09220ef22e",
+   "error": null,
+   "baselineFindings": [],
+   "baselineIncomplete": [],
+   "groundTruth": "NO_CONTRADICTION_OBSERVED",
+   "groundTruthNote": null
+  }
+ ]
+}

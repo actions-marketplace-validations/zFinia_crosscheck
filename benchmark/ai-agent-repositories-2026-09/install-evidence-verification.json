@@ -1,0 +1,435 @@
+[
+ {
+  "set": "v1",
+  "repo": "exa-labs/exa-js",
+  "commit": "3fdc603",
+  "scope": ".",
+  "type": "DISAGREE",
+  "dates": {
+   "package-lock.json": "2026-09-17",
+   "pnpm-lock.yaml": "2026-08-20"
+  },
+  "cites": [
+   ".github/workflows/ci.yml:47 :: run: pnpm i",
+   ".github/workflows/publish.yml:48 :: run: npm ci",
+   ".github/workflows/run-examples.yml:26 :: run: npm ci",
+   ".github/workflows/run-examples.yml:67 :: run: npm ci"
+  ],
+  "fix": "Install steps for this package disagree: npm in .github/workflows/publish.yml:48, .github/workflows/run-examples.yml:26, .github/workflows/run-examples.yml:67; pnpm in .github/workflows/ci.yml:47. What you test can differ from what you build or ship. Pick one manager, delete the other lockfile, and make every install step use it."
+ },
+ {
+  "set": "v1",
+  "repo": "figranium/figranium",
+  "commit": "7672151",
+  "scope": ".",
+  "type": "RECOMMEND",
+  "dates": {
+   "package-lock.json": "2026-09-16",
+   "pnpm-lock.yaml": "2026-08-11"
+  },
+  "cites": [
+   ".github/workflows/publish-embed-assets.yml:26 :: - run: npm ci",
+   ".github/workflows/refresh-maps-screenshot.yml:25 :: run: npm ci --ignore-scripts",
+   ".github/workflows/update-fiptcha-lock.yml:26 :: run: npm ci --ignore-scripts --dry-run",
+   ".github/workflows/v1-qualification.yml:60 :: run: npm install",
+   "Dockerfile:12 :: RUN npm ci --include=dev",
+   "Dockerfile:47 :: RUN npm ci --omit=dev"
+  ],
+  "fix": "Every install step for this package uses npm (.github/workflows/publish-embed-assets.yml:26, .github/workflows/refresh-maps-screenshot.yml:25, .github/workflows/update-fiptcha-lock.yml:26, .github/workflows/v1-qualification.yml:60, Dockerfile:12, Dockerfile:47), so pnpm-lock.yaml is not used by CI or deployment. Delete pnpm-lock.yaml, keep package-lock.json, and consider adding \"packageManager\" to package.json so every tool uses npm."
+ },
+ {
+  "set": "v2",
+  "repo": "Crawlith/crawlith",
+  "commit": "95771de",
+  "scope": ".",
+  "type": "RECOMMEND",
+  "dates": {
+   "package-lock.json": "2026-09-14",
+   "pnpm-lock.yaml": "2026-09-07"
+  },
+  "cites": [
+   ".github/workflows/ci.yml:32 :: run: pnpm install",
+   ".github/workflows/npm-publish.yml:27 :: pnpm install"
+  ],
+  "fix": "Every install step for this package uses pnpm (.github/workflows/ci.yml:32, .github/workflows/npm-publish.yml:27), so package-lock.json is not used by CI or deployment. Delete package-lock.json, keep pnpm-lock.yaml, and consider adding \"packageManager\" to package.json so every tool uses pnpm."
+ },
+ {
+  "set": "v2",
+  "repo": "LCNINE/almondyoung-server",
+  "commit": "8b72c29",
+  "scope": ".",
+  "type": "DECLARED+installs",
+  "dates": {
+   "package-lock.json": "2026-09-17"
+  },
+  "cites": [
+   ".github/workflows/verification-gates.yml:41 :: run: npm ci"
+  ],
+  "fix": "\"packageManager\" declares Yarn. Remove package-lock.json and reinstall with yarn, or change \"packageManager\" if you are deliberately migrating. Also note: .github/workflows/verification-gates.yml:41 installs with npm."
+ },
+ {
+  "set": "v2",
+  "repo": "LCNINE/almondyoung-server",
+  "commit": "8b72c29",
+  "scope": "apps/medusa",
+  "type": "RECOMMEND",
+  "dates": {
+   "apps/medusa/package-lock.json": "2026-09-04",
+   "apps/medusa/yarn.lock": "2026-09-04"
+  },
+  "cites": [
+   ".github/workflows/medusa-unit-tests.yml:47 :: run: npm ci  [working-directory: apps/medusa]",
+   ".github/workflows/medusa-unit-tests.yml:120 :: run: npm ci  [working-directory: apps/medusa]"
+  ],
+  "fix": "Every install step for this package uses npm (.github/workflows/medusa-unit-tests.yml:47, .github/workflows/medusa-unit-tests.yml:120), so apps/medusa/yarn.lock is not used by CI or deployment. Delete apps/medusa/yarn.lock, keep apps/medusa/package-lock.json, and consider adding \"packageManager\" to package.json so every tool uses npm."
+ },
+ {
+  "set": "v2",
+  "repo": "OpenMovieDB/telegram-bot",
+  "commit": "3d426b1",
+  "scope": ".",
+  "type": "RECOMMEND",
+  "dates": {
+   "package-lock.json": "2026-07-04",
+   "yarn.lock": "2026-07-04"
+  },
+  "cites": [
+   "Dockerfile:13 :: RUN npm install --legacy-peer-deps",
+   "Dockerfile:32 :: RUN npm install --only=production --legacy-peer-deps"
+  ],
+  "fix": "Every install step for this package uses npm (Dockerfile:13, Dockerfile:32), so yarn.lock is not used by CI or deployment. Delete yarn.lock, keep package-lock.json, and consider adding \"packageManager\" to package.json so every tool uses npm."
+ },
+ {
+  "set": "v2",
+  "repo": "mfuentesg/capo",
+  "commit": "308810b",
+  "scope": ".",
+  "type": "RECOMMEND",
+  "dates": {
+   "package-lock.json": "2026-03-10",
+   "pnpm-lock.yaml": "2026-08-19"
+  },
+  "cites": [
+   ".github/workflows/ci.yml:34 :: run: pnpm install --frozen-lockfile",
+   ".github/workflows/ci.yml:67 :: run: pnpm install --frozen-lockfile"
+  ],
+  "fix": "Every install step for this package uses pnpm (.github/workflows/ci.yml:34, .github/workflows/ci.yml:67), so package-lock.json is not used by CI or deployment. Delete package-lock.json, keep pnpm-lock.yaml, and consider adding \"packageManager\" to package.json so every tool uses pnpm."
+ },
+ {
+  "set": "v3",
+  "repo": "MattFlower/tempest",
+  "commit": "a53ed0e",
+  "scope": ".",
+  "type": "RECOMMEND",
+  "dates": {
+   "bun.lock": "2026-07-01",
+   "package-lock.json": "2026-07-01"
+  },
+  "cites": [
+   ".github/workflows/release.yml:22 :: run: bun install"
+  ],
+  "fix": "Every install step for this package uses Bun (.github/workflows/release.yml:22), so package-lock.json is not used by CI or deployment. Delete package-lock.json, keep bun.lock, and consider adding \"packageManager\" to package.json so every tool uses bun."
+ },
+ {
+  "set": "v3",
+  "repo": "inmorpher/ServeMate-service",
+  "commit": "a076e84",
+  "scope": ".",
+  "type": "RECOMMEND",
+  "dates": {
+   "package-lock.json": "2026-07-29",
+   "pnpm-lock.yaml": "2026-08-21"
+  },
+  "cites": [
+   ".github/workflows/ci.yml:38 :: run: pnpm install --frozen-lockfile",
+   "Dockerfile:11 :: RUN apt-get update \\"
+  ],
+  "fix": "Every install step for this package uses pnpm (.github/workflows/ci.yml:38, Dockerfile:11), so package-lock.json is not used by CI or deployment. Delete package-lock.json, keep pnpm-lock.yaml, and consider adding \"packageManager\" to package.json so every tool uses pnpm."
+ },
+ {
+  "set": "v3",
+  "repo": "dvcrn/mcp-server-devonthink",
+  "commit": "13bc123",
+  "scope": ".",
+  "type": "DECLARED+installs",
+  "dates": {
+   "bun.lock": "2025-11-09",
+   "package-lock.json": "2026-04-27"
+  },
+  "cites": [
+   ".github/workflows/ci.yml:27 :: run: npm ci"
+  ],
+  "fix": "\"packageManager\" declares Yarn. Remove bun.lock, package-lock.json and reinstall with yarn, or change \"packageManager\" if you are deliberately migrating. Also note: .github/workflows/ci.yml:27 installs with npm."
+ },
+ {
+  "set": "v3",
+  "repo": "zcaceres/builtwith-api",
+  "commit": "443877b",
+  "scope": ".",
+  "type": "RECOMMEND",
+  "dates": {
+   "bun.lock": "2026-03-18",
+   "package-lock.json": "2026-02-12"
+  },
+  "cites": [
+   ".github/workflows/ci.yml:17 :: - run: bun install --frozen-lockfile",
+   ".github/workflows/docs.yml:27 :: - run: bun install --frozen-lockfile",
+   ".github/workflows/release.yml:76 :: - run: bun install --frozen-lockfile"
+  ],
+  "fix": "Every install step for this package uses Bun (.github/workflows/ci.yml:17, .github/workflows/docs.yml:27, .github/workflows/release.yml:76), so package-lock.json is not used by CI or deployment. Delete package-lock.json, keep bun.lock, and consider adding \"packageManager\" to package.json so every tool uses bun."
+ },
+ {
+  "set": "v4",
+  "repo": "bertyhell/timesheets-tracker",
+  "commit": "fc39acf",
+  "scope": ".",
+  "type": "RECOMMEND",
+  "dates": {
+   "bun.lock": "2026-05-23",
+   "package-lock.json": "2026-09-15"
+  },
+  "cites": [
+   ".github/workflows/release.yml:59 :: run: npm ci",
+   ".github/workflows/release.yml:137 :: run: npm ci"
+  ],
+  "fix": "Every install step for this package uses npm (.github/workflows/release.yml:59, .github/workflows/release.yml:137), so bun.lock is not used by CI or deployment. Delete bun.lock, keep package-lock.json, and consider adding \"packageManager\" to package.json so every tool uses npm."
+ },
+ {
+  "set": "v4",
+  "repo": "bertyhell/timesheets-tracker",
+  "commit": "fc39acf",
+  "scope": "client",
+  "type": "RECOMMEND",
+  "dates": {
+   "client/bun.lock": "2026-05-23",
+   "client/package-lock.json": "2026-09-15"
+  },
+  "cites": [
+   ".github/workflows/release.yml:66 :: run: npm ci  [working-directory: client]",
+   ".github/workflows/release.yml:144 :: run: npm ci  [working-directory: client]"
+  ],
+  "fix": "Every install step for this package uses npm (.github/workflows/release.yml:66, .github/workflows/release.yml:144), so client/bun.lock is not used by CI or deployment. Delete client/bun.lock, keep client/package-lock.json, and consider adding \"packageManager\" to package.json so every tool uses npm."
+ },
+ {
+  "set": "v4",
+  "repo": "TahaSohail-Goat/SabaqAI",
+  "commit": "c0f352d",
+  "scope": ".",
+  "type": "RECOMMEND",
+  "dates": {
+   "bun.lock": "2026-08-26",
+   "package-lock.json": "2026-09-06"
+  },
+  "cites": [
+   ".github/workflows/ci.yml:25 :: run: npm install",
+   ".github/workflows/weekly-crawl.yml:61 :: run: npm ci"
+  ],
+  "fix": "Every install step for this package uses npm (.github/workflows/ci.yml:25, .github/workflows/weekly-crawl.yml:61), so bun.lock is not used by CI or deployment. Delete bun.lock, keep package-lock.json, and consider adding \"packageManager\" to package.json so every tool uses npm."
+ },
+ {
+  "set": "v4",
+  "repo": "baisharg/ASTN",
+  "commit": "5c17a65",
+  "scope": ".",
+  "type": "DECLARED+installs",
+  "dates": {
+   "bun.lock": "2026-06-12",
+   "pnpm-lock.yaml": "2026-06-17"
+  },
+  "cites": [
+   ".github/workflows/ci.yml:40 :: run: bun install --frozen-lockfile"
+  ],
+  "fix": "\"packageManager\" declares pnpm. Remove bun.lock and reinstall with pnpm, or change \"packageManager\" if you are deliberately migrating. Also note: .github/workflows/ci.yml:40 installs with Bun."
+ },
+ {
+  "set": "v4",
+  "repo": "cliftonc/drizby",
+  "commit": "a490a51",
+  "scope": ".",
+  "type": "RECOMMEND",
+  "dates": {
+   "package-lock.json": "2026-09-12",
+   "pnpm-lock.yaml": "2026-03-28"
+  },
+  "cites": [
+   ".github/workflows/ci.yml:21 :: - run: npm ci",
+   "Dockerfile:10 :: RUN npm ci --legacy-peer-deps",
+   "Dockerfile:28 :: RUN npm ci --omit=dev --legacy-peer-deps"
+  ],
+  "fix": "Every install step for this package uses npm (.github/workflows/ci.yml:21, Dockerfile:10, Dockerfile:28), so pnpm-lock.yaml is not used by CI or deployment. Delete pnpm-lock.yaml, keep package-lock.json, and consider adding \"packageManager\" to package.json so every tool uses npm."
+ },
+ {
+  "set": "v4",
+  "repo": "nemo-ufes/Tonto",
+  "commit": "af9b161",
+  "scope": ".",
+  "type": "RECOMMEND",
+  "dates": {
+   "package-lock.json": "2026-08-21",
+   "yarn.lock": "2026-08-21"
+  },
+  "cites": [
+   ".github/workflows/documentation.yml:30 :: - run: npm ci"
+  ],
+  "fix": "Every install step for this package uses npm (.github/workflows/documentation.yml:30), so yarn.lock is not used by CI or deployment. Delete yarn.lock, keep package-lock.json, and consider adding \"packageManager\" to package.json so every tool uses npm."
+ },
+ {
+  "set": "v4",
+  "repo": "rahlplx/vibemate",
+  "commit": "5297dda",
+  "scope": ".",
+  "type": "RECOMMEND",
+  "dates": {
+   "bun.lock": "2026-06-29",
+   "package-lock.json": "2026-06-26"
+  },
+  "cites": [
+   ".github/workflows/ci.yml:27 :: run: bun install --frozen-lockfile",
+   ".github/workflows/ci.yml:62 :: run: bun install --frozen-lockfile",
+   ".github/workflows/mine-oss.yml:30 :: run: bun install --frozen-lockfile",
+   ".github/workflows/publish.yml:26 :: run: bun install --frozen-lockfile",
+   ".github/workflows/publish.yml:60 :: run: bun install --frozen-lockfile",
+   "Dockerfile:7 :: RUN bun install --frozen-lockfile"
+  ],
+  "fix": "Every install step for this package uses Bun (.github/workflows/ci.yml:27, .github/workflows/ci.yml:62, .github/workflows/mine-oss.yml:30, .github/workflows/publish.yml:26, .github/workflows/publish.yml:60, Dockerfile:7), so package-lock.json is not used by CI or deployment. Delete package-lock.json, keep bun.lock, and consider adding \"packageManager\" to package.json so every tool uses bun."
+ },
+ {
+  "set": "v4",
+  "repo": "rmzlb/baaton",
+  "commit": "ce5d321",
+  "scope": "frontend",
+  "type": "RECOMMEND",
+  "dates": {
+   "frontend/bun.lock": "2026-04-18",
+   "frontend/package-lock.json": "2026-07-04"
+  },
+  "cites": [
+   ".github/workflows/ci.yml:80 :: run: npm ci  [working-directory: frontend]"
+  ],
+  "fix": "Every install step for this package uses npm (.github/workflows/ci.yml:80), so frontend/bun.lock is not used by CI or deployment. Delete frontend/bun.lock, keep frontend/package-lock.json, and consider adding \"packageManager\" to package.json so every tool uses npm."
+ },
+ {
+  "set": "v4",
+  "repo": "takamurayuki/rapitas",
+  "commit": "1459d22",
+  "scope": "rapitas-backend",
+  "type": "RECOMMEND",
+  "dates": {
+   "rapitas-backend/bun.lock": "2026-05-02",
+   "rapitas-backend/pnpm-lock.yaml": "2026-04-29"
+  },
+  "cites": [
+   ".github/workflows/e2e.yml:49 :: run: bun install  [working-directory: rapitas-backend]",
+   ".github/workflows/fix-bun-lock.yml:38 :: bun install  [working-directory: rapitas-backend]",
+   ".github/workflows/performance.yml:54 :: run: bun install  [working-directory: rapitas-backend]",
+   ".github/workflows/pr-preview.yml:115 :: run: bun install  [working-directory: rapitas-backend]",
+   ".github/workflows/prompt-evolution-weekly.yml:39 :: run: bun install --frozen-lockfile  [working-directory: rapitas-backend]",
+   ".github/workflows/tauri-build.yml:127 :: run: bun install  [working-directory: rapitas-backend]",
+   ".github/workflows/test-lint.yml:49 :: run: bun install  [working-directory: rapitas-backend]",
+   ".github/workflows/test-lint.yml:104 :: run: bun install  [working-directory: rapitas-backend]",
+   ".github/workflows/test-lint.yml:136 :: run: bun install  [working-directory: rapitas-backend]",
+   ".github/workflows/test-lint.yml:289 :: run: bun install  [working-directory: rapitas-backend]",
+   ".github/workflows/update-lockfiles.yml:49 :: bun install  [working-directory: rapitas-backend]"
+  ],
+  "fix": "Every install step for this package uses Bun (.github/workflows/e2e.yml:49, .github/workflows/fix-bun-lock.yml:38, .github/workflows/performance.yml:54, .github/workflows/pr-preview.yml:115, .github/workflows/prompt-evolution-weekly.yml:39, .github/workflows/tauri-build.yml:127, .github/workflows/test-lint.yml:49, .github/workflows/test-lint.yml:104, .github/workflows/test-lint.yml:136, .github/workflows/test-lint.yml:289, .github/workflows/update-lockfiles.yml:49), so rapitas-backend/pnpm-lock.yaml is not used by CI or deployment. Delete rapitas-backend/pnpm-lock.yaml, keep rapitas-backend/bun.lock, and consider adding \"packageManager\" to package.json so every tool uses bun."
+ },
+ {
+  "set": "v5",
+  "repo": "walleliu1016/lynel-desktop",
+  "commit": "b40401b",
+  "scope": ".",
+  "type": "RECOMMEND",
+  "dates": {
+   "package-lock.json": "2026-09-11",
+   "pnpm-lock.yaml": "2026-08-18"
+  },
+  "cites": [
+   ".github/workflows/build.yml:48 :: run: npm ci"
+  ],
+  "fix": "Every install step for this package uses npm (.github/workflows/build.yml:48), so pnpm-lock.yaml is not used by CI or deployment. Delete pnpm-lock.yaml, keep package-lock.json, and consider adding \"packageManager\" to package.json so every tool uses npm."
+ },
+ {
+  "set": "v5",
+  "repo": "1s-design/yishe-shop",
+  "commit": "243e6ee",
+  "scope": ".",
+  "type": "DECLARED+installs",
+  "dates": {
+   "package-lock.json": "2026-07-21",
+   "pnpm-lock.yaml": "2026-07-18"
+  },
+  "cites": [
+   ".github/workflows/nuxtjs.yml:29 :: run: npm ci --prefer-offline --no-audit"
+  ],
+  "fix": "\"packageManager\" declares Yarn. Remove package-lock.json, pnpm-lock.yaml and reinstall with yarn, or change \"packageManager\" if you are deliberately migrating. Also note: .github/workflows/nuxtjs.yml:29 installs with npm."
+ },
+ {
+  "set": "v5",
+  "repo": "code-yeongyu/senpi",
+  "commit": "1690fdb",
+  "scope": ".",
+  "type": "DISAGREE",
+  "dates": {
+   "bun.lock": "2026-09-18",
+   "package-lock.json": "2026-09-18"
+  },
+  "cites": [
+   ".github/workflows/ci.yml:36 :: run: npm ci --ignore-scripts",
+   ".github/workflows/ci.yml:84 :: run: npm ci --ignore-scripts",
+   ".github/workflows/ci.yml:132 :: run: npm ci --ignore-scripts",
+   ".github/workflows/ci.yml:190 :: run: npm ci --ignore-scripts",
+   ".github/workflows/ci.yml:216 :: run: npm ci --ignore-scripts",
+   ".github/workflows/ci.yml:267 :: run: npm ci --ignore-scripts",
+   ".github/workflows/ci.yml:308 :: run: npm ci --ignore-scripts",
+   ".github/workflows/ci.yml:420 :: run: npm ci --ignore-scripts",
+   ".github/workflows/ci.yml:453 :: run: npm ci --ignore-scripts",
+   ".github/workflows/native-prebuilds.yml:147 :: run: npm ci --ignore-scripts",
+   ".github/workflows/npm-audit.yml:25 :: run: npm ci --ignore-scripts --no-audit --no-fund",
+   ".github/workflows/perf-trend.yml:36 :: run: npm ci --ignore-scripts",
+   ".github/workflows/publish-model-catalog.yml:57 :: run: npm ci --ignore-scripts",
+   ".github/workflows/read-summary-binary-parity.yml:41 :: run: bun install --ignore-scripts --frozen-lockfile",
+   ".github/workflows/releasability.yml:34 :: run: npm ci --ignore-scripts",
+   ".github/workflows/releasability.yml:82 :: run: npm ci --ignore-scripts",
+   ".github/workflows/releasability.yml:129 :: run: npm ci --ignore-scripts",
+   ".github/workflows/session-worker-compile.yml:39 :: run: npm ci --ignore-scripts"
+  ],
+  "fix": "Install steps for this package disagree: Bun in .github/workflows/read-summary-binary-parity.yml:41; npm in .github/workflows/ci.yml:36, .github/workflows/ci.yml:84, .github/workflows/ci.yml:132, .github/workflows/ci.yml:190, .github/workflows/ci.yml:216, .github/workflows/ci.yml:267, .github/workflows/ci.yml:308, .github/workflows/ci.yml:420, .github/workflows/ci.yml:453, .github/workflows/native-prebuilds.yml:147, .github/workflows/npm-audit.yml:25, .github/workflows/perf-trend.yml:36, .github/workflows/publish-model-catalog.yml:57, .github/workflows/releasability.yml:34, .github/workflows/releasability.yml:82, .github/workflows/releasability.yml:129, .github/workflows/session-worker-compile.yml:39. What you test can differ from what you build or ship. Pick one manager, delete the other lockfile, and make every install step use it."
+ },
+ {
+  "set": "v5",
+  "repo": "Jackson57279/polaris",
+  "commit": "73ab050",
+  "scope": ".",
+  "type": "DISAGREE",
+  "dates": {
+   "bun.lock": "2026-02-15",
+   "package-lock.json": "2026-01-07"
+  },
+  "cites": [
+   ".github/workflows/ci.yml:31 :: run: npm ci",
+   ".github/workflows/ci.yml:50 :: run: npm ci",
+   ".github/workflows/ci.yml:70 :: run: npm ci",
+   ".github/workflows/electron-release.yml:21 :: run: npm ci",
+   ".github/workflows/electron-release.yml:47 :: run: npm ci",
+   ".github/workflows/electron-release.yml:84 :: run: npm ci",
+   "vercel.json :: "
+  ],
+  "fix": "Install steps for this package disagree: Bun in vercel.json; npm in .github/workflows/ci.yml:31, .github/workflows/ci.yml:50, .github/workflows/ci.yml:70, .github/workflows/electron-release.yml:21, .github/workflows/electron-release.yml:47, .github/workflows/electron-release.yml:84. What you test can differ from what you build or ship. Pick one manager, delete the other lockfile, and make every install step use it."
+ },
+ {
+  "set": "v5",
+  "repo": "Vivekray898/photopic",
+  "commit": "4b9cd76",
+  "scope": ".",
+  "type": "RECOMMEND",
+  "dates": {
+   "bun.lock": "2026-08-11",
+   "package-lock.json": "2026-09-13",
+   "pnpm-lock.yaml": "2026-09-13"
+  },
+  "cites": [
+   "Dockerfile:7 :: RUN bun install"
+  ],
+  "fix": "Every install step for this package uses Bun (Dockerfile:7), so package-lock.json, pnpm-lock.yaml are not used by CI or deployment. Delete package-lock.json, pnpm-lock.yaml, keep bun.lock, and consider adding \"packageManager\" to package.json so every tool uses bun."
+ }
+]

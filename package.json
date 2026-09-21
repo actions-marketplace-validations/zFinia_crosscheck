@@ -24,7 +24,8 @@
     "node": ">=18"
   },
   "scripts": {
-    "test": "node --test"
+    "test": "node --test",
+    "benchmark:verify": "node benchmark/ai-agent-repositories-2026-09/verify.mjs"
   },
   "keywords": [
     "lockfile",

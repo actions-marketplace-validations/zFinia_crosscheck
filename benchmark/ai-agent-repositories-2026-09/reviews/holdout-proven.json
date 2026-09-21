@@ -1,0 +1,719 @@
+{
+  "reviewedAt": "2026-09-18",
+  "reviewedBy": "zFinia",
+  "findings": [
+    {
+      "set": "holdout-v2",
+      "repository": "Crawlith/crawlith",
+      "commit": "95771de338978a7cbd74fbf1a4b2f931503dbc79",
+      "findingId": "package-manager/conflicting-config@.",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "npm <- package-lock.json [lockfile] lockfile present",
+        "pnpm <- pnpm-lock.yaml [lockfile] lockfile present",
+        "pnpm <- .github/workflows/ci.yml:32 [install-command] run: pnpm install",
+        "pnpm <- .github/workflows/npm-publish.yml:27 [install-command] pnpm install"
+      ]
+    },
+    {
+      "set": "holdout-v2",
+      "repository": "LCNINE/almondyoung-server",
+      "commit": "8b72c2953f5438d54c5fa9043018cc6398f47a51",
+      "findingId": "package-manager/conflicting-config@.",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "npm <- package-lock.json [lockfile] lockfile present",
+        "yarn <- package.json [packageManager-field] \"packageManager\": \"yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e\"",
+        "npm <- .github/workflows/verification-gates.yml:41 [install-command] run: npm ci"
+      ]
+    },
+    {
+      "set": "holdout-v2",
+      "repository": "LCNINE/almondyoung-server",
+      "commit": "8b72c2953f5438d54c5fa9043018cc6398f47a51",
+      "findingId": "package-manager/conflicting-config@apps/medusa",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "npm <- apps/medusa/package-lock.json [lockfile] lockfile present",
+        "yarn <- apps/medusa/yarn.lock [lockfile] lockfile present",
+        "npm <- .github/workflows/medusa-unit-tests.yml:47 [install-command] run: npm ci",
+        "npm <- .github/workflows/medusa-unit-tests.yml:120 [install-command] run: npm ci"
+      ]
+    },
+    {
+      "set": "holdout-v2",
+      "repository": "LCNINE/almondyoung-server",
+      "commit": "8b72c2953f5438d54c5fa9043018cc6398f47a51",
+      "findingId": "package-manager/conflicting-config@web/almondyoung-storefront",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "npm <- web/almondyoung-storefront/package-lock.json [lockfile] lockfile present",
+        "yarn <- web/almondyoung-storefront/yarn.lock [lockfile] lockfile present"
+      ]
+    },
+    {
+      "set": "holdout-v2",
+      "repository": "OpenMovieDB/telegram-bot",
+      "commit": "3d426b188379db73f29de1aa3b97406ceb15c5aa",
+      "findingId": "package-manager/conflicting-config@.",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "npm <- package-lock.json [lockfile] lockfile present",
+        "yarn <- yarn.lock [lockfile] lockfile present",
+        "npm <- Dockerfile:13 [install-command-unpinned] RUN npm install --legacy-peer-deps",
+        "npm <- Dockerfile:32 [install-command-unpinned] RUN npm install --only=production --legacy-peer-deps"
+      ]
+    },
+    {
+      "set": "holdout-v2",
+      "repository": "codee-sh/payload-training-app",
+      "commit": "d849246f8e4b78a31eef7b12d7256df690d1c799",
+      "findingId": "package-manager/conflicting-config@.",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "npm <- package-lock.json [lockfile] lockfile present",
+        "yarn <- package.json [packageManager-field] \"packageManager\": \"yarn@4.14.1+sha512.64df448055b2d37ba269d7db535a469b8da93f8ef1140c25fd7a83c00a8fbaacb214ca0e02553b92a2c54cef78bb67d0b4817fab02001df0e24fac0faccc3b42\"",
+        "yarn <- yarn.lock [lockfile] lockfile present",
+        "yarn <- .github/workflows/release-on-merge.yml:43 [install-command] run: yarn install --immutable"
+      ]
+    },
+    {
+      "set": "holdout-v2",
+      "repository": "gambiarraclub/gambiarra-arena",
+      "commit": "4909ff6f8a16491ec3e674e882e63be95fb8b02a",
+      "findingId": "package-manager/conflicting-config@.",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "npm <- package-lock.json [lockfile] lockfile present",
+        "pnpm <- package.json [packageManager-field] \"packageManager\": \"pnpm@11.21.0\"",
+        "pnpm <- pnpm-lock.yaml [lockfile] lockfile present"
+      ]
+    },
+    {
+      "set": "holdout-v2",
+      "repository": "lernza/lernza",
+      "commit": "b6a7af2c39b5d2058f05a8f683acb91300e63957",
+      "findingId": "package-manager/conflicting-config@frontend",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "npm <- frontend/package-lock.json [lockfile] lockfile present",
+        "pnpm <- frontend/package.json [packageManager-field] \"packageManager\": \"pnpm@10.33.0\"",
+        "pnpm <- frontend/pnpm-lock.yaml [lockfile] lockfile present",
+        "pnpm <- .github/workflows/dependency-security-scan.yml:80 [install-command] pnpm install --frozen-lockfile",
+        "pnpm <- .github/workflows/playwright.yml:32 [install-command] run: pnpm install --frozen-lockfile"
+      ]
+    },
+    {
+      "set": "holdout-v2",
+      "repository": "loyal-labs/loyal-app",
+      "commit": "b278b81e3d7beea3ecb62099981856ce91e00830",
+      "findingId": "package-manager/conflicting-config@.",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "bun <- bun.lock [lockfile] lockfile present",
+        "npm <- package-lock.json [lockfile] lockfile present",
+        "bun <- package.json [packageManager-field] \"packageManager\": \"bun@1.3.11\"",
+        "pnpm <- pnpm-lock.yaml [lockfile] lockfile present",
+        "yarn <- yarn.lock [lockfile] lockfile present",
+        "bun <- .github/workflows/commit-style.yml:29 [install-command] run: bun install --frozen-lockfile",
+        "bun <- .github/workflows/extension.yml:15 [install-command-unpinned] - run: bun install",
+        "bun <- .github/workflows/release-packages.yml:29 [install-command] run: bun install --frozen-lockfile",
+        "bun <- .github/workflows/sync-mirror-repos.yml:29 [install-command] run: bun install --frozen-lockfile"
+      ]
+    },
+    {
+      "set": "holdout-v2",
+      "repository": "loyal-labs/loyal-app",
+      "commit": "b278b81e3d7beea3ecb62099981856ce91e00830",
+      "findingId": "package-manager/conflicting-config@apps/telegram",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "bun <- apps/telegram/bun.lock [lockfile] lockfile present",
+        "npm <- apps/telegram/package-lock.json [lockfile] lockfile present",
+        "bun <- apps/telegram/package.json [packageManager-field] \"packageManager\": \"bun@1.2.17\""
+      ]
+    },
+    {
+      "set": "holdout-v2",
+      "repository": "mfuentesg/capo",
+      "commit": "308810bec0de538d17acc493a24082a9925e141a",
+      "findingId": "package-manager/conflicting-config@.",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "npm <- package-lock.json [lockfile] lockfile present",
+        "pnpm <- pnpm-lock.yaml [lockfile] lockfile present",
+        "pnpm <- .github/workflows/ci.yml:34 [install-command] run: pnpm install --frozen-lockfile",
+        "pnpm <- .github/workflows/ci.yml:67 [install-command] run: pnpm install --frozen-lockfile"
+      ]
+    },
+    {
+      "set": "holdout-v2",
+      "repository": "workos/case",
+      "commit": "63ece1d1161b83ec9183e1b7430102086b384047",
+      "findingId": "package-manager/conflicting-config@.",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "bun <- bun.lock [lockfile] lockfile present",
+        "pnpm <- pnpm-lock.yaml [lockfile] lockfile present"
+      ]
+    },
+    {
+      "set": "holdout-v3",
+      "repository": "HoangNguyen0403/agent-skills-standard",
+      "commit": "fa8f0ec07ba76445350090f08e2b80d6e283bbae",
+      "findingId": "package-manager/conflicting-config@.",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "npm <- package-lock.json [lockfile] lockfile present",
+        "pnpm <- package.json [packageManager-field] \"packageManager\": \"pnpm@10.0.0\"",
+        "pnpm <- pnpm-lock.yaml [lockfile] lockfile present",
+        "pnpm <- .github/workflows/ci.yml:46 [install-command] run: pnpm install --frozen-lockfile",
+        "pnpm <- .github/workflows/ci.yml:70 [install-command] run: pnpm install --frozen-lockfile",
+        "pnpm <- .github/workflows/ci.yml:92 [install-command] run: pnpm install --frozen-lockfile",
+        "pnpm <- .github/workflows/publish.yml:55 [install-command] run: pnpm install --frozen-lockfile",
+        "pnpm <- .github/workflows/publish.yml:145 [install-command] run: pnpm install --frozen-lockfile",
+        "pnpm <- .github/workflows/skill-freshness.yml:38 [install-command] run: pnpm install --frozen-lockfile"
+      ]
+    },
+    {
+      "set": "holdout-v3",
+      "repository": "HoangNguyen0403/agent-skills-standard",
+      "commit": "fa8f0ec07ba76445350090f08e2b80d6e283bbae",
+      "findingId": "package-manager/conflicting-config@cli",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "npm <- cli/package-lock.json [lockfile] lockfile present",
+        "pnpm <- cli/pnpm-lock.yaml [lockfile] lockfile present"
+      ]
+    },
+    {
+      "set": "holdout-v3",
+      "repository": "MattFlower/tempest",
+      "commit": "a53ed0e94d3bb215aa2902c09d44662ddfc405b7",
+      "findingId": "package-manager/conflicting-config@.",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "bun <- bun.lock [lockfile] lockfile present",
+        "npm <- package-lock.json [lockfile] lockfile present",
+        "bun <- .github/workflows/release.yml:22 [install-command-unpinned] run: bun install"
+      ]
+    },
+    {
+      "set": "holdout-v3",
+      "repository": "MisaelMa/node-cfdi",
+      "commit": "a837ae04be34afce1a7db05735d699142a1473c9",
+      "findingId": "package-manager/conflicting-config@packages/cfdi/designs",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "npm <- packages/cfdi/designs/package-lock.json [lockfile] lockfile present",
+        "pnpm <- packages/cfdi/designs/pnpm-lock.yaml [lockfile] lockfile present"
+      ]
+    },
+    {
+      "set": "holdout-v3",
+      "repository": "inmorpher/ServeMate-service",
+      "commit": "a076e846c2ad8d008d7d1e4261c45abe6872ac4e",
+      "findingId": "package-manager/conflicting-config@.",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "npm <- package-lock.json [lockfile] lockfile present",
+        "pnpm <- pnpm-lock.yaml [lockfile] lockfile present",
+        "pnpm <- .github/workflows/ci.yml:38 [install-command] run: pnpm install --frozen-lockfile",
+        "pnpm <- Dockerfile:11 [install-command] RUN apt-get update  \t&& apt-get upgrade -y  \t&& apt-get install -y --no-install-recommends ca-certificates  \t&& rm -rf /var/lib/apt/lists/*  \t&& pnpm install --"
+      ]
+    },
+    {
+      "set": "holdout-v3",
+      "repository": "makeplane/prd-agent",
+      "commit": "1cda0ff35c3afd892b8f3b5d49d89de45980633e",
+      "findingId": "package-manager/conflicting-config@.",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "npm <- package-lock.json [lockfile] lockfile present",
+        "pnpm <- pnpm-lock.yaml [lockfile] lockfile present"
+      ]
+    },
+    {
+      "set": "holdout-v3",
+      "repository": "hmcts/tcoe-playwright-example",
+      "commit": "beb51edd54f1374cbda4f959e6bfaf1141618bf4",
+      "findingId": "package-manager/conflicting-config@.",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "npm <- package-lock.json [lockfile] lockfile present",
+        "yarn <- package.json [packageManager-field] \"packageManager\": \"yarn@4.9.4\"",
+        "yarn <- yarn.lock [lockfile] lockfile present"
+      ]
+    },
+    {
+      "set": "holdout-v3",
+      "repository": "dvcrn/mcp-server-devonthink",
+      "commit": "13bc1239ba6b8e1bd5890d07f29ceff8c234728b",
+      "findingId": "package-manager/conflicting-config@.",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "bun <- bun.lock [lockfile] lockfile present",
+        "npm <- package-lock.json [lockfile] lockfile present",
+        "yarn <- package.json [packageManager-field] \"packageManager\": \"yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e\"",
+        "npm <- .github/workflows/ci.yml:27 [install-command] run: npm ci"
+      ]
+    },
+    {
+      "set": "holdout-v3",
+      "repository": "tokens-studio/figma-plugin",
+      "commit": "bbb69632d079f33bf79136e7c9a871ab8bdeb98e",
+      "findingId": "package-manager/conflicting-config@packages/tokens-studio-for-figma/token-transformer",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "npm <- packages/tokens-studio-for-figma/token-transformer/package-lock.json [lockfile] lockfile present",
+        "yarn <- packages/tokens-studio-for-figma/token-transformer/yarn.lock [lockfile] lockfile present"
+      ]
+    },
+    {
+      "set": "holdout-v3",
+      "repository": "zcaceres/builtwith-api",
+      "commit": "443877bba4c6bd0735b7bf6b0f33709a4dbc1bee",
+      "findingId": "package-manager/conflicting-config@.",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "bun <- bun.lock [lockfile] lockfile present",
+        "npm <- package-lock.json [lockfile] lockfile present",
+        "bun <- .github/workflows/ci.yml:17 [install-command] - run: bun install --frozen-lockfile",
+        "bun <- .github/workflows/docs.yml:27 [install-command] - run: bun install --frozen-lockfile",
+        "bun <- .github/workflows/release.yml:76 [install-command] - run: bun install --frozen-lockfile"
+      ]
+    },
+    {
+      "set": "holdout-v4",
+      "repository": "bertyhell/timesheets-tracker",
+      "commit": "fc39acf638183f7e020664e90a7dbebca6ae2d9d",
+      "findingId": "package-manager/conflicting-config@.",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "bun <- bun.lock [lockfile] lockfile present",
+        "npm <- package-lock.json [lockfile] lockfile present",
+        "npm <- .github/workflows/release.yml:59 [install-command] run: npm ci",
+        "npm <- .github/workflows/release.yml:137 [install-command] run: npm ci"
+      ]
+    },
+    {
+      "set": "holdout-v4",
+      "repository": "bertyhell/timesheets-tracker",
+      "commit": "fc39acf638183f7e020664e90a7dbebca6ae2d9d",
+      "findingId": "package-manager/conflicting-config@client",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "bun <- client/bun.lock [lockfile] lockfile present",
+        "npm <- client/package-lock.json [lockfile] lockfile present",
+        "npm <- .github/workflows/release.yml:66 [install-command] run: npm ci",
+        "npm <- .github/workflows/release.yml:144 [install-command] run: npm ci"
+      ]
+    },
+    {
+      "set": "holdout-v4",
+      "repository": "TahaSohail-Goat/SabaqAI",
+      "commit": "c0f352d50e08d4a9687040b86686e9648226e53f",
+      "findingId": "package-manager/conflicting-config@.",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "bun <- bun.lock [lockfile] lockfile present",
+        "npm <- package-lock.json [lockfile] lockfile present",
+        "npm <- .github/workflows/ci.yml:25 [install-command-unpinned] run: npm install",
+        "npm <- .github/workflows/weekly-crawl.yml:61 [install-command] run: npm ci"
+      ]
+    },
+    {
+      "set": "holdout-v4",
+      "repository": "baisharg/ASTN",
+      "commit": "5c17a657a0ee3d227138862f19958e0d4f91cad8",
+      "findingId": "package-manager/conflicting-config@.",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "bun <- bun.lock [lockfile] lockfile present",
+        "pnpm <- package.json [packageManager-field] \"packageManager\": \"pnpm@10.32.1\"",
+        "pnpm <- pnpm-lock.yaml [lockfile] lockfile present",
+        "bun <- .github/workflows/ci.yml:40 [install-command] run: bun install --frozen-lockfile"
+      ]
+    },
+    {
+      "set": "holdout-v4",
+      "repository": "cliftonc/drizby",
+      "commit": "a490a517cda4bd043f2cde2fa3bb64c12307b463",
+      "findingId": "package-manager/conflicting-config@.",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "npm <- package-lock.json [lockfile] lockfile present",
+        "pnpm <- pnpm-lock.yaml [lockfile] lockfile present",
+        "npm <- .github/workflows/ci.yml:21 [install-command] - run: npm ci",
+        "npm <- Dockerfile:10 [install-command] RUN npm ci --legacy-peer-deps",
+        "npm <- Dockerfile:28 [install-command] RUN npm ci --omit=dev --legacy-peer-deps"
+      ]
+    },
+    {
+      "set": "holdout-v4",
+      "repository": "daniquishpecod4/SARAB4VE",
+      "commit": "a8b579fb4df3987676813924de4d8a22e145917a",
+      "findingId": "package-manager/conflicting-config@backend",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "npm <- backend/package-lock.json [lockfile] lockfile present",
+        "pnpm <- backend/pnpm-lock.yaml [lockfile] lockfile present"
+      ]
+    },
+    {
+      "set": "holdout-v4",
+      "repository": "daniquishpecod4/SARAB4VE",
+      "commit": "a8b579fb4df3987676813924de4d8a22e145917a",
+      "findingId": "package-manager/conflicting-config@frontend",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "npm <- frontend/package-lock.json [lockfile] lockfile present",
+        "pnpm <- frontend/pnpm-lock.yaml [lockfile] lockfile present"
+      ]
+    },
+    {
+      "set": "holdout-v4",
+      "repository": "nemo-ufes/Tonto",
+      "commit": "af9b161d8de6cffc44e9092808a01db292cde80e",
+      "findingId": "package-manager/conflicting-config@.",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "npm <- package-lock.json [lockfile] lockfile present",
+        "yarn <- yarn.lock [lockfile] lockfile present",
+        "npm <- .github/workflows/documentation.yml:30 [install-command] - run: npm ci"
+      ]
+    },
+    {
+      "set": "holdout-v4",
+      "repository": "rahlplx/vibemate",
+      "commit": "5297ddaecd6a05b2f905c93955741686a070087b",
+      "findingId": "package-manager/conflicting-config@.",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "bun <- bun.lock [lockfile] lockfile present",
+        "npm <- package-lock.json [lockfile] lockfile present",
+        "bun <- .github/workflows/ci.yml:27 [install-command] run: bun install --frozen-lockfile",
+        "bun <- .github/workflows/ci.yml:62 [install-command] run: bun install --frozen-lockfile",
+        "bun <- .github/workflows/mine-oss.yml:30 [install-command] run: bun install --frozen-lockfile",
+        "bun <- .github/workflows/publish.yml:26 [install-command] run: bun install --frozen-lockfile",
+        "bun <- .github/workflows/publish.yml:60 [install-command] run: bun install --frozen-lockfile",
+        "bun <- Dockerfile:7 [install-command] RUN bun install --frozen-lockfile"
+      ]
+    },
+    {
+      "set": "holdout-v4",
+      "repository": "rmzlb/baaton",
+      "commit": "ce5d3216fbf8b110ce6f81ba2ffea476c72e194f",
+      "findingId": "package-manager/conflicting-config@frontend",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "bun <- frontend/bun.lock [lockfile] lockfile present",
+        "npm <- frontend/package-lock.json [lockfile] lockfile present",
+        "npm <- .github/workflows/ci.yml:80 [install-command] run: npm ci"
+      ]
+    },
+    {
+      "set": "holdout-v4",
+      "repository": "adhirajpandey/trackcrow",
+      "commit": "cba97e6945d1d4f33b5f4869358dc7e64cd51bf4",
+      "findingId": "package-manager/conflicting-config@.",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "npm <- package-lock.json [lockfile] lockfile present",
+        "pnpm <- package.json [packageManager-field] \"packageManager\": \"pnpm@10.28.2\"",
+        "pnpm <- pnpm-lock.yaml [lockfile] lockfile present"
+      ]
+    },
+    {
+      "set": "holdout-v4",
+      "repository": "takamurayuki/rapitas",
+      "commit": "1459d222681b1da4fc3db414af6fa7a777fa314d",
+      "findingId": "package-manager/conflicting-config@rapitas-backend",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "bun <- rapitas-backend/bun.lock [lockfile] lockfile present",
+        "pnpm <- rapitas-backend/pnpm-lock.yaml [lockfile] lockfile present",
+        "bun <- .github/workflows/e2e.yml:49 [install-command-unpinned] run: bun install",
+        "bun <- .github/workflows/fix-bun-lock.yml:38 [install-command-unpinned] bun install",
+        "bun <- .github/workflows/performance.yml:54 [install-command-unpinned] run: bun install",
+        "bun <- .github/workflows/pr-preview.yml:115 [install-command-unpinned] run: bun install",
+        "bun <- .github/workflows/prompt-evolution-weekly.yml:39 [install-command] run: bun install --frozen-lockfile",
+        "bun <- .github/workflows/tauri-build.yml:127 [install-command-unpinned] run: bun install",
+        "bun <- .github/workflows/test-lint.yml:49 [install-command-unpinned] run: bun install",
+        "bun <- .github/workflows/test-lint.yml:104 [install-command-unpinned] run: bun install",
+        "bun <- .github/workflows/test-lint.yml:136 [install-command-unpinned] run: bun install",
+        "bun <- .github/workflows/test-lint.yml:289 [install-command-unpinned] run: bun install",
+        "bun <- .github/workflows/update-lockfiles.yml:49 [install-command-unpinned] bun install"
+      ]
+    },
+    {
+      "set": "holdout-v5",
+      "repository": "mindmapvault/mindmapvault-foss",
+      "commit": "23ffc9f1dc69e06b1d7302f3858e8a8b0664154e",
+      "findingId": "package-manager/conflicting-config@frontend_app",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "npm <- frontend_app/package-lock.json [lockfile] lockfile present",
+        "pnpm <- frontend_app/pnpm-lock.yaml [lockfile] lockfile present"
+      ]
+    },
+    {
+      "set": "holdout-v5",
+      "repository": "alinangnaiba/mermditor",
+      "commit": "a36a4ecd0ed0e634ba20b25c86cd39b65bd13c7e",
+      "findingId": "package-manager/conflicting-config@.",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "npm <- package-lock.json [lockfile] lockfile present",
+        "pnpm <- pnpm-lock.yaml [lockfile] lockfile present"
+      ]
+    },
+    {
+      "set": "holdout-v5",
+      "repository": "walleliu1016/lynel-desktop",
+      "commit": "b40401bdccde174e849ef90b1277df5835128a46",
+      "findingId": "package-manager/conflicting-config@.",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "npm <- package-lock.json [lockfile] lockfile present",
+        "pnpm <- pnpm-lock.yaml [lockfile] lockfile present",
+        "npm <- .github/workflows/build.yml:48 [install-command] run: npm ci"
+      ]
+    },
+    {
+      "set": "holdout-v5",
+      "repository": "walleliu1016/lynel-desktop",
+      "commit": "b40401bdccde174e849ef90b1277df5835128a46",
+      "findingId": "package-manager/conflicting-config@src/renderer",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "npm <- src/renderer/package-lock.json [lockfile] lockfile present",
+        "pnpm <- src/renderer/pnpm-lock.yaml [lockfile] lockfile present"
+      ]
+    },
+    {
+      "set": "holdout-v5",
+      "repository": "1s-design/yishe-shop",
+      "commit": "243e6eece16d1056b54673359be3c14eb915e7eb",
+      "findingId": "package-manager/conflicting-config@.",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "npm <- package-lock.json [lockfile] lockfile present",
+        "yarn <- package.json [packageManager-field] \"packageManager\": \"yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610\"",
+        "pnpm <- pnpm-lock.yaml [lockfile] lockfile present",
+        "npm <- .github/workflows/nuxtjs.yml:29 [install-command] run: npm ci --prefer-offline --no-audit"
+      ]
+    },
+    {
+      "set": "holdout-v5",
+      "repository": "ageerle/ruoyi-web",
+      "commit": "d920a210ea4d24098711507913a70ff444a0c8e6",
+      "findingId": "package-manager/conflicting-config@.",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "npm <- package-lock.json [lockfile] lockfile present",
+        "pnpm <- pnpm-lock.yaml [lockfile] lockfile present"
+      ]
+    },
+    {
+      "set": "holdout-v5",
+      "repository": "azhigh81-bot/Toptopin-progress-",
+      "commit": "fab95ee540194e13b34cc6bf8b378f5e3abe1263",
+      "findingId": "package-manager/conflicting-config@.",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "bun <- bun.lock [lockfile] lockfile present",
+        "npm <- package-lock.json [lockfile] lockfile present"
+      ]
+    },
+    {
+      "set": "holdout-v5",
+      "repository": "Dhruv-Mann/interactive-archive",
+      "commit": "ae70195b8bc5413256df772f3dd7f63792963ca7",
+      "findingId": "package-manager/conflicting-config@.",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "npm <- package-lock.json [lockfile] lockfile present",
+        "pnpm <- pnpm-lock.yaml [lockfile] lockfile present"
+      ]
+    },
+    {
+      "set": "holdout-v5",
+      "repository": "code-yeongyu/senpi",
+      "commit": "1690fdb284dacca7ddea901db02d97ea0771eecf",
+      "findingId": "package-manager/conflicting-config@.",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "bun <- bun.lock [lockfile] lockfile present",
+        "npm <- package-lock.json [lockfile] lockfile present",
+        "npm <- .github/workflows/ci.yml:36 [install-command] run: npm ci --ignore-scripts",
+        "npm <- .github/workflows/ci.yml:84 [install-command] run: npm ci --ignore-scripts",
+        "npm <- .github/workflows/ci.yml:132 [install-command] run: npm ci --ignore-scripts",
+        "npm <- .github/workflows/ci.yml:190 [install-command] run: npm ci --ignore-scripts",
+        "npm <- .github/workflows/ci.yml:216 [install-command] run: npm ci --ignore-scripts",
+        "npm <- .github/workflows/ci.yml:267 [install-command] run: npm ci --ignore-scripts",
+        "npm <- .github/workflows/ci.yml:308 [install-command] run: npm ci --ignore-scripts",
+        "npm <- .github/workflows/ci.yml:420 [install-command] run: npm ci --ignore-scripts",
+        "npm <- .github/workflows/ci.yml:453 [install-command] run: npm ci --ignore-scripts",
+        "npm <- .github/workflows/native-prebuilds.yml:147 [install-command] run: npm ci --ignore-scripts",
+        "npm <- .github/workflows/npm-audit.yml:25 [install-command] run: npm ci --ignore-scripts --no-audit --no-fund",
+        "npm <- .github/workflows/perf-trend.yml:36 [install-command] run: npm ci --ignore-scripts",
+        "npm <- .github/workflows/publish-model-catalog.yml:57 [install-command] run: npm ci --ignore-scripts",
+        "bun <- .github/workflows/read-summary-binary-parity.yml:41 [install-command] run: bun install --ignore-scripts --frozen-lockfile",
+        "npm <- .github/workflows/releasability.yml:34 [install-command] run: npm ci --ignore-scripts",
+        "npm <- .github/workflows/releasability.yml:82 [install-command] run: npm ci --ignore-scripts",
+        "npm <- .github/workflows/releasability.yml:129 [install-command] run: npm ci --ignore-scripts",
+        "npm <- .github/workflows/session-worker-compile.yml:39 [install-command] run: npm ci --ignore-scripts"
+      ]
+    },
+    {
+      "set": "holdout-v5",
+      "repository": "brentzo/tokentrace",
+      "commit": "4dfc56f212fdcd7817df3bbc7a223017f746b27b",
+      "findingId": "package-manager/conflicting-config@services/core",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "bun <- services/core/bun.lock [lockfile] lockfile present",
+        "npm <- services/core/package-lock.json [lockfile] lockfile present"
+      ]
+    },
+    {
+      "set": "holdout-v5",
+      "repository": "Youzai-World-Team/YouzaiWorldApi",
+      "commit": "d077650dd02484fd19a9b0959f32c966e62cdc1f",
+      "findingId": "package-manager/conflicting-config@.",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "bun <- bun.lock [lockfile] lockfile present",
+        "pnpm <- package.json [packageManager-field] \"packageManager\": \"pnpm@10.32.1\"",
+        "pnpm <- pnpm-lock.yaml [lockfile] lockfile present",
+        "pnpm <- .github/workflows/release.yml:29 [install-command] run: pnpm install --frozen-lockfile"
+      ]
+    },
+    {
+      "set": "holdout-v5",
+      "repository": "Jackson57279/polaris",
+      "commit": "73ab05099891e735535d4182039c0846f11ec3e6",
+      "findingId": "package-manager/conflicting-config@.",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "bun <- bun.lock [lockfile] lockfile present",
+        "npm <- package-lock.json [lockfile] lockfile present",
+        "npm <- .github/workflows/ci.yml:31 [install-command] run: npm ci",
+        "npm <- .github/workflows/ci.yml:50 [install-command] run: npm ci",
+        "npm <- .github/workflows/ci.yml:70 [install-command] run: npm ci",
+        "npm <- .github/workflows/electron-release.yml:21 [install-command] run: npm ci",
+        "npm <- .github/workflows/electron-release.yml:47 [install-command] run: npm ci",
+        "npm <- .github/workflows/electron-release.yml:84 [install-command] run: npm ci",
+        "bun <- vercel.json [install-command-unpinned] installCommand: bun install"
+      ]
+    },
+    {
+      "set": "holdout-v5",
+      "repository": "Vivekray898/photopic",
+      "commit": "4b9cd7624db2f3fde40da117b07f7624efd4206e",
+      "findingId": "package-manager/conflicting-config@.",
+      "rule": "package-manager/conflicting-config",
+      "verdict": "confirmed",
+      "standard": "Manual review of the emitted evidence in repository context at the frozen commit; ambiguous or unconfirmed counts as wrong.",
+      "evidence": [
+        "bun <- bun.lock [lockfile] lockfile present",
+        "npm <- package-lock.json [lockfile] lockfile present",
+        "pnpm <- pnpm-lock.yaml [lockfile] lockfile present",
+        "bun <- Dockerfile:7 [install-command-unpinned] RUN bun install"
+      ]
+    }
+  ]
+}

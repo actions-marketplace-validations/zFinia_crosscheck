@@ -1,0 +1,2729 @@
+{
+  "set": "live-precision-holdout-v5",
+  "ranAt": "2026-09-18T11:36:49.597Z",
+  "emitted": 17,
+  "results": [
+    {
+      "repo": "daodaoedu/daodao-f2e",
+      "commit": "387b5da9ea6b8f48caa8c26bf3f3fb7b1b42572b",
+      "packages": 17,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "DocRoms/Kronn",
+      "commit": "92415047e2aafcc381d4e9e26326febf278329b8",
+      "packages": 3,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "rak200/coding-standard-ts",
+      "commit": "1e5b4fa29960f0d8fcc07b55a6786fd4dab032f3",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "kubed-io/nextcloud-n8n",
+      "commit": "38ce991a0c89d0fbad8fbc493ab9758544cfbfc5",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "phausser/Frog-Eye",
+      "commit": "db7834be2d1eac4f07f781ed0a3e27d8ba4d56d0",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "hyrorre/popn-wiki",
+      "commit": "946d124e89a22c4330081810cf36d1f17b94ca23",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "mindmapvault/mindmapvault-foss",
+      "commit": "23ffc9f1dc69e06b1d7302f3858e8a8b0664154e",
+      "packages": 6,
+      "findings": [
+        {
+          "id": "package-manager/conflicting-config@frontend_app",
+          "rule": "package-manager/conflicting-config",
+          "tier": "proven",
+          "values": [
+            "npm",
+            "pnpm"
+          ],
+          "summary": "Package manager conflict in frontend_app/: npm vs pnpm",
+          "evidence": [
+            "npm <- frontend_app/package-lock.json [lockfile] lockfile present",
+            "pnpm <- frontend_app/pnpm-lock.yaml [lockfile] lockfile present"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "repo": "ThiagoNascente/PAS-atividade-2-Layer",
+      "commit": "75663c2ea0a3bfe739f922f04a348bb988febc31",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "MIkhsanPasaribu/porto-mikhsanpasaribu",
+      "commit": "78fff2ecfe59169845117ad307fe828c9a657d56",
+      "packages": 1,
+      "findings": [
+        {
+          "id": "package-manager/agent-instructions@.",
+          "rule": "package-manager/agent-instructions",
+          "tier": "experimental",
+          "values": [
+            "npm",
+            "pnpm"
+          ],
+          "summary": "Agent instructions say pnpm, but the repository uses npm",
+          "evidence": [
+            "npm <- package-lock.json [lockfile] lockfile present",
+            "pnpm <- AGENTS.md:97 [instruction] - Package manager: pnpm >= 12 recommended (opt-in channel for v12)."
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "repo": "jchu96/frame-of-mind",
+      "commit": "e3d9b65a1f548514f7552a1af26b862e37914a5e",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "ethancail/bitcorn-lightning-application",
+      "commit": "3ab0c6368e7e2926ad1db73cda2d1e72ef6773fb",
+      "packages": 4,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "PackRat-AI/PackRat",
+      "commit": "3a94ecb685aafa29bb8d9addc367ed1aca1ffeac",
+      "packages": 31,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "ExLyD1/Mnemio-backend",
+      "commit": "c066d80d79ce8725880131db523027c7ab884c85",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "alexey-pelykh/linkedctl",
+      "commit": "2c18b1afc48a454c1b1757a388fa99eb1e1239f8",
+      "packages": 6,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "unjs/giget",
+      "commit": "f1dad453055b97a81d5227edce7262c8dcaf53d2",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "alinangnaiba/mermditor",
+      "commit": "a36a4ecd0ed0e634ba20b25c86cd39b65bd13c7e",
+      "packages": 1,
+      "findings": [
+        {
+          "id": "package-manager/conflicting-config@.",
+          "rule": "package-manager/conflicting-config",
+          "tier": "proven",
+          "values": [
+            "npm",
+            "pnpm"
+          ],
+          "summary": "Package manager conflict: npm vs pnpm",
+          "evidence": [
+            "npm <- package-lock.json [lockfile] lockfile present",
+            "pnpm <- pnpm-lock.yaml [lockfile] lockfile present"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "repo": "BIENESTAR-KAIROS/BIENESTAR-KAIROS.github.io",
+      "commit": "96f7d3e3e2156ad1c4d22c54b922631ffed51ef7",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "zitadel/nextgen",
+      "commit": "5e871b0194ac8882e61d2708cc32fcf3f773a7fb",
+      "packages": 33,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "wattanx/nuxt-bundle-analysis",
+      "commit": "6d93927b11273cadff087ab4ebcc553be953eccf",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "rilrom/payload-bites",
+      "commit": "52087195c320eee5b3a74d56fcdbea9e0ffd657b",
+      "packages": 20,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "tonytino/aubreyslist",
+      "commit": "17de928bdc336ae4ab49db63f3ae87125cea3ec8",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "mnaoumov/obsidian-fix-tab-size",
+      "commit": "d4ed77e7f67b118b797a7d56f38f4212283e7f96",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "RevolutionVA/hrdevfest-primary",
+      "commit": "ae958c7cd1a06b05c1c669d91bea495554fbadc4",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "heamlk/Python-Skill",
+      "commit": "65232cb7ca1637b9f205fec36d6ce325237325f1",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "sudoanmol/cloud-swe",
+      "commit": "25828fe6cdc4a56bbaaa8d9b6a720cbe19ed7e15",
+      "packages": 9,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "Autonoma-AI/autonoma",
+      "commit": "7abab17ce7347ab7377fa968d1ec5677cfec4b20",
+      "packages": 45,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "snowyter/animo-planner",
+      "commit": "1608203473c00a57e5a3c838b4b44d9e9f5bf823",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "astoria-tech/subcurrent-astro",
+      "commit": "fd0b167c39a567c527483411a9109223c340efe0",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "tobiaswaelde/ezprint",
+      "commit": "87f5fa9ca87639ac9312e82434f36a21065b7ec3",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "loumalouomega/VSCode-MDPA-Preview",
+      "commit": "c92ca96ba4f7399eb8ac159a87bc00ab0e0eadf7",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "quileab/sae",
+      "commit": "d6dd8b702daa35331e87206fe79c9b8448f2afe4",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "CaoMeiYouRen/caomei-auth",
+      "commit": "bbea3cf3ef3f58bea31c7a3b8b1f0d1389a5a428",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "huaweicloud/huaweicloud-devkit",
+      "commit": "e7ed6f666ac5049ab467ff03daedd463da754d8a",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "Static-Analyzer-Factory/static-analyzer-factory",
+      "commit": "5c875b7a7cdb22c00e724144ae3fb0fd5a54008c",
+      "packages": 5,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "intlify/intlify",
+      "commit": "df90d219723498bfa9afccc6c76ecd1eaee8c2b3",
+      "packages": 15,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "alle80/griglia",
+      "commit": "7196bf898dc74b74fe28ad026b0287ed613d198a",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "limehq/munkel",
+      "commit": "295e834d80651652205a4a4e578f2084ac1601f2",
+      "packages": 5,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "organvm-iv-taxis/meta-source--ledger-output",
+      "commit": "a4284ebb26774de49aff8f0f7c40dbea3ff8d996",
+      "packages": 8,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "shreyx404/BatchHub",
+      "commit": "aff45f2fd2c69d04134aa8c128f0ed55456aa26d",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "tazo90/next-openapi-gen",
+      "commit": "6a70982488b06a1b1b8fc9ae34d915386fd5886a",
+      "packages": 39,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "JakeRyu/retro-board",
+      "commit": "9cc5ec585f3f26444dc399992ac744ae315d9165",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "sichengchen/csc.cat",
+      "commit": "8c6a831dc44a1de7348cb34b6397e15ae1172441",
+      "packages": 4,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "weightwave/taskcast",
+      "commit": "20a09bb1933a5422673b9fe66622de534bfe591c",
+      "packages": 14,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "klgterry/69dia",
+      "commit": "22a42b49f05e69acfbce94e8fbaf3a2247dd2658",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "anguschoclab/Basho",
+      "commit": "83e5cc3256a36301215cfcdd74307f0413f9c854",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "add2cal/timezones-ical-library",
+      "commit": "07ada5679043d60c58d7f5c8ea5825154e0282e2",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "bumbleflies/bricksnbytes",
+      "commit": "3344e2223124fd38bbbea6110e71e8e7e4175e63",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "Prostecki/my-portfolio",
+      "commit": "1573cea37bd2c60f8890c1943fe47ae8a591da4f",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "Hydroline/hydcraft-portal",
+      "commit": "d8906aef80cc43e80b7999f69793d067fe91e1ee",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "cesswhite/landinuxt",
+      "commit": "ac8cba1caf82b2411a150604ddc84cd542a0a88e",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "tunnckoCore/skills",
+      "commit": "9be50329286889cbb223c27146e6dfb62970e2b7",
+      "packages": 49,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "fencedotdev/packages",
+      "commit": "8f5fdf37ba7473642520653a382cd540f6d464d4",
+      "packages": 4,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "MarjanDB/brrr-generator",
+      "commit": "107907ca393f95447e623cdb6556b7c8cb8618ba",
+      "packages": 4,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "yamcodes/arkenv",
+      "commit": "4465170dd36d9c0dddfdee4cf4134076785850df",
+      "packages": 26,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "Sioood/stallning",
+      "commit": "47755264c5bce839919330cf8464754606f7ccf0",
+      "packages": 9,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "lawrenceching/SMM",
+      "commit": "cdb23ab94efcb8bc10033c100d55f6f32defb018",
+      "packages": 19,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "AI-Safety-SA/aissa-mono",
+      "commit": "a58ec84d43f7ebe05d78217c7c73c6b3a9476d2e",
+      "packages": 9,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "v1lling/desk.md",
+      "commit": "d8ba9ee458ea3c54b5b82c65e5acddb75a3d9214",
+      "packages": 4,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "securityPIS/smartpatrols",
+      "commit": "cb9a187cd722d8a404b8813e7c51cbb75e25404a",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "flexo333/my-blog",
+      "commit": "aaf3f1028273a92c9a9e91ad648554a0dd2faf4d",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "michaelsynan/primo",
+      "commit": "a4e8f412a3e83128ff5e24e8d0350b831dcf2f8e",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "lawvs/eagle-plugin-mini-map",
+      "commit": "43009ba8c7438215ec7a5a1aef74ea351a9eb18d",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "hta218/leohuynh.dev",
+      "commit": "7cd5e39eea4607ff6926a94157ac670a489ff56b",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "open-software-network/os-clovy",
+      "commit": "8fed7acb51622d36bfaaa056f43931015dfd5d72",
+      "packages": 3,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "JustinBeckwith/justinbeckwith.github.io",
+      "commit": "d9aacf2a9bb936096986958f32a6359359df0177",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "utonics/wave-checker-studio",
+      "commit": "5b61d220b52014ba690ed8979e303f24fa5b1a81",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "project-kessel/docs",
+      "commit": "ee26f2cec47958d74ea3cfd5526e1b78c3743232",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "walleliu1016/lynel-desktop",
+      "commit": "b40401bdccde174e849ef90b1277df5835128a46",
+      "packages": 4,
+      "findings": [
+        {
+          "id": "package-manager/conflicting-config@.",
+          "rule": "package-manager/conflicting-config",
+          "tier": "proven",
+          "values": [
+            "npm",
+            "pnpm"
+          ],
+          "summary": "Package manager conflict: npm vs pnpm",
+          "evidence": [
+            "npm <- package-lock.json [lockfile] lockfile present",
+            "pnpm <- pnpm-lock.yaml [lockfile] lockfile present",
+            "npm <- .github/workflows/build.yml:48 [install-command] run: npm ci"
+          ]
+        },
+        {
+          "id": "package-manager/conflicting-config@src/renderer",
+          "rule": "package-manager/conflicting-config",
+          "tier": "proven",
+          "values": [
+            "npm",
+            "pnpm"
+          ],
+          "summary": "Package manager conflict in src/renderer/: npm vs pnpm",
+          "evidence": [
+            "npm <- src/renderer/package-lock.json [lockfile] lockfile present",
+            "pnpm <- src/renderer/pnpm-lock.yaml [lockfile] lockfile present"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "repo": "dtiazlovas/astro_planner",
+      "commit": "dbe2813d94526cc703d57ef95f816b58aa956251",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "westberliner/checksum",
+      "commit": "ef28e90b2d314d8ef2d3907ad2f44ec8443b8fc0",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "yuki-m1216/Training",
+      "commit": "1c9273256ccc550febd4ff8aa94b3a552b294854",
+      "packages": 13,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "comarkdown/comark",
+      "commit": "9bcbbfd427c647e5f7ebaf4a43b191ba01b747c1",
+      "packages": 10,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "farming-labs/docs",
+      "commit": "61c34662698d00c6a40dc0232f092ec9498112c3",
+      "packages": 15,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "bbplayer-app/BBPlayer",
+      "commit": "af2adcc8537e52e1f5a7b6e05bfb227b99698cd6",
+      "packages": 17,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "sablier-labs/price-data",
+      "commit": "bb74bef727f60188ef1b7a6a1b08956210402838",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "mckoss/letter-tracer",
+      "commit": "ca7244309fec419c0995b86712a3fde560bf4bd6",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "ushaio/mo-gallery-web",
+      "commit": "cfe4f05b20293eb08b89c8bf5d675183e7e07f22",
+      "packages": 6,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "ikxin/kms-tools",
+      "commit": "28b32ab068da713dd38a3ae87f09fda085a85db0",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "CatsJuice/dockbar",
+      "commit": "72fe6cc6404f1c21c7516d7b50dd5930505ab902",
+      "packages": 3,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "1s-design/yishe-shop",
+      "commit": "243e6eece16d1056b54673359be3c14eb915e7eb",
+      "packages": 10,
+      "findings": [
+        {
+          "id": "package-manager/conflicting-config@.",
+          "rule": "package-manager/conflicting-config",
+          "tier": "proven",
+          "values": [
+            "npm",
+            "pnpm",
+            "yarn"
+          ],
+          "summary": "Package manager conflict: npm vs pnpm vs Yarn",
+          "evidence": [
+            "npm <- package-lock.json [lockfile] lockfile present",
+            "yarn <- package.json [packageManager-field] \"packageManager\": \"yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610\"",
+            "pnpm <- pnpm-lock.yaml [lockfile] lockfile present",
+            "npm <- .github/workflows/nuxtjs.yml:29 [install-command] run: npm ci --prefer-offline --no-audit"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "repo": "nawazish2/cuprim",
+      "commit": "b3d799e7bfe71baefce3a56c94782b232e66ee30",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "inaturalist/iNaturalistReactNative",
+      "commit": "1120d4603f96ad3bd8dfcc7325c443f09bb9ba10",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "PierreTsia/workout-app",
+      "commit": "a8c353066e6cbedf2884ec7bc4a0b39637f12155",
+      "packages": 3,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "pxd-uxtech/pxd-blog-wiki",
+      "commit": "fa0f1fa888f32609b3df76c31eb11bbacdd5dd0f",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "rikardronnkvist/kvitt",
+      "commit": "3320de32dabff7360e66516b59f0d39cb5008e85",
+      "packages": 3,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "vapvarun/wp-astro-mcp",
+      "commit": "5a9f5088b348d3fbf05302a51ff5e3eeeecd99b5",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "ageerle/ruoyi-web",
+      "commit": "d920a210ea4d24098711507913a70ff444a0c8e6",
+      "packages": 1,
+      "findings": [
+        {
+          "id": "package-manager/conflicting-config@.",
+          "rule": "package-manager/conflicting-config",
+          "tier": "proven",
+          "values": [
+            "npm",
+            "pnpm"
+          ],
+          "summary": "Package manager conflict: npm vs pnpm",
+          "evidence": [
+            "npm <- package-lock.json [lockfile] lockfile present",
+            "pnpm <- pnpm-lock.yaml [lockfile] lockfile present"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "repo": "SolaceLabs/solace-msg-utility",
+      "commit": "f18fe4be6af000d73460f4b73cb4f44ccd95770f",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "ro80t/website",
+      "commit": "5ab78511de63595faa877db739f38e16a4e16b12",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "elm-os/rightmodeler",
+      "commit": "8b7ab9183364ad6727f05d06ee9d675ba8de778d",
+      "packages": 11,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "azhigh81-bot/Toptopin-progress-",
+      "commit": "fab95ee540194e13b34cc6bf8b378f5e3abe1263",
+      "packages": 1,
+      "findings": [
+        {
+          "id": "package-manager/conflicting-config@.",
+          "rule": "package-manager/conflicting-config",
+          "tier": "proven",
+          "values": [
+            "bun",
+            "npm"
+          ],
+          "summary": "Package manager conflict: Bun vs npm",
+          "evidence": [
+            "bun <- bun.lock [lockfile] lockfile present",
+            "npm <- package-lock.json [lockfile] lockfile present"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "repo": "kinghua0629/tech-blog",
+      "commit": "bbc83b6ac5795df2817f0c799cad9d43da944ca4",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "edmundmiller/edmundmiller.dev",
+      "commit": "2811538f0bcc21637dd3513fa694f882d5324b5d",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "tin-computer/with-md",
+      "commit": "1cd74972296a68bba93c48b8d564623afe374d69",
+      "packages": 4,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "biggestcookie/fiftyfifty",
+      "commit": "e79d22fde91c93b71ab40459ce6172903c8caea2",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "yuanqiyibiansheng/DeepSeek-Harness-GUI",
+      "commit": "94478f3b9a740d76731cf18d81133d84b8651946",
+      "packages": 245,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "advtszn/advtszn.xyz",
+      "commit": "ddaac7d29c6ae1023cdac46cc6c5406d30ae18fb",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "kirillgroshkov/kg-releases",
+      "commit": "30d654e22d1d8a2aaadc5aef5d248c052075a0a3",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "fancy1108/Clutch",
+      "commit": "da61f6f85dcf0c3043b998a3ab024b5a4333dab4",
+      "packages": 4,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "Manoj-2301/Nextjs-Streamfind",
+      "commit": "83cbae91da763ec242d50f12c893a3721bea01d0",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "Dhruv-Mann/interactive-archive",
+      "commit": "ae70195b8bc5413256df772f3dd7f63792963ca7",
+      "packages": 1,
+      "findings": [
+        {
+          "id": "package-manager/conflicting-config@.",
+          "rule": "package-manager/conflicting-config",
+          "tier": "proven",
+          "values": [
+            "npm",
+            "pnpm"
+          ],
+          "summary": "Package manager conflict: npm vs pnpm",
+          "evidence": [
+            "npm <- package-lock.json [lockfile] lockfile present",
+            "pnpm <- pnpm-lock.yaml [lockfile] lockfile present"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "repo": "ganjardbc/umkm-pos",
+      "commit": "e104352c7f4e27de8ab04f9fa28d4f20dab5ac92",
+      "packages": 9,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "DCC-BS/text-mate-frontend",
+      "commit": "f6c1dd6bc310cc5ebc8ed613575092df8fd3d7e6",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "Rule-34/App",
+      "commit": "06584c2a98437b99cba9803bc4e42535765457bb",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "franklinjavier/franklinjavier",
+      "commit": "16de351186d5276b440d561a5ff999bfb9d1696d",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "tutkli/forty-cdk",
+      "commit": "f58a3177ef1981d38c96fb5eb22cde41d11faef5",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "HabitatHQ/habitathq",
+      "commit": "dbd6de40a9393df485dcb6165f8e2a6e330595e2",
+      "packages": 36,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "drakulavich/kesha-voice-kit",
+      "commit": "ccda2cf3b549259ac2052e861c44e6661f2892f5",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "nicejade/agent.jeffjade.com",
+      "commit": "8e7c18c174e0f05b6dceb263d4094d2dd354f989",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "orneryd/ui-grid",
+      "commit": "94953bc9b497ad05a74877ab57de2957416ebee0",
+      "packages": 5,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "ThorStarlord/React_incremental_game_prototype",
+      "commit": "171029345a555254f7d4cc617ec175825978a727",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "hellodit/mahirvibecoding.com",
+      "commit": "d5e9ea390413377c71a5e79751526b3106e26f2c",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "marr/marr.github.io",
+      "commit": "fd8a4b7b217b27a255225b6cdc05b8452a6be1e8",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "schmug/terratouch",
+      "commit": "9b6a881468d4c87a6c9bf84e9383a650b890b1e9",
+      "packages": 3,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "gotgenes/pi-packages",
+      "commit": "b8ed80397308cc6d71dec68b7f61b374745676ed",
+      "packages": 10,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "trsoliu/vue-audio-native",
+      "commit": "b9f13019c996eef9bd766faf12f56687ddaaefa2",
+      "packages": 5,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "blindside85/jessedupuy",
+      "commit": "898a53b82a3e9d85269a91aafaa6a325dc4a0284",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "whatsper/texterdocs",
+      "commit": "9ae087e4427fd4176d4e8694f42007525bfeb2aa",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "kaiohenricunha/dotbabel",
+      "commit": "86efe056e48ccfebfa2c40a9b9b8f9c0c8ef05a9",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "NoiXdev/marketix",
+      "commit": "90a2e2570f8befdeee18a68ccd3e9cd88c955ef6",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "woodfishhhh/MuYuNest",
+      "commit": "616b91e8a860e47e04457456e587ca8e4e250249",
+      "packages": 7,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "PyModel/claude-architect",
+      "commit": "dbaea5ed8164b5618f0e65b9155d3c1328064869",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "NewUser-learner/AWSAP",
+      "commit": "f9bc3be3c1a2d7e78a935c19fe7f382cb3703747",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "anymouschina/TapCanvas",
+      "commit": "0b84e5fcdd8fdfdd9c02c1bb00757ac81a6d3d81",
+      "packages": 7,
+      "findings": [
+        {
+          "id": "package-manager/agent-instructions@.",
+          "rule": "package-manager/agent-instructions",
+          "tier": "experimental",
+          "values": [
+            "bun",
+            "pnpm"
+          ],
+          "summary": "Agent instructions say Bun, but the repository uses pnpm",
+          "evidence": [
+            "pnpm <- package.json [packageManager-field] \"packageManager\": \"pnpm@10.8.1\"",
+            "pnpm <- pnpm-lock.yaml [lockfile] lockfile present",
+            "bun <- apps/new-api/AGENTS.md:96 [instruction] Use `bun` as the preferred package manager and script runner for the frontend (`web/` directory):",
+            "bun <- apps/new-api/CLAUDE.md:59 [instruction] Use `bun` as the preferred package manager and script runner for the frontend (`web/` directory):"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "repo": "Simon-He95/markstream-vue",
+      "commit": "cf5ad3f234126c3cb6f40d73734e43238a21045f",
+      "packages": 19,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "clansdown/LlmImageCreator",
+      "commit": "59b4163dd78d72210beee6723ab95d34fe676660",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "haydenbleasel/blume",
+      "commit": "32b9f07c46ed0f0026be9755a53ac94d1256d592",
+      "packages": 5,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "CheshiAI/Cheshi",
+      "commit": "1b1c223f2d5c4ec612234af3bd688938b20b6345",
+      "packages": 4,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "mtdvlpr-org/jw-api",
+      "commit": "89b89717eb3303c6c1532862a44e0b4353c4ac52",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "seongmock/ProjectHelper",
+      "commit": "6c820506183b5a2ca27687fc672014d7e132ccb9",
+      "packages": 3,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "chrmartins/rafaelasoares-site",
+      "commit": "e6bfe22fbb29281262be09baaea67c3e04942646",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "smartcontractkit/chainlink-local",
+      "commit": "f8c0efe8685660dac07e08f4558f1b578ae991aa",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "akshaynikhare/RealtimeClipboard",
+      "commit": "d1cf6b7f00f5757ef2a717a81c3d0312e9cedcb4",
+      "packages": 3,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "code-yeongyu/senpi",
+      "commit": "1690fdb284dacca7ddea901db02d97ea0771eecf",
+      "packages": 18,
+      "findings": [
+        {
+          "id": "package-manager/conflicting-config@.",
+          "rule": "package-manager/conflicting-config",
+          "tier": "proven",
+          "values": [
+            "bun",
+            "npm"
+          ],
+          "summary": "Package manager conflict: Bun vs npm",
+          "evidence": [
+            "bun <- bun.lock [lockfile] lockfile present",
+            "npm <- package-lock.json [lockfile] lockfile present",
+            "npm <- .github/workflows/ci.yml:36 [install-command] run: npm ci --ignore-scripts",
+            "npm <- .github/workflows/ci.yml:84 [install-command] run: npm ci --ignore-scripts",
+            "npm <- .github/workflows/ci.yml:132 [install-command] run: npm ci --ignore-scripts",
+            "npm <- .github/workflows/ci.yml:190 [install-command] run: npm ci --ignore-scripts",
+            "npm <- .github/workflows/ci.yml:216 [install-command] run: npm ci --ignore-scripts",
+            "npm <- .github/workflows/ci.yml:267 [install-command] run: npm ci --ignore-scripts",
+            "npm <- .github/workflows/ci.yml:308 [install-command] run: npm ci --ignore-scripts",
+            "npm <- .github/workflows/ci.yml:420 [install-command] run: npm ci --ignore-scripts",
+            "npm <- .github/workflows/ci.yml:453 [install-command] run: npm ci --ignore-scripts",
+            "npm <- .github/workflows/native-prebuilds.yml:147 [install-command] run: npm ci --ignore-scripts",
+            "npm <- .github/workflows/npm-audit.yml:25 [install-command] run: npm ci --ignore-scripts --no-audit --no-fund",
+            "npm <- .github/workflows/perf-trend.yml:36 [install-command] run: npm ci --ignore-scripts",
+            "npm <- .github/workflows/publish-model-catalog.yml:57 [install-command] run: npm ci --ignore-scripts",
+            "bun <- .github/workflows/read-summary-binary-parity.yml:41 [install-command] run: bun install --ignore-scripts --frozen-lockfile",
+            "npm <- .github/workflows/releasability.yml:34 [install-command] run: npm ci --ignore-scripts",
+            "npm <- .github/workflows/releasability.yml:82 [install-command] run: npm ci --ignore-scripts",
+            "npm <- .github/workflows/releasability.yml:129 [install-command] run: npm ci --ignore-scripts",
+            "npm <- .github/workflows/session-worker-compile.yml:39 [install-command] run: npm ci --ignore-scripts"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "repo": "Hiratake/hiratake-web",
+      "commit": "22bd05989ead83cd3fc86fe05ea4ab352309271b",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "gaopengbin/cesium-mcp",
+      "commit": "121b76e14b06fc7788b9d6eab5b46a6a84599665",
+      "packages": 6,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "pm-self-learning/octocat_supply_powerup_challenge",
+      "commit": "222badb66961b90bdde36e5606194b0be5552721",
+      "packages": 3,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "ascorbic/hypersite",
+      "commit": "deff023db2fca6c4d87826ef5ad02fba19e74378",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "Cor-Incorporated/corsweb2024",
+      "commit": "a6d6f020003817834d5ca5cf90a3962ca09d9c65",
+      "packages": 5,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "lonestone/astro-template",
+      "commit": "155a3cc8bc3bcfc19ff4bc26acdf0bdacb1ec01d",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "ECarry/photography-website",
+      "commit": "1b987df6a66b3731dd15060f6abe28969793f553",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "sw61/sosoeat",
+      "commit": "750803ed464e7da7e5d3ddcbecff442680e21078",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "zhangferry/AIDailyNews",
+      "commit": "0cf04900998f6c3dae6d50fb697224b26fc77c1d",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "xibitdigital/27-pictures-website",
+      "commit": "9bb9a41c26ff7890d61c6d34b73f0aaa0d8e4a84",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "nurkamol/website-build-kit",
+      "commit": "bc9143d2a4a9b6b892247fe5c3a1cb047dc1b09c",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "nigh3252-prog/Top-Down-Shooter-with-Controller-",
+      "commit": "8b3e98e23408019771a42bc60ddd2f0ae1bd291e",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "MaxQian888/react-quick-starter",
+      "commit": "68f30ca263720b8d9a2cfc2ca2e48beb484ba6c9",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "jpmcglone/menofhunger-www",
+      "commit": "f26b81704f2a0bf378104f0161b8211134c141e5",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "kjanat/mosaic",
+      "commit": "7c8a6c6df6b1e2254c833f3d8a1e9f1ea8fa03d9",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "Ozcaar/real-estate-template",
+      "commit": "3f6a14d024fdeaa9130e112016b7f9391395a142",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "JakubBlunar/Aiko",
+      "commit": "dc84e3c9058e4134aafb2589537c18bddfd0518d",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "ShariarAlamDipto/JustWrite",
+      "commit": "c516ab276f6ae83c06ec3ad1071d3ad8a6e91115",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "alperhankendi/Ctxo",
+      "commit": "9a71337018f5df47b5edba172bbb2b45016cf17a",
+      "packages": 9,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "enei-labs/enei-app",
+      "commit": "426c0677e1d027707b97327e18fa0c48d2ed6aaa",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "microsoft/scope",
+      "commit": "01133cfc876215fef5815f6eaec27701606da6e0",
+      "packages": 26,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "ladamczyk-it/qoq",
+      "commit": "2f0f04dfa22d73f36fc090714773c1d559c5a3ac",
+      "packages": 22,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "napora-sebastian/book",
+      "commit": "a42b624944a3422cb0c7e674bda3a86a062c07ba",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "backendforth/next-sanity-starter",
+      "commit": "98d1f0f5773d2fd32523184d2babc734868310ac",
+      "packages": 7,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "onerate-travel/onerate-docs",
+      "commit": "659dd28f8eba70161d11462520d69dcf0f5be8ec",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "qibmz/blog",
+      "commit": "1de036c267d9ab8da03de2c7d89efb426e79a5ae",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "laststance/tailwindcss-canonical-classes-monrepo",
+      "commit": "de110ed1acde7eae588fba6bead9dfbab4043edb",
+      "packages": 5,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "shimabukuromeg/meshipiyo",
+      "commit": "f513df5587018eed1aa775fd1b01a414f36f120c",
+      "packages": 3,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "BayBreezy/nuxt-tour",
+      "commit": "e9531ef7168daac12fa3ee385ad574dca9e16c0a",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "Nagell/portfolio-nuxt",
+      "commit": "4f809244619a2bbcb3b2aabfbc80291a8e06ee94",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "oo-ni/io.obs_log",
+      "commit": "94f9a86e72689fd4167ee6d1eb03349a904a60aa",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "launchfile/launchfile",
+      "commit": "7bcd7d3b1013d258961899fe10959cb0fb476f45",
+      "packages": 10,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "romhml/compodium",
+      "commit": "82102b01158b03b9f4ab7030f96e845c66007ca8",
+      "packages": 8,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "cybersader/crosswalker",
+      "commit": "9cf26802aeada4ddf434ffde7766e1e2bae2b791",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "elecV2/elecV2P",
+      "commit": "caeb05dda15319db8221637bfd0e1308593fdbe1",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "agenciafera/movepark-hub",
+      "commit": "4af6738479c2e77b71336e35ef4b98ec76677565",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "sanity-io/agent-toolkit",
+      "commit": "88d6cdfa7cb06c99edd5f376efa4dac21ae3f877",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "chrisleekr/personal-claw",
+      "commit": "167d31e1869e598f2d13652730c7ca18ceac9394",
+      "packages": 5,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "AloisSeckar/nuxt-ignis",
+      "commit": "d76f12f60b409837ea6c95afe91b67c69240457b",
+      "packages": 39,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "MohamedAbdallah-14/prompt-to-asset",
+      "commit": "1e66880c2a2a34f35bf9bc55ad64194f8185109f",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "patrickisgreat/benteen-screen",
+      "commit": "b3a05285becf2f3c4f2a21d8a30b0871509dcc64",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "Zireael26/akaushik.org",
+      "commit": "ba965653c97db7897ed36ecff4de3cae881657a6",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "gdiab/georgediab-blog",
+      "commit": "0e16abfe23056e8cf006669b0cec797eb8654c72",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "ericsocrat/decision-os",
+      "commit": "b388090c5361ae91b0f78f3da6b8f933eea3c41d",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "zoispag/omniroute-tray",
+      "commit": "bc7efc7ac279a474eae9c3fdcbd92556931b5818",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "SDSamarasinghe/Pet-Sitter-Management-System-Web",
+      "commit": "00d1eddad7eb7142cf8a838bd67d7db191374c13",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "UTEXO-Protocol/rgb-sdk-rn",
+      "commit": "821ae4fd10ca3933445ab926cb0af0230b108913",
+      "packages": 1,
+      "findings": [],
+      "notes": [
+        ".: .github/workflows/release.yml:69 installs with npm (not lockfile-pinned) although the repository uses Yarn"
+      ]
+    },
+    {
+      "repo": "bghailu/heybiniam",
+      "commit": "0424656c37f8989ee74f7611c7b8d92b47b510a1",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "bitovi/carton-case-management",
+      "commit": "2317bccda84c7d39e281012d3bbf73972899b367",
+      "packages": 4,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "Proteusiq/dotfiles",
+      "commit": "e39544201665fa50935db0b16c827e1d85a37464",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "getsentry/sentry-wizard",
+      "commit": "8dd7649f83b455519a8f690b5561ee85ea146330",
+      "packages": 19,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "0xFieldsy/worker-template",
+      "commit": "09940ae5e6e71c76a3d6b684a9f59524ce6c5f8e",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "iPzard/electron-react-python-template",
+      "commit": "080c09d2d2063928158c265c44590b8517119ae0",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "BuminAI/hospital-ai-lab",
+      "commit": "75cfc6e83b5f9821f404c0a67c44ee2389707fcc",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "swaruplab/operon",
+      "commit": "77f5361af5a2433e38ecfc652c454c49baec4ac3",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "jdevalk/seo-graph",
+      "commit": "c33eb1e120c620970042e28f1332fc90c30125e6",
+      "packages": 4,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "brentzo/tokentrace",
+      "commit": "4dfc56f212fdcd7817df3bbc7a223017f746b27b",
+      "packages": 5,
+      "findings": [
+        {
+          "id": "package-manager/conflicting-config@services/core",
+          "rule": "package-manager/conflicting-config",
+          "tier": "proven",
+          "values": [
+            "bun",
+            "npm"
+          ],
+          "summary": "Package manager conflict in services/core/: Bun vs npm",
+          "evidence": [
+            "bun <- services/core/bun.lock [lockfile] lockfile present",
+            "npm <- services/core/package-lock.json [lockfile] lockfile present"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "repo": "avinash-singh-io/engram",
+      "commit": "242589e485d8eda4f019ddb310f808a37af101a4",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "SitaaronKL/Superset",
+      "commit": "1b2f47ac162abc47a677f5c3790ad785aed4a402",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "onmomo/squeeze-plex-hub",
+      "commit": "645f83bae842ac6aa37885e931a509d972c2e12c",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "tito10047/pistalka",
+      "commit": "00941c0bb2b0a9d35b76f1af3df1e8a7402b0695",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "oalders/diff-lockfiles",
+      "commit": "a8dc3538db81fc18760d2385477c147d1dc11a9f",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "fuxintao2001/NetsuiteMcp",
+      "commit": "ce8f8830de730e5d04460907a95ff49dc340377d",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "okikio/okikio",
+      "commit": "c3323b00cb0e9fab5016af44df5424a3a72f4e22",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "sevalla-hosting/mcp",
+      "commit": "a6749f7e43777420e6cb1d4667877928b26665fa",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "dittastudio/ditta",
+      "commit": "b56cfe65c5ddd4ecf21f61c770a207b2d539b8af",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "LuccaSA/lucca-front",
+      "commit": "d790225b9e46a520b7df478dfc58c0d9b52d4f72",
+      "packages": 8,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "bgrins/agent-sdk-wrapper",
+      "commit": "e787ed587ec4eb1d5676188715b4e279eee5e187",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "Nooshu/PE-Maps",
+      "commit": "54f918bf482675ce4f994a97d7d7b6327a3af290",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "avala-ai/4dgs",
+      "commit": "296d8bf526373430b556a94bf5053fce7fd38b2a",
+      "packages": 7,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "workouse/nostr-bridge",
+      "commit": "fa58da9f2c41d29f58a64bd861c6f53fefc144ee",
+      "packages": 6,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "calibra-org/dashboard",
+      "commit": "18e27cbb31db4abc00f727520bb548facc02f830",
+      "packages": 11,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "JZnebel/AutoDemo",
+      "commit": "8f1d7637c86ba85ff35deab84041e086927741ea",
+      "packages": 3,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "lumachroma/monthory",
+      "commit": "1d93af03f7a953944ee658ef16dc8b9f0e6470ff",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "hairyf/vue3-pixi",
+      "commit": "542aeff196b90cd698e6559723d61cf85baab5e6",
+      "packages": 5,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "Miraius-LLC/worksmobile-message-bot",
+      "commit": "3bad083ebc00eb5e51c8d888aff4c983848a3604",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "ikiwihome/income-calc",
+      "commit": "71e1a1076ece72b8451a770d84653df5acacd57b",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "nicocapalbo/dmbdb",
+      "commit": "a782690b51479a4c4c306254bc152dbf8086d9e2",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "coollabsio/coolify.io",
+      "commit": "f6a9f53443a8e5232781478f7605d3255696e7e9",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "asalsali/covenant-framework-community",
+      "commit": "8674b9585a7ece8a70875ab40c5d66a68e6365d8",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "xxadrianbusinessxx-byte/WebCetac23",
+      "commit": "4307186c48302665dae8038c55810cd9d70ad82a",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "InvoiceShelf/InvoiceShelf",
+      "commit": "0076ab9c5b1840d53690e721a1a4e7a91a068795",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "IamTPL/engram-spira",
+      "commit": "65a25c770b2d49a86707f214c1431ac53ace22d4",
+      "packages": 5,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "aeternity/aescan",
+      "commit": "e65714f73237cfe51d64a46c0229358f630e9231",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "kchub-dev/cduestc-wiki",
+      "commit": "9a73d92971cd5952b88e476d1613dc121137680a",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "xiaoshi164/www.shizhou.top",
+      "commit": "f6038365389a4419a476d50c0efe62d297819664",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "ioBroker/create-adapter",
+      "commit": "b43241ee99a20ace94f6968daf03f9a8a7f74cce",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "Nsttt/my-portfolio",
+      "commit": "aa4ec431147ee6c176b2171e1ed6282f455798f7",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "burhantoprakman/demo-site-template",
+      "commit": "e4e7881c2930650dfa6cbf3465f7f6c477f2f372",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "brianwestphal/kerf",
+      "commit": "249486dc313cb1b016a663cedeb216c7e924427a",
+      "packages": 6,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "jessewheeler/ysh",
+      "commit": "883d7708b5d19c8abb5d897a530bf0c218de95a3",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "ByronFinn/byf",
+      "commit": "41b12bc538c0eb9081f952f6ace14d3699bb397e",
+      "packages": 15,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "vuepont/base-ui-vue",
+      "commit": "22ec4078c67f2199e755f989417d496f79000a09",
+      "packages": 4,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "wes-chen/wes-chen.github.io",
+      "commit": "6b08b1cfb8b4c713671004660dfea518ea6cd8a7",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "tiemouie01/misi",
+      "commit": "d25363a1062c21264dd91f6c109c21764674311e",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "imsyuan/gooliya-port-bar",
+      "commit": "4c29cd4e23d24bef47589547ed0e4985666f4caa",
+      "packages": 4,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "billerss11/Quotation_software",
+      "commit": "a0e3dd4a345f54cbd74beab82c6b4c25619e732c",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "OxiBelt/OxiBelt",
+      "commit": "fd416a8a199a20725c3c0a3db5da6528085c319a",
+      "packages": 3,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "Geekvetica/nx-astro",
+      "commit": "e2cd3123cad93e5e196c3860de1482209eafac41",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "AndroidDagashi/androiddagashi.github.io",
+      "commit": "585a727a310698682602c6e0451e374ff1b31318",
+      "packages": 9,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "mcthesw/game-save-manager",
+      "commit": "4a9ba22b2b40f5dc3d5ae52cb7028ada50068238",
+      "packages": 3,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "pawelmamcarz/procuracost",
+      "commit": "127090c37fd80db93b1221d934609a6490e7424a",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "Lyx-Engenharia/lyx-front-template",
+      "commit": "9f80d6fb30eb384e5538fc055d6327518899021c",
+      "packages": 3,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "cronix1000/MUD",
+      "commit": "82cedc6d7aa42df6c2525e35ebc71cc69e23c541",
+      "packages": 4,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "nsu-abitur-bot/abitur-web",
+      "commit": "31b5536ebd5fc33d0fa3bb50d14bec325d65631d",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "TechImmigrants/cv-builder",
+      "commit": "fbd9f7afb72782b8f36fda716227c0f05d395f95",
+      "packages": 9,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "AImaginationLab/vulnerable-llms",
+      "commit": "fd24a9ebad34817c6e4a58c3955ea754e2bfb87c",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "echoVic/blade-code",
+      "commit": "70b32ca35e34f0fef2a1c84da91b12b641c37cde",
+      "packages": 4,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "Dicklesworthstone/ntm",
+      "commit": "f358b7d8fb58374a5d77fb26074915fe91682f8f",
+      "packages": 3,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "annuaire-entreprises-data-gouv-fr/api-proxy",
+      "commit": "b77e6ed463ee7e8db92498f39c93b02e1082794a",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "jakeunsted/meal-diary",
+      "commit": "0bdef8565de5f143c7149b20221864ee0d7d6a81",
+      "packages": 5,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "Youzai-World-Team/YouzaiWorldApi",
+      "commit": "d077650dd02484fd19a9b0959f32c966e62cdc1f",
+      "packages": 1,
+      "findings": [
+        {
+          "id": "package-manager/conflicting-config@.",
+          "rule": "package-manager/conflicting-config",
+          "tier": "proven",
+          "values": [
+            "bun",
+            "pnpm"
+          ],
+          "summary": "Package manager conflict: Bun vs pnpm",
+          "evidence": [
+            "bun <- bun.lock [lockfile] lockfile present",
+            "pnpm <- package.json [packageManager-field] \"packageManager\": \"pnpm@10.32.1\"",
+            "pnpm <- pnpm-lock.yaml [lockfile] lockfile present",
+            "pnpm <- .github/workflows/release.yml:29 [install-command] run: pnpm install --frozen-lockfile"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "repo": "mi8/mi8.github.io",
+      "commit": "fa3f9452141cc681a1d976f8382ad06e3059d6ed",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "vuepont/ai-elements-vue",
+      "commit": "86c90df1b27cfd7ca05bd7f6c312c46f89c11603",
+      "packages": 6,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "markcallen/env-secrets",
+      "commit": "597f197f789150b4fa8ee6f8db7d91316a600e4c",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "likecoin/3ook-com",
+      "commit": "918665552477b1dc1a661dbfd3ee420169cc9201",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "dave-b-b/react-achievements",
+      "commit": "1b78a937f1677ba7acabb565a46a7e01519aaa71",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "peligwen/peliglot",
+      "commit": "1b188ac8ac1d5079699efd4d35906ba31c829e41",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "tamaina/vite-vue-internationalization",
+      "commit": "195e2c446ed17b69708d22115485c4d728e348be",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "andy820621/nuxt-content-mermaid",
+      "commit": "de1ff6d8da6dea31b12478eb7b37c8846370fe18",
+      "packages": 3,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "en-dash-consulting/html-in-canvas-dot-dev",
+      "commit": "6593e4cc2250b9efd22a22bfb6810185c6401ee8",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "Kipnetic/bobblequest",
+      "commit": "353b8ec5d6112d3e976cd88e4b18dbdb8dce3f41",
+      "packages": 24,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "Namainchick/personalWebPage",
+      "commit": "f1427082cc0f84d05ef64a2989130fbee9360a80",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "DCC-BS/transcribo-frontend",
+      "commit": "74f1d0ab147c91fc6b018c6b8ad13fa323e88f18",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "alveusgg/control-api",
+      "commit": "19702026985f3c869545fb0eda0ae6904435fbcb",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "avunculargroup/business-mono",
+      "commit": "7ac3942432663f97dc8708473b63d121519246df",
+      "packages": 14,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "mkusaka/multi-streaming-stt",
+      "commit": "9779f340efa051f7f3af4a0f61ac5cfbf371c002",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "clevermathematics13/CleverPlatform",
+      "commit": "c50d0ba1a2ef35dfa71be3a174570ec4924fa9d7",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "baumannzone/baumannzone.dev",
+      "commit": "0d05c6060d3744b0a5220f02e625d737f3d98e4b",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "Innei/haklex",
+      "commit": "698eb94212668a4a97fc8a61f5441c697e3d16dd",
+      "packages": 44,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "yomotsu/terrain-kit",
+      "commit": "63b2de4c34c090cf31c3df79ee558770b08a5a26",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "zephkelly/nuxt-task",
+      "commit": "0ef0141eb41f93c29432b0539a2251f0a2556713",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "ismoiliy98/turbo-base",
+      "commit": "92745d13ee433fa179b5ff380c7f4c23753e964e",
+      "packages": 8,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "MaxGhenis/maxghenis.com",
+      "commit": "ec6f613f71ee18e777ea337fa046ca408e56f318",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "tark-ai/ce-starter-projects",
+      "commit": "b9a36d14db50f25b1847dd6aabd6ab635bc7dbe0",
+      "packages": 22,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "JMU-CS/praxly2",
+      "commit": "db6dc9effa2e10c4e4fdb9f31a530bd178224722",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "openplayerjs/openplayerjs",
+      "commit": "38f61ac6e3d01773eeb841400df6f743c42baf72",
+      "packages": 6,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "osbrjp/handbook",
+      "commit": "0682f9ab1e80e17c422fabb563e49eeb7eb05c0d",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "Jackson57279/polaris",
+      "commit": "73ab05099891e735535d4182039c0846f11ec3e6",
+      "packages": 1,
+      "findings": [
+        {
+          "id": "package-manager/conflicting-config@.",
+          "rule": "package-manager/conflicting-config",
+          "tier": "proven",
+          "values": [
+            "bun",
+            "npm"
+          ],
+          "summary": "Package manager conflict: Bun vs npm",
+          "evidence": [
+            "bun <- bun.lock [lockfile] lockfile present",
+            "npm <- package-lock.json [lockfile] lockfile present",
+            "npm <- .github/workflows/ci.yml:31 [install-command] run: npm ci",
+            "npm <- .github/workflows/ci.yml:50 [install-command] run: npm ci",
+            "npm <- .github/workflows/ci.yml:70 [install-command] run: npm ci",
+            "npm <- .github/workflows/electron-release.yml:21 [install-command] run: npm ci",
+            "npm <- .github/workflows/electron-release.yml:47 [install-command] run: npm ci",
+            "npm <- .github/workflows/electron-release.yml:84 [install-command] run: npm ci",
+            "bun <- vercel.json [install-command-unpinned] installCommand: bun install"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "repo": "voidzero-dev/setup-vp",
+      "commit": "a6d903650305179eabc9776ed27af8c8c769ec00",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "Yg0rAndrade/carcara-code",
+      "commit": "189e1938edc9f583d68c2a405f1f367a0f0296cb",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "yunniko/image-object-splitter",
+      "commit": "718c4718b609a0f7e027aeea7d16b1a0ca7cadca",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "aksharahegde/pahachaan",
+      "commit": "7b26433618dbf0de25fe789a7a822da016fcf681",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "rendafixa/rendafixa.github.io",
+      "commit": "87633333c39bd77dc72e6e684f65b21fcc1ff0e8",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "contentful/contentful.js",
+      "commit": "7daed212a74273bb40002f0ba817f494f6de069c",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "Jahia/tomcat-log-provider",
+      "commit": "abee64f1171eb0db6b5d4e52458ca354e8e4cb4f",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "nairain233/blog",
+      "commit": "17f38293f21c8a615593e9dc4e2b842108c17e51",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "andrewck24/volleybro",
+      "commit": "22271c57efeea09d397027989dceb56f12907616",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "amenski/nib",
+      "commit": "2dcd1f5210c62dfcc3f95d34add89f3b77d37141",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "max-doo/max-md2cv",
+      "commit": "0ef1a77f22d9851aafbaf5d01f6831eb71f4285a",
+      "packages": 5,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "Disane87/scrape-dojo",
+      "commit": "a467e17747655d47e486d53e70bd559153449190",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "nonhana/grey-flowers",
+      "commit": "cd1e97ff390850aad37f6db80a688a2eff5731c2",
+      "packages": 6,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "vaultys/VaultysClaw",
+      "commit": "56d8a0f8883f966e4d482eacbf85bdaff5228d47",
+      "packages": 9,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "AaronBerman/canasta-mobile",
+      "commit": "ad5da35069c38521a184e45be78511c9bc9efa73",
+      "packages": 3,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "styleframe-dev/styleframe",
+      "commit": "05067c4097a025bc1c2b6ffb79f84a156ea416a5",
+      "packages": 20,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "darkraise/flashpoint-web",
+      "commit": "6970ae2438a12a39998a0a87a6a636129d16b2f3",
+      "packages": 4,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "PerryHighCS/Presentations",
+      "commit": "2333dcaa128c66b8de9ab4d9deda3b6b517c9296",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "bpolaszek/meiliweb",
+      "commit": "60c1a412d012da2e82510f6148bf4d8f174adeee",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "COSCUP/2026",
+      "commit": "845fb256a6a7921ac9d5f2f59b18a63d7b601b28",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "wayfdigital/payload-astro-starter",
+      "commit": "af791e2127c98b9f4c1c72b11a0ee9f0afa6dfef",
+      "packages": 6,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "elizaOS/benchmarks",
+      "commit": "a78d42de0b3581f9b46cd5ceb1760693e8f60377",
+      "packages": 25,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "egeominotti/binja",
+      "commit": "6e20deabb8bfad8ccb942923d251b9548b764a37",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "ShafiurMiju/travel-agency",
+      "commit": "c1bc8b42491bcb82a401fb2cd48ea03bedffc44f",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "777pxy/auLait",
+      "commit": "0215de65c0c1fa322abb090c71725c2dd424fb30",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "magrosskopf/BonsaiTracker",
+      "commit": "227d33291ef484ee65efaca1ae4c4e973c1a8ab9",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "overture-stack/lyric",
+      "commit": "e68f9e456f2bbf53e4655dfe5245cb72307749a6",
+      "packages": 4,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "dworznik/pressline",
+      "commit": "012b5961071aacbb1f3de7240764e8f4b3fc7f2a",
+      "packages": 8,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "LeGueux/dashboard-ui-frontend",
+      "commit": "dd78ba4aaced385949781dbb73a07735ec6ce85a",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "mheob/config",
+      "commit": "68c9e54741bb98d4aeb3e6b8b0ed416b5d7e4868",
+      "packages": 6,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "BayBreezy/ui-thing",
+      "commit": "e40cf601655b361462a0737493103a0985c98ba3",
+      "packages": 1,
+      "findings": [
+        {
+          "id": "package-manager/agent-instructions@.",
+          "rule": "package-manager/agent-instructions",
+          "tier": "experimental",
+          "values": [
+            "bun",
+            "npm"
+          ],
+          "summary": "Agent instructions say npm, but the repository uses Bun",
+          "evidence": [
+            "bun <- bun.lock [lockfile] lockfile present",
+            "bun <- package.json [packageManager-field] \"packageManager\": \"bun@1.4.0\"",
+            "npm <- AGENTS.md:182 [instruction] - Package manager is `npm@11.12.0`."
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "repo": "mimukit/saasaloy",
+      "commit": "12f7e9d5c546e53f7155833de04c027642d230c8",
+      "packages": 17,
+      "findings": [
+        {
+          "id": "database/conflicting-datasource@.",
+          "rule": "database/conflicting-datasource",
+          "tier": "experimental",
+          "values": [
+            "postgresql",
+            "sqlite"
+          ],
+          "summary": "Database conflict: configured for PostgreSQL and SQLite",
+          "evidence": [
+            "sqlite <- modules/database-d1/files/drizzle.config.ts:14 [datasource] dialect: \"sqlite\"",
+            "postgresql <- modules/database-postgres/files/drizzle.config.ts:27 [datasource] dialect: \"postgresql\""
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "repo": "piro0919/macopy",
+      "commit": "a5b169bf05b51e38d3af6258971b3916ab84138e",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "JNSEC-OpenSource-Community/jyff-agent",
+      "commit": "5ae3b9d56fff505dde3e3de60de089a7973eac52",
+      "packages": 11,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "SanyamPunia/nine",
+      "commit": "24a4d09f52665b53cf5be3371eab166d54db1fde",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "ojiepermana/myadmin",
+      "commit": "eb7584ceb2ccb68bc528b43feac273e69f1cb527",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "vercel-labs/github-tools",
+      "commit": "cf8add9fee1d4b9ce00d74a8d61f4ff1ce99754f",
+      "packages": 5,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "wavyrai/tmux-ide",
+      "commit": "e85cc978833c6541a0be8c3686643569c3ac5a3b",
+      "packages": 12,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "geoql/v-maplibre",
+      "commit": "2304bb300e6b00afb6308e0b4f2ccc7e6a368244",
+      "packages": 5,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "devgauravjatt/hono-explorer",
+      "commit": "dd297f625d45f132f9dcf7fb43e9389087e8f6f5",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "unjs/jiti",
+      "commit": "fd3bb289b75ed207edfb686d671ed50144f7e90f",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "hikaru90/owlery",
+      "commit": "4192fe1d159f466d41a7271a3802a77e14126d8d",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "eeegoloauq/astro-chat-widget",
+      "commit": "e891c6e86ec34a571fe874cf975084fa6d7cdebf",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "sankichi92/LiveLog",
+      "commit": "c47d7b62a2e10b4086df4e97390f850c9b40b3cc",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "angelblanco/angelblanco.dev",
+      "commit": "0db86f46c4594c019414a14ee0a7559a817b8042",
+      "packages": 7,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "dadajam4/fastkit",
+      "commit": "91c03f8ec65d8168003726ddd1fd04be4934532b",
+      "packages": 78,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "Vivekray898/photopic",
+      "commit": "4b9cd7624db2f3fde40da117b07f7624efd4206e",
+      "packages": 1,
+      "findings": [
+        {
+          "id": "package-manager/conflicting-config@.",
+          "rule": "package-manager/conflicting-config",
+          "tier": "proven",
+          "values": [
+            "bun",
+            "npm",
+            "pnpm"
+          ],
+          "summary": "Package manager conflict: Bun vs npm vs pnpm",
+          "evidence": [
+            "bun <- bun.lock [lockfile] lockfile present",
+            "npm <- package-lock.json [lockfile] lockfile present",
+            "pnpm <- pnpm-lock.yaml [lockfile] lockfile present",
+            "bun <- Dockerfile:7 [install-command-unpinned] RUN bun install"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    {
+      "repo": "jasonsoprovich/pq-companion",
+      "commit": "d2c35557a4d1856ea02920fff6ca4d722a56ea4f",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "balllder/holiday-wheel-native",
+      "commit": "01e37410c6b53d99e2abe17272589dbffc806a41",
+      "packages": 5,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "DiogoBrazil/adm-p6",
+      "commit": "e5ca73e46222b11437f5e3348b6f07018ace3341",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "cobbler/cobbler-web",
+      "commit": "08ea0d28906a4026e732370fd402b1ff7b682ad2",
+      "packages": 3,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "RedHatInsights/composer-ui",
+      "commit": "d569ce90d23be7107fcac089721f80aeb52d43f1",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "advayc/personal",
+      "commit": "38a2228f5f0554f4f91bce43492f2cd2fe06a88a",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "davidsu/dotfiles",
+      "commit": "ecba049162972b6f336426cad44c3cbf3da4c22c",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "panaversity/ksor",
+      "commit": "cca9df84d9a1a5b874e57301015b3c8bed6bd3e0",
+      "packages": 6,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "YavlPro/YavlGold",
+      "commit": "bcb839a797ff92d4d8a107f6600f99c84af8367b",
+      "packages": 6,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "eatsjobs/media-mock",
+      "commit": "c8cf50f9af0d580909e1e7df9d1215a160be9a64",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "teefloo/Lunidex",
+      "commit": "1ec0615a2ddb5a7ec21c977471fa963817af81e9",
+      "packages": 3,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "edspencer/herdctl",
+      "commit": "9b1e34ac673f761d58f20a85ba0f6cda51d72948",
+      "packages": 8,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "jettechnologies/instalflow-backend-service",
+      "commit": "3fc38a47da0db1f3ffe816130f36893e86de60e7",
+      "packages": 6,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "actifit/actifit-landingpage",
+      "commit": "c0b52828bfadbbff8a1ff64d1716353329001de0",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "nuxt/devtools",
+      "commit": "04f3cd0e4af51b4ade8999a64139312c62453d50",
+      "packages": 19,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "prakash-nitc/Stint",
+      "commit": "7e0399041a73b1c2c02311c0754a37864a0fb249",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "rin259/blog",
+      "commit": "2be1f422d8f222dccd7e1132ef06e1a1d3de9170",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "Cyoda/cyoda-docs",
+      "commit": "51b28a6d8f49ffde572a58fd9ba50580af7253c0",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "TxnLab/use-wallet",
+      "commit": "7861a68efdc034d4a01f5ba68f1acff97e28e8e6",
+      "packages": 16,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "JJonka/portfolio",
+      "commit": "dab25b08c4a06e9267733935e76dba0bf578d04b",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "pilotwaffle/TORQCLAW",
+      "commit": "ac50e929e9f8b73d409580ad5625070d26d3dcaa",
+      "packages": 10,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "MNPPI/wkd-proxy-worker",
+      "commit": "f0408b3c3a080db06b1f2c47829f1f87b62c4434",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "arnav192005/AUTO_SHEET_EVALUATOR",
+      "commit": "f497ea5d635a067588efae5fefc334c0ff564be2",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "nixfred/calc.nixfred.com",
+      "commit": "7ae72afe677103b295301a48e97ec3d8cf6458e2",
+      "packages": 1,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "cuteshaun/lineage2-api",
+      "commit": "3df5853ec5b046b0cad26810311276f598093a28",
+      "packages": 2,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "salahgh/e-commerce-OSCAR",
+      "commit": "db7ab4ac208e933b8e09ccf1196d879a1eff3182",
+      "packages": 8,
+      "findings": [],
+      "notes": []
+    },
+    {
+      "repo": "pavlof01/jslab",
+      "commit": "0bca805257ce51a65497e9230fb02cea4dce625d",
+      "packages": 10,
+      "findings": [],
+      "notes": []
+    }
+  ]
+}

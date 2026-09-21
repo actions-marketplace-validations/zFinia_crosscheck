@@ -1,0 +1,907 @@
+{
+ "name": "live-precision-holdout-v2",
+ "frozenAt": "2026-09-18",
+ "method": "The 180 remaining eligible repos from the same agent-instruction pool (active since 2026-08-18, non-fork, JS/TS, <150MB) NOT used in v1, cloned at the recorded commit. Frozen before the v0.1 engine was run on them; rules were designed on v1 only. Every emitted finding is verified manually; UNPROVEN counts as incorrect.",
+ "repos": [
+  {
+   "repo": "2234839/vite-plugin-pilot",
+   "commit": "0a80e81acf1ebe3d2484a48f8481c3357417f53c",
+   "error": null
+  },
+  {
+   "repo": "2witstudios/PageSpace",
+   "commit": "8b8b21dbbeb60ef5613eb9f13a7278251de4a748",
+   "error": null
+  },
+  {
+   "repo": "ACM-VIT/ExamCooker",
+   "commit": "fa390d8240b397eb1d47db520f414f128656da67",
+   "error": null
+  },
+  {
+   "repo": "Ardakilic/BrewForm",
+   "commit": "8b556bdbd5fb41eb3e75e83ebd1869c4af72334d",
+   "error": null
+  },
+  {
+   "repo": "BeardedBear/beardify",
+   "commit": "766eadc584ca2d7038456adacb23fbd3756a4b74",
+   "error": null
+  },
+  {
+   "repo": "BobDu/fast-json-rules-engine",
+   "commit": "93a997ce7291f5f926f698b7677ce350facca375",
+   "error": null
+  },
+  {
+   "repo": "BreadchainCoop/app-stacks",
+   "commit": "bc6e62b38eda65555013e1cec0d221d68041bb69",
+   "error": null
+  },
+  {
+   "repo": "Core-Mate/OpenGUI",
+   "commit": "737c6255c893a2c6a5779866f60f2bfee6efca3c",
+   "error": null
+  },
+  {
+   "repo": "Crawlith/crawlith",
+   "commit": "95771de338978a7cbd74fbf1a4b2f931503dbc79",
+   "error": null
+  },
+  {
+   "repo": "DavidWells/configorama",
+   "commit": "6b800ce2fc32a9a5d3a91f6667d08e262fc5dcd3",
+   "error": null
+  },
+  {
+   "repo": "Freundschaft/makerspace-system",
+   "commit": "fcab2a2e9de76ba04a7543f3731ce0a5b6305370",
+   "error": null
+  },
+  {
+   "repo": "HL7-FAST/identity-matching-ui",
+   "commit": "1608b9f19fc00787fd5eefb25db2e096e958df91",
+   "error": null
+  },
+  {
+   "repo": "IQSS/dataverse-client-javascript",
+   "commit": "59bcf3c1496dabfd75260a9f3099b832811e6aca",
+   "error": null
+  },
+  {
+   "repo": "JamesonRGrieve/ClientFramework",
+   "commit": "5e62b861afee923eff1feb07f9b0f2209586ab9c",
+   "error": null
+  },
+  {
+   "repo": "JustineSalinas/pharmatrack",
+   "commit": "cef07a9100bd035cc959443ae3c89589c70240bc",
+   "error": null
+  },
+  {
+   "repo": "LCNINE/almondyoung-server",
+   "commit": "8b72c2953f5438d54c5fa9043018cc6398f47a51",
+   "error": null
+  },
+  {
+   "repo": "Layer-Fi/layer-react",
+   "commit": "0b8e0032b1aa4450a5a5505fc39709830de035f6",
+   "error": null
+  },
+  {
+   "repo": "Lzdevmendes/pedefree",
+   "commit": "deda3a916c3cfe88b10490d44375b7707e6b6e7d",
+   "error": null
+  },
+  {
+   "repo": "MuNuChapterHKN/HKrecruitment",
+   "commit": "397566d2b758d31dd97fcdefd2ea5340ff41589b",
+   "error": null
+  },
+  {
+   "repo": "Niall-Young/Canvasight",
+   "commit": "b4a002db9c4ff3af3388d12a50f632104493bfd7",
+   "error": null
+  },
+  {
+   "repo": "ORNL-AMO/VERIFI",
+   "commit": "4553a107778b9332e9687cfadc4f12511c7c8585",
+   "error": null
+  },
+  {
+   "repo": "OpenMovieDB/telegram-bot",
+   "commit": "3d426b188379db73f29de1aa3b97406ceb15c5aa",
+   "error": null
+  },
+  {
+   "repo": "Orkas-AI/Orkas-VideoStudio",
+   "commit": "4b81be1fa1c69499baa92736686bf7a097c82111",
+   "error": null
+  },
+  {
+   "repo": "Pleasurecruise/my-profile",
+   "commit": "711164ca915842569e2411d4ed4c6af5bb2da6b3",
+   "error": null
+  },
+  {
+   "repo": "Progen-design/body-mind-on",
+   "commit": "4ac38085912a664e0bdaa38e8880649551607ace",
+   "error": null
+  },
+  {
+   "repo": "RUNSTR-LLC/RUNSTR",
+   "commit": "ef1f120c023271e9871d7abcd50e6802e10f2871",
+   "error": null
+  },
+  {
+   "repo": "ReImage-LTD/SigmaGit-v2",
+   "commit": "5ba2c91d8efd92e34dc61c60f3b4edbbc43de78b",
+   "error": null
+  },
+  {
+   "repo": "Resonect-Technology/aiolos",
+   "commit": "2c09c90c5a30612f5562424d812c80d54952a843",
+   "error": null
+  },
+  {
+   "repo": "RidRisR/DaggerHeart-CharacterSheet",
+   "commit": "f9c678981575ee77bce428f011416217034838ba",
+   "error": null
+  },
+  {
+   "repo": "RyderAsKing/PiChamber",
+   "commit": "720cb3343141f68ab0edb253f08fd2e59b1e354e",
+   "error": null
+  },
+  {
+   "repo": "SelmiAbderrahim/pssmngr.com",
+   "commit": "fc85c8f2f54b93f2e9836964935c509af452aace",
+   "error": null
+  },
+  {
+   "repo": "Sunagatov/Iced-Latte-Frontend",
+   "commit": "a95bddba8e7890b085b0835d04fe7335e2777603",
+   "error": null
+  },
+  {
+   "repo": "TheAndrewStaker/mcp-midi-control",
+   "commit": "59047175cfc4f23e092931b54a7c54f2bffde3ea",
+   "error": null
+  },
+  {
+   "repo": "TinyCloudLabs/openkey",
+   "commit": "495b9d39c3484333fcf9e98af0eb7b67286b0323",
+   "error": null
+  },
+  {
+   "repo": "TortoiseWolfe/SpokeToWork",
+   "commit": "16818beb24761ec0b25a054ef135f68767879d0f",
+   "error": null
+  },
+  {
+   "repo": "TryGhost/action-deploy-theme",
+   "commit": "75122786139ef7f70b818122e478d8adc388aca1",
+   "error": null
+  },
+  {
+   "repo": "a1exalexander/polly",
+   "commit": "e62f7ecf42767506ad576a14bd492817434b034a",
+   "error": null
+  },
+  {
+   "repo": "alefduarte/image-resize-compress",
+   "commit": "82573bf46ac4dc2eebed6d2e2140c129b26203e7",
+   "error": null
+  },
+  {
+   "repo": "anghunk/cwd",
+   "commit": "f2919c6244b0ecaaa19a14827256369c345e138c",
+   "error": null
+  },
+  {
+   "repo": "arianrhodsandlot/retroassembly",
+   "commit": "2f95dcd62fc746793e77f153ab46c14cd615117d",
+   "error": null
+  },
+  {
+   "repo": "ascorbic/cirrus",
+   "commit": "e6703d513cb36384a53eb80512814727ded7171a",
+   "error": null
+  },
+  {
+   "repo": "audacity/audacity.github.io",
+   "commit": "9190f1689910cee2ff1a57b69cbe66d6c8bdf6cf",
+   "error": null
+  },
+  {
+   "repo": "auditmos/saas-on-cf",
+   "commit": "88a13947a7046c39117e31240aef022724837c7f",
+   "error": null
+  },
+  {
+   "repo": "aviatesk/obsidian-tasks-calendar",
+   "commit": "6bfbbe43df8ce410611bde2446630c3c1069e5b5",
+   "error": null
+  },
+  {
+   "repo": "baimard/gestion",
+   "commit": "b941b67d3103c0734d4b706c68ff5a6db0f7adc3",
+   "error": null
+  },
+  {
+   "repo": "benedicta-tech/crewbit",
+   "commit": "c8a3d133b8e9e45b6c99e455f49820391cd6440d",
+   "error": null
+  },
+  {
+   "repo": "botiverse/hands",
+   "commit": "98d56bd31cfdde11b9e63233fe7c17be366b5baf",
+   "error": null
+  },
+  {
+   "repo": "chhoumann/MetaEdit",
+   "commit": "fffde194288725b9e4c1447ec229a54a0c51a34d",
+   "error": null
+  },
+  {
+   "repo": "codee-sh/payload-training-app",
+   "commit": "d849246f8e4b78a31eef7b12d7256df690d1c799",
+   "error": null
+  },
+  {
+   "repo": "cross-platform-actions/action",
+   "commit": "e0b9770014ba65d5e0815f15b74031c3a635f641",
+   "error": null
+  },
+  {
+   "repo": "dafthunk-com/dafthunk",
+   "commit": "66be3083dc6c5349e150de5c9631477942399896",
+   "error": null
+  },
+  {
+   "repo": "dculussoftwares/dculus-forms",
+   "commit": "92bf9603e1c36a354b1238a604f5c93cce167e8f",
+   "error": null
+  },
+  {
+   "repo": "devailab/open-reclamos",
+   "commit": "d7e661807317cc858a245117ee3c086a262924ff",
+   "error": null
+  },
+  {
+   "repo": "doodledood/pi-plugins",
+   "commit": "7464cdab7be3642dea8d57173077eb831ff05350",
+   "error": null
+  },
+  {
+   "repo": "ductridev/multi-discord-music-bots",
+   "commit": "06fa26025cb3057b381cad1d5fae0f0049b0b8b2",
+   "error": null
+  },
+  {
+   "repo": "equinor/fusion-framework",
+   "commit": "f0e9cc07d0cd5d3922f75957d8ff4cd93c961dee",
+   "error": null
+  },
+  {
+   "repo": "erikvullings/mithril-materialized",
+   "commit": "045d6367e24d562bd8adb9b937b4476e9ec7354c",
+   "error": null
+  },
+  {
+   "repo": "ever-works/directory-web-template",
+   "commit": "19f74473246982d59cbaf1c295f5da8502de7caa",
+   "error": null
+  },
+  {
+   "repo": "everest-an/protocol-banks---web3",
+   "commit": "bdcd899dfa886b863ca617485043c4db97aefaa7",
+   "error": null
+  },
+  {
+   "repo": "ffflorian/node-packages",
+   "commit": "d9e3f308df29b23cd4a38e2174cfed5336d96134",
+   "error": null
+  },
+  {
+   "repo": "flakiness/playwright",
+   "commit": "9fab0cb9d62d9fbd25dda131429938ec7381b6ed",
+   "error": null
+  },
+  {
+   "repo": "fufankeji/deepseek-harness-studio",
+   "commit": "257d429156a243517a2cafdff777125cd3fb6d54",
+   "error": null
+  },
+  {
+   "repo": "gambiarraclub/gambiarra-arena",
+   "commit": "4909ff6f8a16491ec3e674e882e63be95fb8b02a",
+   "error": null
+  },
+  {
+   "repo": "getsieutoc/voi",
+   "commit": "58ae6753d1c09953d8ad3d58b892b0a6c0d856d7",
+   "error": null
+  },
+  {
+   "repo": "happo/happo",
+   "commit": "54dabba85a8fa83d3334883c4e9497a9059a56b7",
+   "error": null
+  },
+  {
+   "repo": "huoshen80/ReinaManager",
+   "commit": "d18a6b025a5bca8be1beb661c542761bbf7538c0",
+   "error": null
+  },
+  {
+   "repo": "ignaciodelvalle/dim",
+   "commit": "37f17920b1c4119e5225fc095c9088ca7e42ed9b",
+   "error": null
+  },
+  {
+   "repo": "ikemo3/gossip-site-blocker",
+   "commit": "5faf660e2baf6f31430b7b0d4b96670ee7408fbb",
+   "error": null
+  },
+  {
+   "repo": "jaccen/AIRoute",
+   "commit": "f3cd812817949fa5b2f169860bf493b2ea9a30cb",
+   "error": null
+  },
+  {
+   "repo": "jellydn/sky-alert",
+   "commit": "fddcee8f41e8ff3cac42cd8e7098977e0e8734fd",
+   "error": null
+  },
+  {
+   "repo": "jeonghwanko/onesub",
+   "commit": "22e0ec226ae4bdb21000eafee025d282d0d2e769",
+   "error": null
+  },
+  {
+   "repo": "jeremy0dell/station",
+   "commit": "f48c557e2407852bab3d0456485dc2e27b455f8b",
+   "error": null
+  },
+  {
+   "repo": "jhlee0409/claude-code-history-viewer",
+   "commit": "fdfc766ce7f0d76dceb03087aedac47add33d61b",
+   "error": null
+  },
+  {
+   "repo": "jmynes/punt",
+   "commit": "421b4d12a1809adadad3f502fc614f028245d563",
+   "error": null
+  },
+  {
+   "repo": "jpmonette/feed",
+   "commit": "cbad18d8afb6ea9fc38d460fdf56a2713c313aed",
+   "error": null
+  },
+  {
+   "repo": "jpthibault20/aeroconnect",
+   "commit": "5debbe5704c619b24a3e0ad5e85e84b81cb47303",
+   "error": null
+  },
+  {
+   "repo": "jrcopeti/trip-ai",
+   "commit": "8af3e78d1f64102365725c7db9f7564f678ccd02",
+   "error": null
+  },
+  {
+   "repo": "kernoeb/PlanningSup",
+   "commit": "60a43865e7d69e518d1f4dd9d6493a3fed97026a",
+   "error": null
+  },
+  {
+   "repo": "khrnchn/sedekah-je",
+   "commit": "6208963c7bb1c180e4e8ce6a9505760121c34f3d",
+   "error": null
+  },
+  {
+   "repo": "kimjbstar/prisma-class-generator",
+   "commit": "40973ce11f5c6ca50e24a2914df824399c110529",
+   "error": null
+  },
+  {
+   "repo": "kindfi-org/kindfi",
+   "commit": "8b94f0af07f1572abfc2d3b77b8aa3cfd0dbf662",
+   "error": null
+  },
+  {
+   "repo": "kinora-dev/kinora",
+   "commit": "e4b85600976bcadbd569182f7146b9a62e5fb71d",
+   "error": null
+  },
+  {
+   "repo": "kirbah/mcp-youtube",
+   "commit": "ba2b18b866c4334579c93369d829320cc3a986e9",
+   "error": null
+  },
+  {
+   "repo": "kitfunso/hippo-memory",
+   "commit": "f774b2db885d7f7c87dccb38b7f0ae919b14dc36",
+   "error": null
+  },
+  {
+   "repo": "kleinebossie/Mainline",
+   "commit": "79776273490790e7b27a6574e21eb880db0d370a",
+   "error": null
+  },
+  {
+   "repo": "kt3k/bulbo",
+   "commit": "b9df94314000044793d56c62900d613826483dd1",
+   "error": null
+  },
+  {
+   "repo": "kuizuo/youni",
+   "commit": "b71fbe7c8a29346b290def2b22e4710869800078",
+   "error": null
+  },
+  {
+   "repo": "kunwarVivek/mcp-github-project-manager",
+   "commit": "454e6e45021f74a0d875f7486f012f9a72bc1c41",
+   "error": null
+  },
+  {
+   "repo": "kupzed/catatz",
+   "commit": "4e8cad0daab1d2044f738f0840021f6288d26582",
+   "error": null
+  },
+  {
+   "repo": "labring/tentix",
+   "commit": "8085b0682dbc2b3c3628e963f5a1155d4dfa5f19",
+   "error": null
+  },
+  {
+   "repo": "lajarre/pi-vim",
+   "commit": "e55b07c05b648f3bbccf656c2b0c6ec63f1a91d1",
+   "error": null
+  },
+  {
+   "repo": "lamngockhuong/loan-calculator",
+   "commit": "634a8a95e62e5a8ce278c342b6080b3d5c40afe6",
+   "error": null
+  },
+  {
+   "repo": "lee259/oh-my-claudian",
+   "commit": "6b5cd6e6491bd60ca57c464a982842ae80d663e4",
+   "error": null
+  },
+  {
+   "repo": "lernza/lernza",
+   "commit": "b6a7af2c39b5d2058f05a8f683acb91300e63957",
+   "error": null
+  },
+  {
+   "repo": "letsuno/uno-online",
+   "commit": "5991eb32e4b8752a28d5ddd4ee6eed38e5e1a3f6",
+   "error": null
+  },
+  {
+   "repo": "litomi2026/litomi",
+   "commit": "1fc5075f82ee548538bace87e64dc9173cff6dfe",
+   "error": null
+  },
+  {
+   "repo": "liuxingqitd/skills-hub",
+   "commit": "3d74a83ef908be6aff906d9908addfdeedff4f3f",
+   "error": null
+  },
+  {
+   "repo": "loayabdalslam/Racore",
+   "commit": "b7a9071ff99e8956e1a20778d7b6def136668bd1",
+   "error": null
+  },
+  {
+   "repo": "loyal-labs/loyal-app",
+   "commit": "b278b81e3d7beea3ecb62099981856ce91e00830",
+   "error": null
+  },
+  {
+   "repo": "luckydye/vektor",
+   "commit": "8727cb4d7a7647e51e8397c58e8697f5568b66a8",
+   "error": null
+  },
+  {
+   "repo": "luhpaco/gymbro-tracker",
+   "commit": "40cd71f9c3cbf7b10c1148b15de14d9a382498d0",
+   "error": null
+  },
+  {
+   "repo": "lxl66566/GalgameManager",
+   "commit": "eb889a790232fc24f0f6c622556a1f1b2c23f89c",
+   "error": null
+  },
+  {
+   "repo": "mackt/pi-language-tutor",
+   "commit": "8420df928a59e8cbfff65c7c83d2fd42eb22154a",
+   "error": null
+  },
+  {
+   "repo": "mateonunez/website",
+   "commit": "5c1b719318a6b9902e7089d41b2ad9d1ac86543d",
+   "error": null
+  },
+  {
+   "repo": "mattschaller/slopcheck",
+   "commit": "24503cf4b23227952e847a1908e83816fad5280b",
+   "error": null
+  },
+  {
+   "repo": "mattyatea/ActivityPub-Relay",
+   "commit": "fc381f9a4e6b0ad626fb4b15064172480bedc250",
+   "error": null
+  },
+  {
+   "repo": "mbc-net/mbc-cqrs-serverless",
+   "commit": "0db0a3446901c642bdc2ab564284b848a7fee7d4",
+   "error": null
+  },
+  {
+   "repo": "mblode/burger",
+   "commit": "43242b8d76f10dcc26700eeb974cbc86e6a23074",
+   "error": null
+  },
+  {
+   "repo": "mcclowes/docusaurus-plugin-banner",
+   "commit": "58d100da94bbdf795800e6804fe6ff1e43c5a254",
+   "error": null
+  },
+  {
+   "repo": "mfuentesg/capo",
+   "commit": "308810bec0de538d17acc493a24082a9925e141a",
+   "error": null
+  },
+  {
+   "repo": "mhernesniemi/hoikka",
+   "commit": "c2065c3cff2534b9cebf064cad2a64271240e923",
+   "error": null
+  },
+  {
+   "repo": "midnightntwrk/example-zkloan",
+   "commit": "eff9030d509f98938914c1b2b721acb88fc1e42c",
+   "error": null
+  },
+  {
+   "repo": "ministryofjustice/hmpps-contacts-ui",
+   "commit": "834af79ef3fab21ed9c3d35b4623fee05b3b9a12",
+   "error": null
+  },
+  {
+   "repo": "mkofler96/KoFEM",
+   "commit": "2ff750fd060a64581676c15430ecc0e1c0c4682f",
+   "error": null
+  },
+  {
+   "repo": "moKshagna-p/musico",
+   "commit": "8c2f8f0bf1a12cf59d7d04f9aab302dd6eb6722e",
+   "error": null
+  },
+  {
+   "repo": "nexmoe/VidBee",
+   "commit": "06cfca54cc7bfd5bbc92793208618676c385f393",
+   "error": null
+  },
+  {
+   "repo": "nicknisi/pi-extensions",
+   "commit": "5d08b024a2d150d191eef99c12f84f023d4b2df9",
+   "error": null
+  },
+  {
+   "repo": "nirholas/Binance-MCP",
+   "commit": "fad7dcd93fd7811669a3c1e76eeec1e2768f1d94",
+   "error": null
+  },
+  {
+   "repo": "nirnejak/hono-bun-starter",
+   "commit": "34d9a76e0d34d673ca23f6e55b37474378bdf549",
+   "error": null
+  },
+  {
+   "repo": "nolebase/integrations",
+   "commit": "c0fadd20e38242f7aaf69bb69233200bf7aa833f",
+   "error": null
+  },
+  {
+   "repo": "northword/zotero-format-metadata",
+   "commit": "2b747409e8c3df866fca327a8ad859d770694a5b",
+   "error": null
+  },
+  {
+   "repo": "notefig/notefig",
+   "commit": "8b6864853a708504dfe6d50894b68795647d9c1c",
+   "error": null
+  },
+  {
+   "repo": "nyaomaru/changelog-bot",
+   "commit": "77dfdacf969f71644845b91be9812b34b5ae72ea",
+   "error": null
+  },
+  {
+   "repo": "nyphotohouse/sharply",
+   "commit": "8494ba2dfaa5a14dfaa3c5fb0d0d1dc7b98dd9ef",
+   "error": null
+  },
+  {
+   "repo": "ofekcofman98/v-and-x-project",
+   "commit": "b4fcc5649a89482fef05a5200d11811eb929ac3f",
+   "error": null
+  },
+  {
+   "repo": "oleg-koval/ai-refactor-playbook-runner",
+   "commit": "73cc57eea8af90613f268c2194f409c9a6755f16",
+   "error": null
+  },
+  {
+   "repo": "openResearch1/openresearch",
+   "commit": "d3536ffa343b65e768d026aa6fceb06bbbc2a4dc",
+   "error": null
+  },
+  {
+   "repo": "opencupid/opencupid",
+   "commit": "4dc0512095789c44b4a66b7539f2ea30ad1b6786",
+   "error": null
+  },
+  {
+   "repo": "opportunity-hack/warrior-wives",
+   "commit": "6e0840059928d4b6b3822f94e9bd65fe523edf04",
+   "error": null
+  },
+  {
+   "repo": "owncloud/notes",
+   "commit": "f37a989f7495a61137d4bac95f93baa82abf28cc",
+   "error": null
+  },
+  {
+   "repo": "pahkey/obsidian-wikidocs-plugin",
+   "commit": "097ed075fa175cf52f1090ca08f7563e82a2afe8",
+   "error": null
+  },
+  {
+   "repo": "pawcoding/astro-loader-pocketbase",
+   "commit": "6ad9634a33d041379eda08c18d3ad0045ed66dc2",
+   "error": null
+  },
+  {
+   "repo": "perses/shared",
+   "commit": "62a90b8f9cecca982058d8726eb7b93d2f7c9d3b",
+   "error": null
+  },
+  {
+   "repo": "ptarmiganlabs/butler-sheet-icons",
+   "commit": "a644ed6c3911f7ed07cb2894128589298449922e",
+   "error": null
+  },
+  {
+   "repo": "pulkit777exe/dripl",
+   "commit": "cc63043747b70bb43dcf38973fc79c841890a2f5",
+   "error": null
+  },
+  {
+   "repo": "puzed/darkauth",
+   "commit": "b921485873f231baff629d791ff651ec54014d83",
+   "error": null
+  },
+  {
+   "repo": "qualtyco/api-doctor",
+   "commit": "d3fc53202c63f21ab421215bbfcc40615e86f50c",
+   "error": null
+  },
+  {
+   "repo": "rafaelfoster/yuvomi-orchestrator",
+   "commit": "c7a7c7456ae36441fa223ca8584fd92a84599891",
+   "error": null
+  },
+  {
+   "repo": "redhat-cop/babylon",
+   "commit": "1c6af575732b32a75eea6aa21e109d7fa57d9e70",
+   "error": null
+  },
+  {
+   "repo": "rejot-dev/fragno",
+   "commit": "198abe80a12335a710925389c7f182823f46e48a",
+   "error": null
+  },
+  {
+   "repo": "remarkablegames/setup-butler",
+   "commit": "afee034c711c4f2ad52a04cab3b768cf2f008aaa",
+   "error": null
+  },
+  {
+   "repo": "remorses/sigillo",
+   "commit": "a7f01950d74a99740251478e830b9fc06cebcf64",
+   "error": null
+  },
+  {
+   "repo": "remorses/tuistory",
+   "commit": "363cbd2b05a24aaa6953e93a3d020731ea4e87ce",
+   "error": null
+  },
+  {
+   "repo": "reso830/Project_Alice",
+   "commit": "c44dbd03b7e8a2106d518803789f3bf94b25a704",
+   "error": null
+  },
+  {
+   "repo": "restatedev/restate-web-ui",
+   "commit": "23035a95c09076e08666196509ba4a81e8327854",
+   "error": null
+  },
+  {
+   "repo": "reuters-graphics/bluprint",
+   "commit": "3790e7755937798144b0ee5191adc0ce6dff08cd",
+   "error": null
+  },
+  {
+   "repo": "reverentgeek/reverentgeek-card",
+   "commit": "9d55260e0882d6a92beaacfa87c715eb604d371d",
+   "error": null
+  },
+  {
+   "repo": "rmccorkl/TubeSage",
+   "commit": "5444463125668e71e645b2b88f7533f01035d5bc",
+   "error": null
+  },
+  {
+   "repo": "roxybrowserlabs/roxybrowser-playwright-mcp",
+   "commit": "3c0b0ccba4d9578f1329d0a31dd309cfd1783e42",
+   "error": null
+  },
+  {
+   "repo": "samuelloranger/labby",
+   "commit": "ba5b69903996ffb9812ff3ea53432e34536ee7e0",
+   "error": null
+  },
+  {
+   "repo": "samvera-labs/clover-iiif",
+   "commit": "7855685f236b1bb3625370c4a913a2af0a7d0f40",
+   "error": null
+  },
+  {
+   "repo": "sazanami-notes/sazanami",
+   "commit": "8d88591e641c7179af24590876993adbd01bc471",
+   "error": null
+  },
+  {
+   "repo": "selmansenol/loops",
+   "commit": "1f32dbae32e69ae2aad8335c896de0e32aac7737",
+   "error": null
+  },
+  {
+   "repo": "shiggydoodah/ll-stack",
+   "commit": "96fdc92e63f10f55c3f80620e9d59af088e8b090",
+   "error": null
+  },
+  {
+   "repo": "solivio-ai/solivio",
+   "commit": "0418df8d0568da80da421dc14da36bf2d7e4d0e1",
+   "error": null
+  },
+  {
+   "repo": "sondreb/polytalk",
+   "commit": "9de91999f21dc743e1c4aa8c2d20867f504cc705",
+   "error": null
+  },
+  {
+   "repo": "sonisoft-cnanda/now-sdk-ext-cli",
+   "commit": "fbd1b70bd1efb289f59b54bd808f02870180cb2b",
+   "error": null
+  },
+  {
+   "repo": "srod/node-version",
+   "commit": "0cbcc38172ba1ae78b74fac0d83bf77754def0f2",
+   "error": null
+  },
+  {
+   "repo": "stakwork/stakgraph",
+   "commit": "7ff9c9fd04cc03f0ee359e7865fd8855483bc809",
+   "error": null
+  },
+  {
+   "repo": "statistikZH/leu",
+   "commit": "011178b87edcd0e2f57c339929bfdc978d883448",
+   "error": null
+  },
+  {
+   "repo": "strapi-community/plugin-rest-cache",
+   "commit": "af0e7d8d446791c49e05eca3dceb1b20c845e38b",
+   "error": null
+  },
+  {
+   "repo": "suitux/Tagr",
+   "commit": "34564dd1f42ceec4b6a6a79bcb05c13c5f710604",
+   "error": null
+  },
+  {
+   "repo": "supabase/pg-toolbelt",
+   "commit": "0882fc4cb6b792b79b599a414b434e4e048b6672",
+   "error": null
+  },
+  {
+   "repo": "syhily/kobato",
+   "commit": "534dd928f9358caabacdc9ac99c813fbce457fcb",
+   "error": null
+  },
+  {
+   "repo": "tdealer01-crypto/tdealer01-crypto-dsg-control-plane",
+   "commit": "4c3235af339e9554b881dd60545b7781d5fad931",
+   "error": null
+  },
+  {
+   "repo": "udecode/kitcn",
+   "commit": "3250fb9cae19342dce587520cd9850abc8cad08b",
+   "error": null
+  },
+  {
+   "repo": "ultracontext/ultracontext",
+   "commit": "736b471125b727a9b6473688b18ef5a22727d48c",
+   "error": null
+  },
+  {
+   "repo": "va360labs/didacta-io",
+   "commit": "3aa3de2bfb6519a51bd0af9a1eae5aeb70a943c5",
+   "error": null
+  },
+  {
+   "repo": "viet-aus-it/vait-discord-bot",
+   "commit": "af29ac14d1832a794391ddf28d88df4d2ee835e9",
+   "error": null
+  },
+  {
+   "repo": "vikejs/bati",
+   "commit": "ade026eb0abf021d6ebdbd58f85b2559d4864f43",
+   "error": null
+  },
+  {
+   "repo": "vmDeshpande/ai-agent-automation",
+   "commit": "86b6072dd4c9bf6abe68c26c4265b3296a368737",
+   "error": null
+  },
+  {
+   "repo": "volta-net/volta",
+   "commit": "c27134ae1a7e4eeccf4f89f2937967c55abbb2bf",
+   "error": null
+  },
+  {
+   "repo": "voorhoede/head-start",
+   "commit": "19f14b7de6a9ad153c748e220812f1349e0a2fdc",
+   "error": null
+  },
+  {
+   "repo": "wangxukun/yuanlu",
+   "commit": "420c6feee835739d5775281697baa0783a5d0587",
+   "error": null
+  },
+  {
+   "repo": "workfloworchestrator/pydantic-forms-ui",
+   "commit": "0a923bd048dc42f7231243f1d1fb7c239d82e8fb",
+   "error": null
+  },
+  {
+   "repo": "workos/case",
+   "commit": "63ece1d1161b83ec9183e1b7430102086b384047",
+   "error": null
+  },
+  {
+   "repo": "wpnuxt/wpnuxt",
+   "commit": "165b6830d205edb49364a1ebf6ce7118c6e0d39f",
+   "error": null
+  },
+  {
+   "repo": "yanyiwu/nodejieba",
+   "commit": "99a3e8147237b983c9068213405a8f0edb340421",
+   "error": null
+  },
+  {
+   "repo": "yourhq/yourhq",
+   "commit": "86f99c2e0b438fd40a82f2377bb729231856c10c",
+   "error": null
+  },
+  {
+   "repo": "zenml-io/zenml-dashboard",
+   "commit": "713374a27dc7dc20024ff22cce8dc8d18cd5a04e",
+   "error": null
+  }
+ ]
+}
