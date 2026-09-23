@@ -39,6 +39,38 @@ export function evaluate({ scopes, evidence, incomplete, instructionFiles }) {
       const installs = by(scope, "package.manager", (e) => (e.kind === "install-command" || e.kind === "install-command-unpinned") && pmValues.includes(e.value));
       const installers = uniq(installs.map((e) => e.value));
       const at = (group) => [...new Set(group.map((g) => `${g.source}${g.line ? `:${g.line}` : ""}`))].join(", ");
+      // Manager-specific configuration this package actually carries (settings,
+      // not structure — see evidence.managerConfigValue).
+      const configs = by(scope, "package.manager", (e) => e.kind === "manager-config" && pmValues.includes(e.value));
+      // A manager is *deliberately supported* when something beyond a lockfile
+      // says this package is operated with it. Two supported managers is not a
+      // contradiction we can adjudicate from the outside: it is a repository
+      // that runs both on purpose, or one mid-migration. Either way the honest
+      // answer is "ambiguous", so the finding leaves the proven tier rather than
+      // picking a winner. It is never suppressed, only downgraded.
+      const supportOf = (m) => [
+        ...(field && field.value === m ? ["the packageManager field"] : []),
+        ...configs.filter((c) => c.value === m).map((c) => c.source),
+        ...(installs.some((e) => e.value === m) ? [`install steps (${at(installs.filter((e) => e.value === m))})`] : []),
+      ];
+      const supported = pmValues.filter((m) => supportOf(m).length);
+      // The downgrade is deliberately narrow, because every emission it removes
+      // from the default output is a catch we give up:
+      //
+      //   1. A `packageManager` field states the single intended manager. When
+      //      one exists it is the authority, and anything disagreeing with it —
+      //      a second lockfile, a CI step installing with something else — is
+      //      the contradiction, not evidence against it. Never downgraded.
+      //   2. Install steps that disagree with each other are also the
+      //      contradiction: a package that tests with one manager and publishes
+      //      with another ships what it never tested. Never downgraded.
+      //   3. What we cannot adjudicate is a package that declares no manager at
+      //      all, while one manager carries real configuration *settings* and
+      //      another is independently operated. That is deliberate dual support
+      //      or an unfinished migration, and the repository does not say which.
+      //      Reported for review instead of asserted as a defect.
+      const configured = supported.filter((m) => configs.some((c) => c.value === m));
+      const dualSupported = !field && supported.length >= 2 && configured.length >= 1;
       const lockOf = (m) => locks.filter((l) => l.value === m).map((l) => l.source);
       let fix;
       if (intended) {
@@ -56,8 +88,14 @@ export function evaluate({ scopes, evidence, incomplete, instructionFiles }) {
       } else {
         fix = `Multiple lockfiles are present${where(scope)}, but CrossCheck cannot determine maintainer intent. An extra lockfile may support dependency-update or compatibility tooling. Confirm the intended support policy before removing or regenerating any lockfile.`;
       }
-      findings.push(finding("package-manager/conflicting-config", "package.manager", scope, pmValues, [...pmConfig, ...installs],
-        `Multiple package-manager configurations detected${where(scope)}: ${pmValues.map(pretty).join(" and ")}`, fix));
+      if (dualSupported) {
+        fix = `${supported.map((m) => `${pretty(m)} is configured by ${supportOf(m).join(" and ")}`).join("; ")}. CrossCheck cannot tell from the repository whether that is deliberate dual support or an unfinished migration, so this is reported for review rather than as a contradiction. If only one manager is intended, remove the other's lockfile and configuration and make every install step agree.`;
+      }
+      findings.push(finding("package-manager/conflicting-config", "package.manager", scope, pmValues, [...pmConfig, ...configs, ...installs],
+        dualSupported
+          ? `Package-manager ambiguity${where(scope)}: ${supported.map(pretty).join(" and ")} are each deliberately configured`
+          : `Multiple package-manager configurations detected${where(scope)}: ${pmValues.map(pretty).join(" and ")}`,
+        fix, dualSupported ? "experimental" : undefined));
     }
     const established = pmValues.length === 1 ? pmValues[0] : null;
     if (established) {
@@ -162,7 +200,7 @@ export function evaluate({ scopes, evidence, incomplete, instructionFiles }) {
 export const PROVEN_RULES = new Set(["package-manager/conflicting-config", "manifest/unparseable"]);
 export const tierOf = (rule) => (PROVEN_RULES.has(rule) ? "proven" : "experimental");
 
-function finding(rule, cls, scope, values, evidence, summary, fix) {
+function finding(rule, cls, scope, values, evidence, summary, fix, tierOverride) {
   const seen = new Set();
   const ev = [];
   for (const e of evidence) {
@@ -171,7 +209,7 @@ function finding(rule, cls, scope, values, evidence, summary, fix) {
     seen.add(key);
     ev.push({ source: e.source, line: e.line ?? null, value: e.value, kind: e.kind, detail: e.detail });
   }
-  return { id: `${rule}@${scope || "."}`, rule, tier: tierOf(rule), class: cls, scope, values, summary, fix, evidence: ev };
+  return { id: `${rule}@${scope || "."}`, rule, tier: tierOverride || tierOf(rule), class: cls, scope, values, summary, fix, evidence: ev };
 }
 
 function groupBy(items, key) {
