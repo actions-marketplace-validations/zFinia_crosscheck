@@ -59,7 +59,60 @@ These scenarios ran on GitHub-hosted runners:
 
 The CrossCheck step takes under a second on a small repository.
 
+## Manager-specific configuration (precision correction)
+
+An earlier build emitted a **proven** npm-vs-pnpm conflict for a repository that
+maintains `pnpm-workspace.yaml` on purpose while also running npm in CI on
+purpose. Everything the engine could see said npm — `npm ci` in every workflow,
+no `packageManager` field. What it could not see was pnpm's own settings file.
+Two managers were deliberately supported; the engine asserted a defect. It was
+caught by manual verification before anything was published.
+
+The engine now reads manager-specific configuration — `pnpm-workspace.yaml`,
+`.yarnrc.yml`, `bunfig.toml`, and pnpm-only `.npmrc` keys — as **supporting
+evidence**. When no `packageManager` field exists and two managers are each
+independently supported, one of them carrying real configuration *settings*, the
+finding leaves the proven tier and is reported as an ambiguity for review.
+
+It only ever downgrades. It never suppresses a finding, and three cases are
+deliberately excluded:
+
+1. **A `packageManager` field is the authority.** Anything disagreeing with it is
+   the contradiction, not evidence against it.
+2. **Install steps that disagree with each other are also the contradiction.** A
+   package that tests with one manager and publishes with another ships what it
+   never tested.
+3. **Configuration is read for settings, not structure.** A `pnpm-workspace.yaml`
+   holding nothing but a `packages:` list survives a migration exactly as a stale
+   lockfile does, so presence alone does not count — that would recreate the same
+   false positive one layer up.
+
+Measured over 222 reachable repositories: 44 carry manager configuration, **6**
+meet the bar and downgrade, **216** remain proven.
+
+Re-running the historical fixes above against this change produced **no
+regression**: every verdict, every emission at the broken commit, and every
+control identical, with 13 of 13 package-manager fixes retained and 0 of 35
+controls flagged.
+
+Two honest qualifications:
+
+- That run is a **regression gate**. It is *not* evidence the new rule fires
+  correctly, because no case in the historical set exercises the dual-support
+  path. That claim rests on the 222-repository measurement.
+- `gowrish005/Internal-CRM-Sales` has since been deleted or made private, which
+  removes one fix and one control from the set. The re-run therefore scored 34 of
+  35 fixes and 35 of 36 controls. The table above is the original record and is
+  left as measured.
+
 ## Limits
 
 - It reads configuration files only; it does not install or run anything.
 - By default it covers one class of contradiction. It is not a general code-review or repository-consistency tool.
+- **Static repository state cannot always establish intent.** A repository that
+  updates two lockfiles in the *same commits*, deliberately, looks identical at
+  any single commit to one that abandoned a manager and left the lockfile behind.
+  Distinguishing them can require commit history, which this engine does not
+  read. `leeoniya/uPlot` is a known example that is still reported as proven.
+- Because of that, **a finding is a question worth asking, not a proven defect**.
+  Manual verification remains required before acting on one externally.

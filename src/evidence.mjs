@@ -42,6 +42,40 @@ const AUTH_DEPS = {
 const DOC_DB_DEPS = { mongodb: "mongodb", mongoose: "mongodb" };
 const SQL_DB_DEPS = { pg: "postgresql", postgres: "postgresql", "@neondatabase/serverless": "postgresql", mysql: "mysql", mysql2: "mysql", sqlite3: "sqlite", "better-sqlite3": "sqlite", "@libsql/client": "sqlite" };
 
+// Manager-specific configuration files. These are read for OPERATIONAL SETTINGS
+// only (see managerConfigValue): a file that merely declares structure — a
+// `pnpm-workspace.yaml` holding nothing but a `packages:` list — survives a
+// migration away from that manager exactly as a stale lockfile does, so treating
+// its presence as intent would recreate the false positive one layer up.
+// `.npmrc` is shared by npm, pnpm and yarn classic, so it counts only when it
+// carries a key that only pnpm reads.
+export const MANAGER_CONFIG = {
+  "pnpm-workspace.yaml": "pnpm",
+  "pnpm-workspace.yml": "pnpm",
+  ".yarnrc.yml": "yarn",
+  ".yarnrc": "yarn",
+  "bunfig.toml": "bun",
+  ".npmrc": null, // classified by content
+};
+const PNPM_ONLY_NPMRC = /^\s*(node-linker|shamefully-hoist|auto-install-peers|prefer-workspace-packages|hoist-pattern|public-hoist-pattern|package-import-method|virtual-store-dir|strict-peer-dependencies|resolution-mode|use-lockfile-v6|dedupe-peer-dependents|enable-pre-post-scripts)\s*=/im;
+
+/**
+ * Returns { manager, detail } when a config file shows the manager is actively
+ * operated, or null when it is absent, empty or structure-only.
+ */
+export function managerConfigValue(base, raw) {
+  if (raw == null) return null;
+  if (base === ".npmrc") {
+    const m = PNPM_ONLY_NPMRC.exec(raw);
+    return m ? { manager: "pnpm", detail: `pnpm-only setting ${m[1]}` } : null;
+  }
+  const manager = MANAGER_CONFIG[base];
+  if (!manager) return null;
+  const keys = [...raw.matchAll(/^([A-Za-z][\w-]*)\s*[:=]/gm)].map((m) => m[1]).filter((k) => k !== "packages");
+  if (!keys.length) return null;
+  return { manager, detail: `${base} sets ${[...new Set(keys)].slice(0, 3).join(", ")}` };
+}
+
 export const INSTRUCTION_FILES = ["AGENTS.md", "CLAUDE.md", "CODEX.md", "GEMINI.md"];
 // Directories that never hold the project's own decisions: dependencies, build
 // output, and corpora of sample/fixture packages (a parser's test fixtures may
@@ -67,6 +101,7 @@ export function isRelevantPath(path) {
   if (dirs.some((d) => SKIP_DIRS.has(d) || (d.startsWith(".") && d !== ".github"))) return false;
   const base = parts[parts.length - 1];
   if (base === "package.json" || LOCKFILES[base]) return true;
+  if (base in MANAGER_CONFIG) return true;
   if ([".nvmrc", ".node-version", ".tool-versions"].includes(base)) return true;
   if (/^drizzle\.config\.(ts|js|mjs|cjs|mts|cts)$/.test(base)) return true;
   if (/^schema\.[\w-]+\.prisma$/.test(base) && dirs[dirs.length - 1] === "prisma") return true; // presence only
@@ -117,6 +152,14 @@ export function extractEvidence(files) {
       // A lockfile speaks only for the package directory it sits in; an orphan
       // lockfile in a directory without package.json is not charged to a parent.
       if (scopeSet.has(dir)) add({ kind: "lockfile", class: "package.manager", value: LOCKFILES[base], scope: dir, source: path, detail: "lockfile present", strength: "config" });
+      continue;
+    }
+
+    if (base in MANAGER_CONFIG) {
+      // Supporting evidence only: it never creates or resolves a conflict, it
+      // records that a manager is actively operated in this package.
+      const cfg = managerConfigValue(base, text(path));
+      if (cfg && scopeSet.has(dir)) add({ kind: "manager-config", class: "package.manager", value: cfg.manager, scope: dir, source: path, detail: cfg.detail, strength: "support" });
       continue;
     }
 
